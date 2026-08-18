@@ -11,11 +11,7 @@ import { primaryNav } from "@/lib/site.config";
 export function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-
-  // Close the mobile menu on route change.
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
+  const close = () => setOpen(false);
 
   // Lock scroll when the mobile menu is open.
   useEffect(() => {
@@ -83,6 +79,7 @@ export function Header() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
+                    onClick={close}
                     aria-current={isActive(item.href) ? "page" : undefined}
                     className={`block rounded-xl px-4 py-3.5 text-base font-semibold ${
                       isActive(item.href)
@@ -97,6 +94,7 @@ export function Header() {
             </ul>
             <Link
               href="/contact"
+              onClick={close}
               className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-pill bg-navy-900 px-6 py-3.5 text-sm font-semibold text-white"
             >
               Get a Quote <ArrowRight className="h-4 w-4" aria-hidden="true" />

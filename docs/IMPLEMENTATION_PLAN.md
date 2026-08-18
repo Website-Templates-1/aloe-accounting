@@ -6,7 +6,7 @@ Production marketing website for a licensed Brampton CPA firm.
 
 - **Next.js 15 (App Router) + TypeScript** — statically rendered marketing site (`generateStaticParams` + SSG). Crawlers get full HTML.
 - **Tailwind CSS v4** for the design system (dark navy / white / emerald green).
-- **Sanity v3** (embedded Studio at `/studio`) as the structured CMS for pages and blog posts.
+- **No CMS** (Sanity removed at owner request). Blog/resources use an in-repo, build-validated post registry (`src/lib/posts.ts`); a bespoke blog solution is a future decision.
 - **SEO = content model + build pipeline**, native App Router mechanisms only. No `next-seo`, no `react-helmet`, no schema packages.
 - Forms: a typed server-action interface with a pluggable email provider (Resend-shaped), **not wired to live credentials**.
 

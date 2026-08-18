@@ -36,7 +36,7 @@ About copy names **Khushpreet Sran, CPA** (senior accountant). Used in About bod
 Approved doc lists `https://aloeaccountingandtax.com/`. Set as canonical origin (non-www, no trailing slash). Confirm this is the final production domain and www-vs-non-www preference.
 
 ## 8. Blog / resources content
-No articles supplied. Resources index ships with the CMS wired and empty-state handling; sitemap/metadata auto-generate per post once you add them in Sanity. Provide initial posts (or confirm launching with zero).
+No articles supplied, and **no CMS** is used (Sanity was removed at owner's request). Posts live in an in-repo registry (`src/lib/posts.ts`), currently empty; the Resources index shows an empty state. A blog approach is a future decision — provide initial posts (or confirm launching with zero) and the preferred authoring method.
 
 ## 9. FAQ content
 Screenshots show FAQ questions (where based/who served, onboarding, sole-prop vs incorporated, pricing…). I'll use the visible, owner-approved answers where legible; please supply the full final FAQ Q&A text. Visible HTML only — **no** FAQPage schema.
@@ -49,4 +49,4 @@ Screenshots show FAQ questions (where based/who served, onboarding, sole-prop vs
 Per instructions, the form uses a secure provider-agnostic interface but is **not** connected to live email/DNS/credentials. Provide provider choice (Resend/SES/etc.) + destination inbox at deployment time.
 
 ## 12. OG / social share image
-None supplied; not inventing one. A simple branded default can be added once you provide artwork or approve a generated placeholder.
+A simple, on-brand **placeholder** (`public/og-default.svg`, firm name + tagline only — no invented claims) is referenced so shares aren't broken. Replace with final 1200×630 PNG artwork before launch. Some scrapers don't render SVG OG images.
