@@ -44,14 +44,14 @@ export function TrustStrip() {
             <Icon name="shield" className="h-4 w-4 text-brand" />
             Accredited &amp; trusted
           </p>
-          <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+          <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-5 sm:gap-x-12">
             {trustLogos.map((logo) => (
-              <li key={logo.src}>
+              <li key={logo.src} className="flex items-center">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={logo.src}
                   alt={logo.alt}
-                  className="h-11 w-auto opacity-90"
+                  className={`w-auto ${logo.wide ? "h-10 sm:h-11" : "h-14 sm:h-16"}`}
                   loading="lazy"
                 />
               </li>

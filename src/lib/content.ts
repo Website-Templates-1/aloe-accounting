@@ -22,13 +22,22 @@ export const stats: Stat[] = [
 ];
 
 /**
- * Trust badges. These are clean in-house badge marks; replace the SVG files
- * in /public/trust with official brand assets when available.
+ * Trust badges — official accreditation logos supplied by the firm.
+ * `wide` flags the horizontal wordmark so the strip can size it consistently
+ * against the portrait seals.
  */
 export const trustLogos = [
-  { src: "/trust/bbb.svg", alt: "BBB Accredited Business" },
-  { src: "/trust/cpa.svg", alt: "Chartered Professional Accountant (CPA)" },
-  { src: "/trust/quickbooks.svg", alt: "QuickBooks Certified ProAdvisor" },
+  { src: "/trust/bbb.png", alt: "BBB Accredited Business", wide: false },
+  {
+    src: "/trust/cpa.png",
+    alt: "CPA — Chartered Professional Accountants Ontario",
+    wide: true,
+  },
+  {
+    src: "/trust/quickbooks.png",
+    alt: "QuickBooks Certified ProAdvisor",
+    wide: false,
+  },
 ];
 
 export interface Step {
