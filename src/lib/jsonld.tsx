@@ -1,0 +1,188 @@
+import { site, contact, socialProfiles, absoluteUrl } from "@/lib/site.config";
+
+/**
+ * One JSON-LD helper: serializes a plain object into a script tag.
+ * No packages. Used site-wide and per-page.
+ */
+export function JsonLd({ data }: { data: Record<string, unknown> }) {
+  return (
+    <script
+      type="application/ld+json"
+      // Content is our own trusted, static data.
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Schema builders — only types we can honestly support.               */
+/* ------------------------------------------------------------------ */
+
+/** Site-wide Organization (real contact + real profiles only). */
+export function organizationSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: site.brand,
+    legalName: site.legalName,
+    url: site.domain,
+    logo: absoluteUrl(site.logo),
+    email: contact.email,
+    telephone: contact.phoneHref.replace("tel:", ""),
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: contact.address.street,
+      addressLocality: contact.address.city,
+      addressRegion: contact.address.region,
+      postalCode: contact.address.postalCode,
+      addressCountry: contact.address.country,
+    },
+    ...(socialProfiles.length ? { sameAs: socialProfiles } : {}),
+  };
+}
+
+/** WebSite — name + url only. No SearchAction (no real /search). */
+export function websiteSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: site.brand,
+    url: site.domain,
+  };
+}
+
+/**
+ * ProfessionalService — this IS a real local business with real NAP.
+ * No aggregateRating / review (won't fake). No priceRange invented.
+ */
+export function professionalServiceSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: site.brand,
+    url: site.domain,
+    image: absoluteUrl(site.ogImage),
+    logo: absoluteUrl(site.logo),
+    email: contact.email,
+    telephone: contact.phoneHref.replace("tel:", ""),
+    areaServed: contact.serviceArea,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: contact.address.street,
+      addressLocality: contact.address.city,
+      addressRegion: contact.address.region,
+      postalCode: contact.address.postalCode,
+      addressCountry: contact.address.country,
+    },
+    ...(socialProfiles.length ? { sameAs: socialProfiles } : {}),
+  };
+}
+
+export interface Crumb {
+  name: string;
+  path: string;
+}
+
+/** BreadcrumbList matching the visible breadcrumbs. */
+export function breadcrumbSchema(crumbs: Crumb[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: crumbs.map((c, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: c.name,
+      item: absoluteUrl(c.path),
+    })),
+  };
+}
+
+/** Service page schema (no Offer — no real public starting price). */
+export function serviceSchema(opts: {
+  name: string;
+  description: string;
+  path: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: opts.name,
+    description: opts.description,
+    url: absoluteUrl(opts.path),
+    serviceType: opts.name,
+    areaServed: contact.serviceArea,
+    provider: {
+      "@type": "ProfessionalService",
+      name: site.brand,
+      url: site.domain,
+    },
+  };
+}
+
+/** BlogPosting for an article. dateModified only when supplied. */
+export function blogPostingSchema(opts: {
+  title: string;
+  description: string;
+  path: string;
+  datePublished: string;
+  dateModified?: string;
+  image?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: opts.title,
+    description: opts.description,
+    url: absoluteUrl(opts.path),
+    mainEntityOfPage: absoluteUrl(opts.path),
+    datePublished: opts.datePublished,
+    ...(opts.dateModified ? { dateModified: opts.dateModified } : {}),
+    image: absoluteUrl(opts.image ?? site.ogImage),
+    publisher: {
+      "@type": "Organization",
+      name: site.brand,
+      logo: { "@type": "ImageObject", url: absoluteUrl(site.logo) },
+    },
+  };
+}
+
+/** ItemList for an index (e.g. resources, services hub). */
+export function itemListSchema(items: { name: string; path: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: items.map((it, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: it.name,
+      url: absoluteUrl(it.path),
+    })),
+  };
+}
+
+/** AboutPage. Founder Person included only when caller passes real data. */
+export function aboutPageSchema(opts: {
+  path: string;
+  person?: { name: string; jobTitle: string };
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    url: absoluteUrl(opts.path),
+    about: {
+      "@type": "Organization",
+      name: site.brand,
+      url: site.domain,
+    },
+    ...(opts.person
+      ? {
+          mainEntity: {
+            "@type": "Person",
+            name: opts.person.name,
+            jobTitle: opts.person.jobTitle,
+            worksFor: { "@type": "Organization", name: site.brand },
+          },
+        }
+      : {}),
+  };
+}

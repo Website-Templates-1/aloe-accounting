@@ -1,26 +1,150 @@
 @import "tailwindcss";
 
+/* ------------------------------------------------------------------ *
+ * ALOE Accounting & Tax — design tokens
+ * Dark navy · white · emerald green. Premium, mobile-first.
+ * ------------------------------------------------------------------ */
+@theme {
+  /* Brand navy */
+  --color-navy-950: #071627;
+  --color-navy-900: #0a1b2e;
+  --color-navy-800: #0d2237;
+  --color-navy-700: #142c44;
+  --color-navy-600: #1d3a56;
+
+  /* Emerald accent */
+  --color-brand-50: #e8faf2;
+  --color-brand-100: #c9f3e0;
+  --color-brand-300: #6ee0b3;
+  --color-brand-400: #34d399;
+  --color-brand: #15c58c;
+  --color-brand-600: #0fae7a;
+  --color-brand-700: #0b8f64;
+
+  /* Neutrals */
+  --color-ink: #0a1b2e; /* headings on light */
+  --color-slate-body: #47566a; /* body on light */
+  --color-surface: #ffffff;
+  --color-surface-alt: #f5f8fa;
+  --color-border-soft: #e5eaf0;
+
+  /* Typography */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* Rhythm */
+  --radius-card: 1.25rem;
+  --radius-pill: 999px;
+}
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0a1b2e;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  border-color: var(--color-border-soft);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Visible, accessible focus rings everywhere */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Skip-link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  background: var(--color-navy-900);
+  color: #fff;
+  border-radius: 0 0 0.75rem 0;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+/* Display headings: tight, bold */
+.h-display {
+  letter-spacing: -0.02em;
+  line-height: 1.04;
+  font-weight: 800;
+}
+
+/* Eyebrow chip label */
+.tracking-eyebrow {
+  letter-spacing: 0.18em;
+}
+
+/* Prose (blog article) — minimal, brand-tuned */
+.prose-aloe {
+  color: var(--color-slate-body);
+  font-size: 1.075rem;
+  line-height: 1.75;
+}
+.prose-aloe h2 {
+  color: var(--color-ink);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 2.25rem 0 0.75rem;
+}
+.prose-aloe h3 {
+  color: var(--color-ink);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 1.75rem 0 0.5rem;
+}
+.prose-aloe p {
+  margin: 0 0 1.1rem;
+}
+.prose-aloe a {
+  color: var(--color-brand-700);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose-aloe ul {
+  margin: 0 0 1.1rem;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+.prose-aloe li {
+  margin: 0.35rem 0;
+}
+.prose-aloe blockquote {
+  border-left: 3px solid var(--color-brand);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  color: var(--color-ink);
+  font-style: italic;
 }
