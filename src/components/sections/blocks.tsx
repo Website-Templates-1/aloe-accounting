@@ -168,7 +168,9 @@ export function IndustriesGrid({
           intro="From single-truck operators to multi-location retailers — we speak your sector's language and know its tax landscape."
         />
       )}
-      <div className="mt-12 grid gap-px overflow-hidden rounded-card border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
+      <div
+        className={`${withHeading ? "mt-12 " : ""}grid gap-px overflow-hidden rounded-card border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3`}
+      >
         {industries.map((ind) => (
           <div key={ind.name} className="flex flex-col gap-3 bg-navy-900 p-8">
             <span className="grid h-11 w-11 place-items-center rounded-2xl bg-white/5 text-brand-400 ring-1 ring-white/10">
