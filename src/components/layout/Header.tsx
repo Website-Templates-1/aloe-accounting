@@ -3,10 +3,11 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ExternalLink } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
-import { Container, ButtonLink } from "@/components/ui/primitives";
-import { primaryNav } from "@/lib/site.config";
+import { Container } from "@/components/ui/primitives";
+import { TrackedLink } from "@/components/analytics/TrackedLink";
+import { primaryNav, contact } from "@/lib/site.config";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -49,9 +50,15 @@ export function Header() {
           </nav>
 
           <div className="hidden md:block">
-            <ButtonLink href="/contact" variant="dark" withArrow>
-              Get a Quote
-            </ButtonLink>
+            <TrackedLink
+              href={contact.portalUrl}
+              event="portal_click"
+              external
+              className="inline-flex items-center justify-center gap-2 rounded-pill bg-navy-900 px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-navy-800"
+            >
+              Client Portal
+              <ExternalLink className="h-4 w-4" aria-hidden="true" />
+            </TrackedLink>
           </div>
 
           <button
@@ -92,13 +99,16 @@ export function Header() {
                 </li>
               ))}
             </ul>
-            <Link
-              href="/contact"
+            <TrackedLink
+              href={contact.portalUrl}
+              event="portal_click"
+              external
               onClick={close}
               className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-pill bg-navy-900 px-6 py-3.5 text-sm font-semibold text-white"
             >
-              Get a Quote <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
+              Client Portal
+              <ExternalLink className="h-4 w-4" aria-hidden="true" />
+            </TrackedLink>
           </Container>
         </div>
       )}

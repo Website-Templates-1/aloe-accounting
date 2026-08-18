@@ -39,7 +39,7 @@ export function TrustStrip() {
   return (
     <div className="border-y border-border-soft bg-white py-8">
       <Container>
-        <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-between">
+        <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-evenly">
           <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-eyebrow text-slate-body">
             <Icon name="shield" className="h-4 w-4 text-brand" />
             Accredited &amp; trusted

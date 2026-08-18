@@ -14,6 +14,7 @@ export function TrackedLink({
   className = "",
   children,
   ariaLabel,
+  onClick,
 }: {
   href: string;
   event: ConversionEvent;
@@ -21,13 +22,18 @@ export function TrackedLink({
   className?: string;
   children: ReactNode;
   ariaLabel?: string;
+  /** Extra handler run alongside conversion tracking (e.g. close a menu). */
+  onClick?: () => void;
 }) {
   return (
     <a
       href={href}
       className={className}
       aria-label={ariaLabel}
-      onClick={() => trackConversion(event)}
+      onClick={() => {
+        trackConversion(event);
+        onClick?.();
+      }}
       {...(external
         ? { target: "_blank", rel: "noopener noreferrer" }
         : {})}
