@@ -35,7 +35,6 @@ export const metadata: Metadata = {
     url: site.domain,
   },
   twitter: { card: "summary_large_image" },
-  icons: { icon: "/favicon.ico" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

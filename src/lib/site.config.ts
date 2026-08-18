@@ -24,7 +24,7 @@ export const site = {
     "ALOE Accounting and Tax is a licensed Brampton CPA firm offering accounting, payroll, corporate & personal tax, assurance, and advisory across the GTA and Canada.",
   /** OG image path (relative). Replace when real artwork is supplied. */
   ogImage: "/og-default.svg",
-  logo: "/logo.svg",
+  logo: "/aloe-logo.png",
 } as const;
 
 /* ------------------------------------------------------------------ */

@@ -1,35 +1,27 @@
 import Link from "next/link";
+import Image from "next/image";
 import { site } from "@/lib/site.config";
 
 /**
- * ALOE wordmark: green "A" monogram in a navy circle + "ALOE CPA".
- * Pure markup (no image request) so it renders instantly and crisply.
+ * ALOE logo — the firm's real horizontal wordmark (icon + "ALOE Accounting
+ * and Tax"). Always rendered on white surfaces (header + footer). The source
+ * is transparent, so no background handling is required.
  */
-export function Logo({
-  tone = "light",
-  className = "",
-}: {
-  tone?: "light" | "dark";
-  className?: string;
-}) {
-  const wordColor = tone === "dark" ? "text-white" : "text-ink";
-  const subColor = tone === "dark" ? "text-white/55" : "text-slate-body";
+export function Logo({ className = "" }: { className?: string }) {
   return (
     <Link
       href="/"
       aria-label={`${site.brand} — home`}
-      className={`inline-flex items-center gap-3 ${className}`}
+      className={`inline-flex items-center ${className}`}
     >
-      <span
-        aria-hidden="true"
-        className="grid h-11 w-11 place-items-center rounded-full bg-navy-900 text-lg font-extrabold text-brand"
-      >
-        A
-      </span>
-      <span className="text-xl font-extrabold tracking-tight">
-        <span className={wordColor}>ALOE</span>{" "}
-        <span className={`font-semibold ${subColor}`}>CPA</span>
-      </span>
+      <Image
+        src="/aloe-logo.png"
+        alt={site.brand}
+        width={407}
+        height={127}
+        priority
+        className="h-9 w-auto sm:h-10"
+      />
     </Link>
   );
 }
