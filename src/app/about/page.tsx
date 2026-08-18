@@ -149,6 +149,8 @@ export default function AboutPage() {
             name: founder.name,
             jobTitle: founder.jobTitle,
             image: founder.image,
+            alumniOf: "Wilfrid Laurier University",
+            credential: "Chartered Professional Accountant (CPA)",
           },
         })}
       />

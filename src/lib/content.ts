@@ -21,12 +21,14 @@ export const stats: Stat[] = [
   { value: "98%", label: "Client retention" },
 ];
 
-/** Text trust markers (logos pending asset delivery). */
-export const trustMarkers: string[] = [
-  "CPA Ontario",
-  "CPA Canada",
-  "QuickBooks ProAdvisor",
-  "Xero Certified",
+/**
+ * Trust badges. These are clean in-house badge marks; replace the SVG files
+ * in /public/trust with official brand assets when available.
+ */
+export const trustLogos = [
+  { src: "/trust/bbb.svg", alt: "BBB Accredited Business" },
+  { src: "/trust/cpa.svg", alt: "Chartered Professional Accountant (CPA)" },
+  { src: "/trust/quickbooks.svg", alt: "QuickBooks Certified ProAdvisor" },
 ];
 
 export interface Step {

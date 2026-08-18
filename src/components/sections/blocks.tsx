@@ -3,7 +3,7 @@ import { Icon } from "@/components/ui/Icon";
 import { Container, SectionHeading, ArrowLink } from "@/components/ui/primitives";
 import { ServiceCard } from "@/components/sections/ServiceCard";
 import { services, industries, values } from "@/lib/site.config";
-import { stats, trustMarkers, howWeWork, faqs } from "@/lib/content";
+import { stats, trustLogos, howWeWork, faqs } from "@/lib/content";
 
 /* ---------------------------------------------------------------- */
 /* Stats row (on dark)                                              */
@@ -44,13 +44,16 @@ export function TrustStrip() {
             <Icon name="shield" className="h-4 w-4 text-brand" />
             Accredited &amp; trusted
           </p>
-          <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
-            {trustMarkers.map((m) => (
-              <li
-                key={m}
-                className="text-sm font-semibold text-ink/70"
-              >
-                {m}
+          <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+            {trustLogos.map((logo) => (
+              <li key={logo.src}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="h-11 w-auto opacity-90"
+                  loading="lazy"
+                />
               </li>
             ))}
           </ul>

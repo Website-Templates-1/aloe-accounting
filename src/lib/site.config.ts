@@ -23,7 +23,7 @@ export const site = {
   defaultDescription:
     "ALOE Accounting and Tax is a licensed Brampton CPA firm offering accounting, payroll, corporate & personal tax, assurance, and advisory across the GTA and Canada.",
   /** OG image path (relative). Replace when real artwork is supplied. */
-  ogImage: "/og-default.svg",
+  ogImage: "/og-default.png",
   logo: "/aloe-logo.png",
 } as const;
 
@@ -73,13 +73,29 @@ export const socialProfiles: string[] = [];
  */
 export const googleBusiness = {
   placeId: "ChIJiYpKWNo_K4gR7WwrTBJ5amo",
-  /** Public link to the firm's Google reviews (attribution + "read more"). */
-  profileUrl:
-    "https://www.google.com/maps/place/?q=place_id:ChIJiYpKWNo_K4gR7WwrTBJ5amo",
+  /** Owner-shared public link to the Google Business Profile (fallback). */
+  profileUrl: "https://share.google/EHEnobJTr5KfiPjI2",
   /** Only surface reviews at/above this rating (Google shows all anyway). */
   minRating: 4,
   /** Max reviews to display (Places API returns up to 5). */
   count: 3,
+} as const;
+
+/**
+ * Business hours — sourced from the Google Business Profile (Places API).
+ * Used for the Contact page and LocalBusiness openingHoursSpecification.
+ * Update here if the firm changes its hours on Google.
+ */
+export const businessHours = {
+  /** Days open (used for schema dayOfWeek + display). */
+  openDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] as const,
+  opens: "09:00",
+  closes: "17:30",
+  /** Human-readable rows for the Contact page. */
+  display: [
+    { label: "Monday – Friday", value: "9:00 AM – 5:30 PM" },
+    { label: "Saturday – Sunday", value: "Closed" },
+  ],
 } as const;
 
 /* ------------------------------------------------------------------ */

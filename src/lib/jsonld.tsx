@@ -1,4 +1,10 @@
-import { site, contact, socialProfiles, absoluteUrl } from "@/lib/site.config";
+import {
+  site,
+  contact,
+  socialProfiles,
+  businessHours,
+  absoluteUrl,
+} from "@/lib/site.config";
 
 /**
  * One JSON-LD helper: serializes a plain object into a script tag.
@@ -74,6 +80,14 @@ export function professionalServiceSchema() {
       postalCode: contact.address.postalCode,
       addressCountry: contact.address.country,
     },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [...businessHours.openDays],
+        opens: businessHours.opens,
+        closes: businessHours.closes,
+      },
+    ],
     ...(socialProfiles.length ? { sameAs: socialProfiles } : {}),
   };
 }
@@ -163,8 +177,15 @@ export function itemListSchema(items: { name: string; path: string }[]) {
 /** AboutPage. Founder Person included only when caller passes real data. */
 export function aboutPageSchema(opts: {
   path: string;
-  person?: { name: string; jobTitle: string; image?: string };
+  person?: {
+    name: string;
+    jobTitle: string;
+    image?: string;
+    alumniOf?: string;
+    credential?: string;
+  };
 }) {
+  const p = opts.person;
   return {
     "@context": "https://schema.org",
     "@type": "AboutPage",
@@ -174,16 +195,31 @@ export function aboutPageSchema(opts: {
       name: site.brand,
       url: site.domain,
     },
-    ...(opts.person
+    ...(p
       ? {
           mainEntity: {
             "@type": "Person",
-            name: opts.person.name,
-            jobTitle: opts.person.jobTitle,
-            ...(opts.person.image
-              ? { image: absoluteUrl(opts.person.image) }
-              : {}),
+            name: p.name,
+            jobTitle: p.jobTitle,
+            ...(p.image ? { image: absoluteUrl(p.image) } : {}),
             worksFor: { "@type": "Organization", name: site.brand },
+            ...(p.alumniOf
+              ? {
+                  alumniOf: {
+                    "@type": "CollegeOrUniversity",
+                    name: p.alumniOf,
+                  },
+                }
+              : {}),
+            ...(p.credential
+              ? {
+                  hasCredential: {
+                    "@type": "EducationalOccupationalCredential",
+                    credentialCategory: "professional license",
+                    name: p.credential,
+                  },
+                }
+              : {}),
           },
         }
       : {}),

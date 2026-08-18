@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Phone, Mail, MapPin, ExternalLink } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, ExternalLink } from "lucide-react";
 import { Container, Section } from "@/components/ui/primitives";
 import { PageHero } from "@/components/sections/PageHero";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { TrackedLink } from "@/components/analytics/TrackedLink";
 import { buildMetadata } from "@/lib/seo";
 import { JsonLd, breadcrumbSchema } from "@/lib/jsonld";
-import { contact } from "@/lib/site.config";
+import { contact, businessHours } from "@/lib/site.config";
 
 const crumbs = [
   { name: "Home", path: "/" },
@@ -72,6 +72,28 @@ export default function ContactPage() {
                   </span>
                 }
               />
+
+              <div className="flex items-start gap-4 rounded-card border border-border-soft bg-white p-6">
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-brand-50 text-brand-700">
+                  <Clock className="h-5 w-5" />
+                </span>
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-eyebrow text-slate-body">
+                    Hours
+                  </p>
+                  <dl className="mt-2 space-y-1">
+                    {businessHours.display.map((row) => (
+                      <div
+                        key={row.label}
+                        className="flex justify-between gap-6 text-sm"
+                      >
+                        <dt className="text-slate-body">{row.label}</dt>
+                        <dd className="font-semibold text-ink">{row.value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              </div>
 
               <div className="mt-2 rounded-card border border-border-soft bg-surface-alt p-6">
                 <p className="text-sm font-semibold text-ink">

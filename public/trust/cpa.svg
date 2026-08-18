@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 88" role="img" aria-label="Chartered Professional Accountant">
+  <rect x="2" y="14" width="60" height="60" rx="12" fill="#0a1b2e"/>
+  <text x="32" y="52" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="800" fill="#15c58c">CPA</text>
+  <text x="76" y="40" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="800" fill="#0a1b2e">Chartered Professional</text>
+  <text x="76" y="66" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="800" fill="#0a1b2e">Accountant</text>
+</svg>
