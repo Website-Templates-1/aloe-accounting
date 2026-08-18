@@ -1,7 +1,3 @@
-## 5. Social profiles (`sameAs` in Organization JSON-LD)
-
-None provided. Omitted (honesty). Send LinkedIn / Google Business / Instagram URLs to include real ones.
-
 ## 8. Blog / resources content
 
 No articles supplied, and **no CMS** is used (Sanity was removed at owner's request). Posts live in an in-repo registry (`src/lib/posts.ts`), currently empty; the Resources index shows an empty state. A blog approach is a future decision — provide initial posts (or confirm launching with zero) and the preferred authoring method.
@@ -13,4 +9,3 @@ Screenshots show FAQ questions (where based/who served, onboarding, sole-prop vs
 ## 11. Email delivery
 
 Per instructions, the form uses a secure provider-agnostic interface but is **not** connected to live email/DNS/credentials. Provide provider choice (Resend/SES/etc.) + destination inbox at deployment time.
-

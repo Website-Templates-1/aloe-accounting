@@ -63,8 +63,22 @@ export const analytics = {
   googleSearchConsoleVerification: "BucageN2FS3_1eKy_IR6hBaRezaZVqanXinetTIbfJo",
 } as const;
 
-/** Real, verified social profiles only. Empty until owner supplies them. */
-export const socialProfiles: string[] = [];
+/** Real, verified social profiles. Drives footer icons + JSON-LD sameAs. */
+export const socialLinks = [
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/aloeaccountingandtax",
+    icon: "instagram",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/aloeaccountingandtax/",
+    icon: "linkedin",
+  },
+] as const;
+
+/** sameAs list for Organization/ProfessionalService JSON-LD (derived). */
+export const socialProfiles: string[] = socialLinks.map((s) => s.href);
 
 /**
  * Google Business Profile — source for live reviews (via Places API).
