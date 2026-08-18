@@ -17,13 +17,13 @@ export async function Reviews() {
         <SectionHeading eyebrow="Client voices" title="The reason we" accent="get referred." />
         <div className="flex flex-col items-start gap-1">
           {data.source === "google" && data.rating != null && (
-            <p className="flex items-center gap-2 text-sm text-slate-body">
+            <div className="flex items-center gap-2 text-sm text-slate-body">
               <Stars rating={Math.round(data.rating)} />
               <span className="font-semibold text-ink">
                 {data.rating.toFixed(1)}
               </span>
               {data.total != null && <span>· {data.total} Google reviews</span>}
-            </p>
+            </div>
           )}
           <ArrowLink href={data.profileUrl}>
             {data.source === "google" ? "Read our reviews on Google" : "See us on Google"}
