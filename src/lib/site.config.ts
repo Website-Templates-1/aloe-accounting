@@ -374,8 +374,8 @@ export const footerNav = {
 } as const;
 
 /* ------------------------------------------------------------------ */
-/* Static indexable routes (non-service, non-CMS). Sitemap merges       */
-/* these with services + published Sanity posts.                        */
+/* Static indexable routes (non-service, non-post). Sitemap merges      */
+/* these with services + published posts (src/lib/posts.ts).            */
 /* ------------------------------------------------------------------ */
 
 export interface StaticRoute {

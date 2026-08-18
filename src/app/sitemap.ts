@@ -1,0 +1,35 @@
+import type { MetadataRoute } from "next";
+import { absoluteUrl, staticRoutes, services } from "@/lib/site.config";
+import { getSitemapPosts } from "@/lib/posts";
+
+/**
+ * One sitemap, generated from the same sources the router uses:
+ * static routes + the service registry + published posts. Draft and
+ * future-dated posts are already excluded by getSitemapPosts().
+ */
+export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
+
+  const staticEntries: MetadataRoute.Sitemap = staticRoutes.map((r) => ({
+    url: absoluteUrl(r.path),
+    lastModified: now,
+    changeFrequency: r.changeFrequency,
+    priority: r.priority,
+  }));
+
+  const serviceEntries: MetadataRoute.Sitemap = services.map((s) => ({
+    url: absoluteUrl(`/services/${s.slug}`),
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
+  const postEntries: MetadataRoute.Sitemap = getSitemapPosts().map((p) => ({
+    url: absoluteUrl(`/resources/${p.slug}`),
+    lastModified: new Date(p.updatedAt ?? p.publishedAt),
+    changeFrequency: "yearly",
+    priority: 0.6,
+  }));
+
+  return [...staticEntries, ...serviceEntries, ...postEntries];
+}
