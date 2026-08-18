@@ -68,6 +68,7 @@ _(A richer blog solution is a deliberate future decision.)_
 | Add a blog post | append to `posts[]` in `src/lib/posts.ts` |
 | Update NAP / brand | `site` / `contact` in `src/lib/site.config.ts` |
 | Add an Ads conversion label | `conversionLabels` in `src/lib/events.ts` |
+| Enable live Google reviews | set `GOOGLE_MAPS_API_KEY` (Places API New); Place ID in `site.config.ts` |
 
 ## Outstanding before launch
 See [`docs/MISSING_INFO.md`](docs/MISSING_INFO.md) — contact-info confirmation,

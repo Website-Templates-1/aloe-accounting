@@ -3,13 +3,7 @@ import { Icon } from "@/components/ui/Icon";
 import { Container, SectionHeading, ArrowLink } from "@/components/ui/primitives";
 import { ServiceCard } from "@/components/sections/ServiceCard";
 import { services, industries, values } from "@/lib/site.config";
-import {
-  stats,
-  trustMarkers,
-  howWeWork,
-  testimonials,
-  faqs,
-} from "@/lib/content";
+import { stats, trustMarkers, howWeWork, faqs } from "@/lib/content";
 
 /* ---------------------------------------------------------------- */
 /* Stats row (on dark)                                              */
@@ -193,61 +187,6 @@ export function IndustriesGrid({
         </div>
       )}
     </Container>
-  );
-}
-
-/* ---------------------------------------------------------------- */
-/* Testimonials (visible only — no schema)                          */
-/* ---------------------------------------------------------------- */
-export function Testimonials() {
-  return (
-    <Container>
-      <SectionHeading
-        eyebrow="Client voices"
-        title="The reason we"
-        accent="get referred."
-      />
-      <div className="mt-12 grid gap-6 md:grid-cols-2">
-        {testimonials.map((t) => (
-          <figure
-            key={t.name}
-            className="flex flex-col gap-6 rounded-card border border-border-soft bg-white p-8"
-          >
-            <Stars />
-            <blockquote className="text-lg leading-relaxed text-ink">
-              &ldquo;{t.quote}&rdquo;
-            </blockquote>
-            <figcaption className="mt-auto flex items-center gap-3 border-t border-border-soft pt-6">
-              <span className="grid h-11 w-11 place-items-center rounded-full bg-navy-900 font-bold text-brand">
-                {t.name.charAt(0)}
-              </span>
-              <span>
-                <span className="block font-bold text-ink">{t.name}</span>
-                <span className="block text-sm text-slate-body">{t.role}</span>
-              </span>
-            </figcaption>
-          </figure>
-        ))}
-      </div>
-    </Container>
-  );
-}
-
-function Stars() {
-  return (
-    <div className="flex gap-1" aria-label="5 out of 5 stars" role="img">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <svg
-          key={i}
-          className="h-5 w-5 text-brand"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-          aria-hidden="true"
-        >
-          <path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 15.9 4.8 17.6l1-5.8L1.5 7.7l5.9-.9z" />
-        </svg>
-      ))}
-    </div>
   );
 }
 

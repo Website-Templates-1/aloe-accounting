@@ -7,9 +7,9 @@ import {
   ValuesGrid,
   HowWeWork,
   IndustriesGrid,
-  Testimonials,
   FaqAccordion,
 } from "@/components/sections/blocks";
+import { Reviews } from "@/components/sections/Reviews";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { buildMetadata } from "@/lib/seo";
 import { site } from "@/lib/site.config";
@@ -79,7 +79,7 @@ export default function HomePage() {
       </Section>
 
       <Section tone="alt">
-        <Testimonials />
+        <Reviews />
       </Section>
 
       <Section tone="surface">

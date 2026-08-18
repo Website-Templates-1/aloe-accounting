@@ -66,6 +66,22 @@ export const analytics = {
 /** Real, verified social profiles only. Empty until owner supplies them. */
 export const socialProfiles: string[] = [];
 
+/**
+ * Google Business Profile — source for live reviews (via Places API).
+ * Live fetch activates when GOOGLE_MAPS_API_KEY is set; otherwise the site
+ * falls back to the static testimonials in content.ts.
+ */
+export const googleBusiness = {
+  placeId: "ChIJiYpKWNo_K4gR7WwrTBJ5amo",
+  /** Public link to the firm's Google reviews (attribution + "read more"). */
+  profileUrl:
+    "https://www.google.com/maps/place/?q=place_id:ChIJiYpKWNo_K4gR7WwrTBJ5amo",
+  /** Only surface reviews at/above this rating (Google shows all anyway). */
+  minRating: 4,
+  /** Max reviews to display (Places API returns up to 5). */
+  count: 3,
+} as const;
+
 /* ------------------------------------------------------------------ */
 /* Service registry — drives hub, detail pages, nav, sitemap, JSON-LD  */
 /* ------------------------------------------------------------------ */

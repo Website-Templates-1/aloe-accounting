@@ -17,11 +17,13 @@ These appear in the Lovable-generated hero/about, **not** in the approved copy d
 - `98% client retention`
 If any is not literally true, tell me and I'll remove or adjust. (These are on-page only — **no** ratings/metrics schema is emitted.)
 
-## 3. Reviews — need source + permission
-Approved copy says: *"Link to 5 star google review – 3 most recent with text."* Screenshots show quotes (e.g., "Khushpreet is extremely reliable…" — Ari K., Business Owner; "Amazing service! It was my first year filing taxes…"). Please provide:
-- The 3 real review texts + reviewer display names (as you want them shown).
-- The Google review/profile URL to link to.
-Rendered as visible testimonials only; **no** Review/AggregateRating JSON-LD (Google deprecated it and we won't fake it).
+## 3. Reviews — now pulled from Google Business Profile
+Reviews are fetched live from the firm's Google Business Profile (Place ID
+`ChIJiYpKWNo_K4gR7WwrTBJ5amo`) via the Google Places API and shown with Google
+attribution. **Still needed:** a Google Maps Platform API key with **Places API
+(New)** enabled, set as `GOOGLE_MAPS_API_KEY`. Until then the site shows the
+owner-approved static testimonials as a fallback. Displayed as visible HTML
+only; **no** Review/AggregateRating JSON-LD (Google policy + honesty).
 
 ## 4. Certifications / trust logos
 Screenshots reference "Chartered Professional Accountants Canada / CPA Ontario" and "QuickBooks ProAdvisor." Confirm which badges ALOE may display and provide logo assets (or permission to use text-only trust markers). Currently rendered as **text trust markers**, no third-party logos, pending assets.
