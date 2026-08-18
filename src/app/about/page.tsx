@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Container, Section } from "@/components/ui/primitives";
+import Image from "next/image";
+import { Container, Section, Eyebrow } from "@/components/ui/primitives";
 import { PageHero } from "@/components/sections/PageHero";
 import { ValuesGrid } from "@/components/sections/blocks";
 import { CtaBand } from "@/components/sections/CtaBand";
@@ -19,9 +20,9 @@ const aboutStats = [
 ];
 
 export const metadata: Metadata = buildMetadata({
-  title: "About ALOE Accounting and Tax",
+  title: "About Our Firm",
   description:
-    "ALOE Accounting and Tax is a licensed public accounting firm in Brampton, Ontario, serving businesses across the GTA and Canada with precision and a business-minded approach.",
+    "Meet ALOE Accounting and Tax — a licensed Brampton CPA firm led by Khushpreet Sran, CPA, delivering accounting, tax, and advisory across the GTA and Canada.",
   path: "/about",
 });
 
@@ -96,7 +97,45 @@ export default function AboutPage() {
         </Container>
       </Section>
 
+      {/* Lead CPA */}
       <Section tone="alt">
+        <Container>
+          <div className="grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+            <div className="order-2 lg:order-1">
+              <div className="relative mx-auto max-w-sm overflow-hidden rounded-card border border-border-soft bg-white shadow-sm lg:mx-0">
+                <Image
+                  src={founder.image}
+                  alt={`${founder.name}, ${founder.jobTitle} at ALOE Accounting and Tax`}
+                  width={1024}
+                  height={1280}
+                  sizes="(min-width: 1024px) 400px, 90vw"
+                  className="h-auto w-full"
+                />
+              </div>
+            </div>
+
+            <div className="order-1 lg:order-2">
+              <Eyebrow>Lead CPA</Eyebrow>
+              <h2 className="h-display mt-5 text-3xl sm:text-4xl">
+                {founder.name}
+              </h2>
+              <p className="mt-2 text-sm font-semibold uppercase tracking-eyebrow text-brand-700">
+                {founder.jobTitle}
+              </p>
+              <div className="mt-6 space-y-4 text-lg leading-relaxed text-slate-body">
+                {founder.bio.map((para) => (
+                  <p key={para}>{para}</p>
+                ))}
+              </div>
+              <p className="mt-6 border-t border-border-soft pt-6 text-sm font-medium text-ink">
+                {founder.credentials}
+              </p>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      <Section tone="surface">
         <ValuesGrid />
       </Section>
 
@@ -106,7 +145,11 @@ export default function AboutPage() {
       <JsonLd
         data={aboutPageSchema({
           path: "/about",
-          person: { name: founder.name, jobTitle: founder.jobTitle },
+          person: {
+            name: founder.name,
+            jobTitle: founder.jobTitle,
+            image: founder.image,
+          },
         })}
       />
     </>

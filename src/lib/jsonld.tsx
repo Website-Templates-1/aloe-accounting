@@ -163,7 +163,7 @@ export function itemListSchema(items: { name: string; path: string }[]) {
 /** AboutPage. Founder Person included only when caller passes real data. */
 export function aboutPageSchema(opts: {
   path: string;
-  person?: { name: string; jobTitle: string };
+  person?: { name: string; jobTitle: string; image?: string };
 }) {
   return {
     "@context": "https://schema.org",
@@ -180,6 +180,9 @@ export function aboutPageSchema(opts: {
             "@type": "Person",
             name: opts.person.name,
             jobTitle: opts.person.jobTitle,
+            ...(opts.person.image
+              ? { image: absoluteUrl(opts.person.image) }
+              : {}),
             worksFor: { "@type": "Organization", name: site.brand },
           },
         }

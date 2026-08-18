@@ -14,7 +14,7 @@ const crumbs = [
 ];
 
 export const metadata: Metadata = buildMetadata({
-  title: "Contact ALOE Accounting and Tax",
+  title: "Contact Us",
   description:
     "Book a complimentary consultation with a Brampton CPA. Call, email, or visit us at 285 Steeles Ave W., Suite 201 — we reply within one business day.",
   path: "/contact",

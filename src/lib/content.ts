@@ -114,5 +114,12 @@ export const faqs: Faq[] = [
 /** About-page founder (from approved copy). */
 export const founder = {
   name: "Khushpreet Sran, CPA",
-  jobTitle: "Senior Accountant",
+  jobTitle: "Lead CPA",
+  image: "/khushpreet-sran.jpg",
+  /** Credentials visible in the supplied portrait — owner-approved. */
+  credentials: "CPA · Bachelor of Business Administration, Wilfrid Laurier University",
+  bio: [
+    "Khushpreet is the lead CPA at ALOE Accounting and Tax, bringing experience across audit, taxation, bookkeeping, payroll, and financial reporting to every engagement.",
+    "She has worked with clients across the GTA and Canada — serving retail, professional services, transportation, manufacturing, and not-for-profits — and is known for clear communication, dependability, and going above and beyond for the people she works with.",
+  ],
 };
