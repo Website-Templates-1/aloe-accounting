@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { DeleteDraftButton } from "./DeleteDraftButton";
+import { GenerateDraftButton } from "./GenerateDraftButton";
 import { listAllPosts } from "@/lib/blog-admin";
 import { usingGitHub } from "@/lib/github";
 import { formatDate } from "@/lib/format";
@@ -34,11 +35,7 @@ export default async function DashboardPage({
               : "Local content (GitHub not configured)."}
           </p>
         </div>
-        <form method="post" action="/api/admin/generate">
-          <button className="rounded-md border border-brand-700 px-4 py-2 text-sm font-semibold text-brand-700 hover:bg-brand-50">
-            Generate draft
-          </button>
-        </form>
+        <GenerateDraftButton />
       </div>
 
       {notice && (
