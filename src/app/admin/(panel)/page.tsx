@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SubmitAction } from "./SubmitAction";
 import { listAllPosts } from "@/lib/blog-admin";
+import { readBacklog, unusedCount } from "@/lib/backlog";
 import { usingGitHub } from "@/lib/github";
 import { formatDate } from "@/lib/format";
 
@@ -13,6 +14,7 @@ export default async function DashboardPage({
   const posts = await listAllPosts();
   const drafts = posts.filter((p) => p.status === "draft");
   const published = posts.filter((p) => p.status === "published");
+  const topicsQueued = unusedCount(await readBacklog());
 
   const notice = sp.approved
     ? "Post approved — it will go live on the next deploy."
@@ -35,6 +37,12 @@ export default async function DashboardPage({
           </p>
         </div>
         <div className="flex items-center gap-3">
+          <Link
+            href="/admin/backlog"
+            className="rounded-md px-4 py-2 text-sm font-semibold text-slate-body hover:text-ink"
+          >
+            Manage topics ({topicsQueued})
+          </Link>
           <Link
             href="/admin/posts/new"
             className="rounded-md bg-brand-700 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-800"

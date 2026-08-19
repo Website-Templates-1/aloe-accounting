@@ -15,18 +15,14 @@ import {
 } from "@/lib/posts";
 import { readFile } from "@/lib/github";
 import { generateBlogPost } from "@/lib/generation/openai";
+import {
+  readBacklog,
+  serializeBacklog,
+  BACKLOG_PATH,
+  type Backlog,
+} from "@/lib/backlog";
 
 const PROMPT_PATH = "content/_prompts/system.md";
-const BACKLOG_PATH = "content/_backlog.json";
-
-export interface BacklogTopic {
-  topic: string;
-  notes?: string;
-  used?: boolean;
-}
-interface Backlog {
-  topics: BacklogTopic[];
-}
 
 export interface GenerationResult {
   slug: string;
@@ -35,11 +31,9 @@ export interface GenerationResult {
 
 export async function generateDraft(): Promise<GenerationResult> {
   const promptFile = await readFile(PROMPT_PATH);
-  const backlogFile = await readFile(BACKLOG_PATH);
   if (!promptFile) throw new Error(`Missing ${PROMPT_PATH}`);
-  if (!backlogFile) throw new Error(`Missing ${BACKLOG_PATH}`);
 
-  const backlog = JSON.parse(backlogFile.text) as Backlog;
+  const backlog = await readBacklog();
   const next = backlog.topics.find((t) => !t.used);
   if (!next) throw new Error("Topic backlog is empty — add topics to generate.");
 
@@ -103,10 +97,7 @@ export async function generateDraft(): Promise<GenerationResult> {
     slug: gen.slug,
     files: [
       { path: `content/resources/${gen.slug}.md`, text },
-      {
-        path: BACKLOG_PATH,
-        text: JSON.stringify(updatedBacklog, null, 2) + "\n",
-      },
+      { path: BACKLOG_PATH, text: serializeBacklog(updatedBacklog) },
     ],
   };
 }

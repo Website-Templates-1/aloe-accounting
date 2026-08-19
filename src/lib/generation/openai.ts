@@ -77,6 +77,65 @@ const schema = {
   ],
 } as const;
 
+export interface SuggestedTopic {
+  topic: string;
+  notes: string;
+}
+
+const topicsSchema = {
+  type: "object",
+  additionalProperties: false,
+  properties: {
+    topics: {
+      type: "array",
+      items: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          topic: { type: "string" },
+          notes: { type: "string", description: "1-2 line angle for the post" },
+        },
+        required: ["topic", "notes"],
+      },
+    },
+  },
+  required: ["topics"],
+} as const;
+
+/** Ask the model for fresh blog topic ideas, avoiding the supplied existing ones. */
+export async function suggestTopics(
+  count: number,
+  existing: string[],
+): Promise<SuggestedTopic[]> {
+  const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+  const model = process.env.OPENAI_MODEL || "gpt-4o";
+
+  const completion = await client.chat.completions.create({
+    model,
+    messages: [
+      {
+        role: "system",
+        content:
+          "You suggest practical blog topics for ALOE Accounting and Tax, a Canadian firm serving owner-managed businesses. Topics must be specific, useful, and evergreen. Canadian tax/accounting context. No duplicates of the existing list.",
+      },
+      {
+        role: "user",
+        content: `Suggest ${count} new topics. Existing topics to avoid:\n${
+          existing.length ? existing.map((t) => `- ${t}`).join("\n") : "(none)"
+        }`,
+      },
+    ],
+    response_format: {
+      type: "json_schema",
+      json_schema: { name: "topic_ideas", strict: true, schema: topicsSchema },
+    },
+  });
+
+  const content = completion.choices[0]?.message?.content;
+  if (!content) throw new Error("OpenAI returned no content.");
+  return (JSON.parse(content) as { topics: SuggestedTopic[] }).topics;
+}
+
 export async function generateBlogPost(
   system: string,
   user: string,
