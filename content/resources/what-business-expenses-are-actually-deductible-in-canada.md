@@ -8,8 +8,9 @@ excerpt: >-
   Common categories like meals, home office and vehicles can be deductible—if
   they’re used to earn business income and you keep proper records.
 publishedAt: '2026-08-19'
+updatedAt: '2026-08-19'
 author: ALOE Accounting and Tax
-status: draft
+status: published
 ---
 
 Running a business means tracking expenses. But not everything you spend is automatically deductible. The Canada Revenue Agency (CRA) generally looks at whether an expense is incurred to earn business income and whether it’s reasonable, supported by records, and properly allocated when it’s partly personal.
