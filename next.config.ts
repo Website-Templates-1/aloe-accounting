@@ -7,11 +7,20 @@ const nextConfig: NextConfig = {
 
   // Host-level 301s, derived from the single redirect table in site.config.
   async redirects() {
-    return redirectTable.map((r) => ({
-      source: r.source,
-      destination: r.destination,
-      permanent: r.permanent,
-    }));
+    return [
+      // Canonical host: force non-www → www (matches site.domain).
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "aloeaccountingandtax.com" }],
+        destination: "https://www.aloeaccountingandtax.com/:path*",
+        permanent: true,
+      },
+      ...redirectTable.map((r) => ({
+        source: r.source,
+        destination: r.destination,
+        permanent: r.permanent,
+      })),
+    ];
   },
 };
 

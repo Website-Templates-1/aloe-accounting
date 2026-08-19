@@ -14,8 +14,8 @@ export const site = {
   brand: "ALOE Accounting and Tax",
   shortBrand: "ALOE CPA",
   legalName: "ALOE Accounting and Tax",
-  /** Canonical origin: https, non-www, NO trailing slash. Pick one host, stick to it. */
-  domain: "https://aloeaccountingandtax.com",
+  /** Canonical origin: https, www, NO trailing slash. Pick one host, stick to it. */
+  domain: "https://www.aloeaccountingandtax.com",
   locale: "en_CA",
   htmlLang: "en-CA",
   defaultTitle: "ALOE Accounting and Tax | Brampton CPA Firm",
@@ -89,6 +89,12 @@ export const googleBusiness = {
   placeId: "ChIJiYpKWNo_K4gR7WwrTBJ5amo",
   /** Owner-shared public link to the Google Business Profile (fallback). */
   profileUrl: "https://share.google/EHEnobJTr5KfiPjI2",
+  /** Canonical Google Maps link (cid) — used for schema `hasMap`. */
+  mapUrl: "https://maps.google.com/?cid=7668074435045977325",
+  /** Verified office coordinates (from Places API) for schema `geo`. */
+  geo: { latitude: 43.6594316, longitude: -79.7398342 },
+  /** Cities served (structured areaServed). */
+  areaServed: ["Brampton", "Mississauga", "Caledon", "Toronto"],
   /** Only surface reviews at/above this rating (Google shows all anyway). */
   minRating: 4,
   /** Max reviews to display (Places API returns up to 5). */
@@ -148,6 +154,8 @@ export interface ServiceDef {
   whoFor?: string[];
   /** "What to expect" engagement steps (3–4). */
   process?: { title: string; body: string }[];
+  /** Service-specific FAQ (visible HTML only — no FAQPage schema). */
+  faqs?: { q: string; a: string }[];
 }
 
 export const services: ServiceDef[] = [
@@ -214,6 +222,20 @@ export const services: ServiceDef[] = [
         body: "We complete year-end adjusting entries and hand off clean records for tax filing.",
       },
     ],
+    faqs: [
+      {
+        q: "Do you work in QuickBooks Online?",
+        a: "Yes — we work primarily in QuickBooks Online, and can help you migrate to it. Bookkeeping, payroll, and remittances all live in one place so your records stay consistent.",
+      },
+      {
+        q: "Can you catch up books that are behind?",
+        a: "Absolutely. Catch-up and clean-up work is common. We'll bring your records current and reconcile prior periods before setting up an ongoing monthly workflow.",
+      },
+      {
+        q: "How often will I receive financial statements?",
+        a: "Typically monthly, though we tailor the cadence to your needs. You'll get clear, current statements you can actually use to make decisions.",
+      },
+    ],
   },
   {
     slug: "corporate-tax",
@@ -278,6 +300,20 @@ export const services: ServiceDef[] = [
         body: "We flag decisions and strategies to manage next year's tax before the year closes.",
       },
     ],
+    faqs: [
+      {
+        q: "When is my T2 corporate tax return due?",
+        a: "A T2 return is generally due six months after your fiscal year-end, with any balance owing due two or three months after year-end depending on your corporation. We confirm your exact dates and keep you ahead of them.",
+      },
+      {
+        q: "Should I pay myself salary or dividends?",
+        a: "It depends on your income, cash flow, and goals — there's no single right answer. We look at your corporate and personal positions together to recommend a mix that fits you.",
+      },
+      {
+        q: "Do you handle GST/HST filings too?",
+        a: "Yes. We manage GST/HST registration, filing, and remittances alongside your corporate tax so everything stays consistent and compliant.",
+      },
+    ],
   },
   {
     slug: "financial-statements-assurance",
@@ -338,6 +374,20 @@ export const services: ServiceDef[] = [
       {
         title: "Deliver & explain",
         body: "We deliver your statements and walk you through what they show.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What's the difference between a compilation, review, and audit?",
+        a: "They offer increasing levels of assurance. A compilation presents your information without assurance, a review provides limited assurance, and an audit provides the highest level. We help you choose the one your situation and stakeholders actually require.",
+      },
+      {
+        q: "Does my business need audited financial statements?",
+        a: "Not always — many small businesses need only a compilation or review. It usually depends on what your lender, investors, or bylaws require. We'll help you determine the right level.",
+      },
+      {
+        q: "Can you prepare statements for my bank or investors?",
+        a: "Yes. We prepare financial statements to professional standards that lenders, investors, and other stakeholders can rely on.",
       },
     ],
   },
@@ -404,6 +454,20 @@ export const services: ServiceDef[] = [
         body: "We revisit the plan as things change, so it stays useful rather than static.",
       },
     ],
+    faqs: [
+      {
+        q: "Do I need to be a large company to benefit from advisory?",
+        a: "No. Owners of small and growing businesses often benefit most — having a CPA to interpret your numbers and plan ahead is valuable at any size.",
+      },
+      {
+        q: "What does business advisory actually include?",
+        a: "It ranges from cash-flow planning and budgeting to forecasting, performance analysis, and thinking through major decisions. We tailor it to what you need.",
+      },
+      {
+        q: "How is advisory different from bookkeeping or tax?",
+        a: "Bookkeeping and tax look after compliance and history; advisory is forward-looking — using your numbers to help you make better decisions.",
+      },
+    ],
   },
   {
     slug: "personal-tax",
@@ -465,6 +529,20 @@ export const services: ServiceDef[] = [
       {
         title: "File & advise",
         body: "We file on time and note planning points to consider for next year.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Do you only do personal tax for business owners?",
+        a: "Our personal tax work is designed to complement our corporate clients' business and tax strategy, so we focus on owner-managers and their families rather than standalone personal returns.",
+      },
+      {
+        q: "Can you coordinate my personal and corporate taxes?",
+        a: "Yes — that's the point. We consider both together so decisions on salary, dividends, and timing work in your favour across the board.",
+      },
+      {
+        q: "When is my personal tax return due?",
+        a: "Personal (T1) returns are generally due April 30. Self-employed individuals have until June 15 to file, though any balance owing is still due April 30. We keep you on track.",
       },
     ],
   },
@@ -531,6 +609,20 @@ export const services: ServiceDef[] = [
         body: "We work toward a resolution and flag steps to help avoid similar issues going forward.",
       },
     ],
+    faqs: [
+      {
+        q: "Can you deal with the CRA on my behalf?",
+        a: "Yes. With your authorization, we communicate with the CRA directly, manage correspondence, and represent you through audits, reviews, and disputes.",
+      },
+      {
+        q: "What should I do if I received a reassessment?",
+        a: "Don't ignore it — there are deadlines. Send it to us and we'll review it, explain your options, and help you respond, including filing a notice of objection if appropriate.",
+      },
+      {
+        q: "I'm behind on my filings. Can you help?",
+        a: "Yes. We help clients get caught up on overdue filings and work with the CRA to resolve the situation as smoothly as possible.",
+      },
+    ],
   },
   {
     slug: "tax-planning",
@@ -593,6 +685,20 @@ export const services: ServiceDef[] = [
       {
         title: "Revisit regularly",
         body: "We review the plan as circumstances and rules change, especially before year-end.",
+      },
+    ],
+    faqs: [
+      {
+        q: "When should I start tax planning?",
+        a: "Before year-end, and ideally throughout the year — that's when there's still time to act. Planning after the year closes leaves far fewer options.",
+      },
+      {
+        q: "Isn't tax planning just for large businesses?",
+        a: "No. Owner-managers of small and mid-sized businesses benefit significantly from proactive planning around remuneration, timing, and structure.",
+      },
+      {
+        q: "How is tax planning different from filing my taxes?",
+        a: "Filing reports what already happened; planning shapes what happens next — making decisions with tax in mind so you're not just reacting at the deadline.",
       },
     ],
   },

@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { Icon } from "@/components/ui/Icon";
-import { Container, SectionHeading, ArrowLink } from "@/components/ui/primitives";
+import { Container, SectionHeading } from "@/components/ui/primitives";
 import { ServiceCard } from "@/components/sections/ServiceCard";
 import { services, industries, values } from "@/lib/site.config";
-import { stats, trustLogos, howWeWork, faqs } from "@/lib/content";
+import { stats, trustLogos, howWeWork } from "@/lib/content";
 
 /* ---------------------------------------------------------------- */
 /* Stats row (on dark)                                              */
@@ -195,48 +195,3 @@ export function IndustriesGrid({
   );
 }
 
-/* ---------------------------------------------------------------- */
-/* FAQ (native details/summary — accessible, no JS, no schema)       */
-/* ---------------------------------------------------------------- */
-export function FaqAccordion() {
-  return (
-    <Container>
-      <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-        <div>
-          <SectionHeading eyebrow="FAQ" title="Questions, answered." />
-          <p className="mt-5 text-slate-body">
-            Can&apos;t find what you&apos;re looking for? Reach out and we&apos;ll
-            respond within one business day.
-          </p>
-          <ArrowLink href="/contact" className="mt-6">
-            Ask us anything
-          </ArrowLink>
-        </div>
-        <div className="divide-y divide-border-soft overflow-hidden rounded-card border border-border-soft bg-white">
-          {faqs.map((f) => (
-            <details key={f.q} className="group px-6 py-5 [&_svg]:open:rotate-180">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-semibold text-ink">
-                {f.q}
-                <svg
-                  className="h-5 w-5 shrink-0 text-slate-body transition-transform"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M5 7.5l5 5 5-5"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </summary>
-              <p className="mt-4 leading-relaxed text-slate-body">{f.a}</p>
-            </details>
-          ))}
-        </div>
-      </div>
-    </Container>
-  );
-}

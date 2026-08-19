@@ -7,12 +7,13 @@ import {
   ValuesGrid,
   HowWeWork,
   IndustriesGrid,
-  FaqAccordion,
 } from "@/components/sections/blocks";
 import { Reviews } from "@/components/sections/Reviews";
+import { FaqSection } from "@/components/sections/FaqSection";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { buildMetadata } from "@/lib/seo";
 import { site } from "@/lib/site.config";
+import { faqs } from "@/lib/content";
 
 export const metadata: Metadata = buildMetadata({
   title: site.defaultTitle,
@@ -83,7 +84,7 @@ export default function HomePage() {
       </Section>
 
       <Section tone="surface">
-        <FaqAccordion />
+        <FaqSection faqs={faqs} />
       </Section>
 
       <CtaBand />

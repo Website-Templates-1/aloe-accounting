@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
+import { Section } from "@/components/ui/primitives";
 import { PageHero } from "@/components/sections/PageHero";
 import { IndustriesGrid } from "@/components/sections/blocks";
+import { FaqSection } from "@/components/sections/FaqSection";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { buildMetadata } from "@/lib/seo";
 import { JsonLd, breadcrumbSchema } from "@/lib/jsonld";
+import { industriesFaqs } from "@/lib/content";
 
 const crumbs = [
   { name: "Home", path: "/" },
@@ -30,6 +33,11 @@ export default function IndustriesPage() {
       <section className="bg-navy-900 pb-16 sm:pb-24">
         <IndustriesGrid withHeading={false} />
       </section>
+
+      <Section tone="surface">
+        <FaqSection faqs={industriesFaqs} />
+      </Section>
+
       <CtaBand />
 
       <JsonLd data={breadcrumbSchema(crumbs)} />

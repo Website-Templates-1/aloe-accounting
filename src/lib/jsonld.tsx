@@ -3,6 +3,7 @@ import {
   contact,
   socialProfiles,
   businessHours,
+  googleBusiness,
   absoluteUrl,
 } from "@/lib/site.config";
 
@@ -58,20 +59,25 @@ export function websiteSchema() {
 }
 
 /**
- * ProfessionalService — this IS a real local business with real NAP.
+ * AccountingService — this IS a real local business with real NAP.
+ * (AccountingService is Google's specific subtype; primaryType is "accounting".)
  * No aggregateRating / review (won't fake). No priceRange invented.
  */
 export function professionalServiceSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@type": "AccountingService",
     name: site.brand,
     url: site.domain,
     image: absoluteUrl(site.ogImage),
     logo: absoluteUrl(site.logo),
     email: contact.email,
     telephone: contact.phoneHref.replace("tel:", ""),
-    areaServed: contact.serviceArea,
+    hasMap: googleBusiness.mapUrl,
+    areaServed: googleBusiness.areaServed.map((name) => ({
+      "@type": "City",
+      name,
+    })),
     address: {
       "@type": "PostalAddress",
       streetAddress: contact.address.street,
@@ -79,6 +85,11 @@ export function professionalServiceSchema() {
       addressRegion: contact.address.region,
       postalCode: contact.address.postalCode,
       addressCountry: contact.address.country,
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: googleBusiness.geo.latitude,
+      longitude: googleBusiness.geo.longitude,
     },
     openingHoursSpecification: [
       {

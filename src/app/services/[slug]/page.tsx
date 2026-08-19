@@ -10,6 +10,8 @@ import {
 } from "@/components/ui/primitives";
 import { PageHero } from "@/components/sections/PageHero";
 import { CtaBand } from "@/components/sections/CtaBand";
+import { FaqSection } from "@/components/sections/FaqSection";
+import { PeopleAlsoSearch } from "@/components/sections/PeopleAlsoSearch";
 import { Icon } from "@/components/ui/Icon";
 import { buildMetadata } from "@/lib/seo";
 import { JsonLd, breadcrumbSchema, serviceSchema } from "@/lib/jsonld";
@@ -61,7 +63,14 @@ export default async function ServiceDetailPage({
     { name: "Services", path: "/services" },
     { name: service.title, path },
   ];
-  const related = services.filter((s) => s.slug !== service.slug).slice(0, 3);
+  const siblings = services.filter((s) => s.slug !== service.slug);
+  const related = siblings.slice(0, 3);
+  const relatedSearches = [
+    ...siblings.map((s) => ({ label: s.title, href: `/services/${s.slug}` })),
+    { label: "Industries we serve", href: "/industries" },
+    { label: "About our Brampton CPA firm", href: "/about" },
+    { label: "Book a free consultation", href: "/contact" },
+  ];
 
   return (
     <>
@@ -223,8 +232,18 @@ export default async function ServiceDetailPage({
         </Section>
       )}
 
-      {/* Related services */}
-      <Section tone="surface">
+      {/* FAQ */}
+      {service.faqs && service.faqs.length > 0 && (
+        <Section tone="surface">
+          <FaqSection
+            faqs={service.faqs}
+            title={`${service.title} — questions, answered.`}
+          />
+        </Section>
+      )}
+
+      {/* Related services + people also search for */}
+      <Section tone="alt">
         <Container>
           <div className="flex items-end justify-between gap-4">
             <h2 className="text-2xl font-bold text-ink">Related services</h2>
@@ -246,6 +265,9 @@ export default async function ServiceDetailPage({
                 <span className="text-sm text-slate-body">{r.summary}</span>
               </Link>
             ))}
+          </div>
+          <div className="mt-14 border-t border-border-soft pt-10">
+            <PeopleAlsoSearch items={relatedSearches} />
           </div>
         </Container>
       </Section>

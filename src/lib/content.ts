@@ -122,6 +122,42 @@ export const faqs: Faq[] = [
   },
 ];
 
+/** About-page FAQ. */
+export const aboutFaqs: Faq[] = [
+  {
+    q: "Where is ALOE located?",
+    a: "We're at 285 Steeles Ave W, Suite 201 in Brampton, Ontario, and serve clients across the GTA and Canada — in person and through secure cloud-based workflows.",
+  },
+  {
+    q: "Who will I be working with?",
+    a: "Our lead CPA, Khushpreet Sran, and our team. You get senior-level attention on your engagement, not a hand-off to junior staff you never meet.",
+  },
+  {
+    q: "Is ALOE a licensed CPA firm?",
+    a: "Yes — ALOE Accounting and Tax is a licensed public accounting firm in Ontario, upholding the standards and ethics of the CPA profession.",
+  },
+  {
+    q: "What industries do you work with?",
+    a: "A diverse range — including professional services (physicians, dentists, lawyers, PRECs), retail, transportation, manufacturing, and not-for-profits.",
+  },
+];
+
+/** Industries-page FAQ. */
+export const industriesFaqs: Faq[] = [
+  {
+    q: "What if my industry isn't listed?",
+    a: "The industries shown are where we have particular depth, but we work with businesses across many sectors. Reach out and we'll tell you honestly whether we're a good fit.",
+  },
+  {
+    q: "Do you understand the tax rules specific to my sector?",
+    a: "Yes — different industries carry different tax and reporting considerations, and we tailor our work to yours, whether you're in transportation, retail, professional services, or beyond.",
+  },
+  {
+    q: "Do you work with professional corporations (PRECs, medical, dental, legal)?",
+    a: "We do. Professional services — including physicians, dentists, lawyers, and PRECs — are a core part of our practice, including owner-manager tax strategy.",
+  },
+];
+
 /** About-page founder (from approved copy). */
 export const founder = {
   name: "Khushpreet Sran, CPA",

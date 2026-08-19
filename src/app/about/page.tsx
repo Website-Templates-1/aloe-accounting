@@ -3,10 +3,11 @@ import Image from "next/image";
 import { Container, Section, Eyebrow } from "@/components/ui/primitives";
 import { PageHero } from "@/components/sections/PageHero";
 import { ValuesGrid } from "@/components/sections/blocks";
+import { FaqSection } from "@/components/sections/FaqSection";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { buildMetadata } from "@/lib/seo";
 import { JsonLd, breadcrumbSchema, aboutPageSchema } from "@/lib/jsonld";
-import { founder } from "@/lib/content";
+import { founder, aboutFaqs } from "@/lib/content";
 
 const crumbs = [
   { name: "Home", path: "/" },
@@ -137,6 +138,10 @@ export default function AboutPage() {
 
       <Section tone="surface">
         <ValuesGrid />
+      </Section>
+
+      <Section tone="alt">
+        <FaqSection faqs={aboutFaqs} />
       </Section>
 
       <CtaBand />
