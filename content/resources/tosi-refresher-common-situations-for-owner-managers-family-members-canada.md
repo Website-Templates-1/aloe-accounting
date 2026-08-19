@@ -10,6 +10,7 @@ excerpt: >-
   A plain-language refresher on TOSI (tax on split income): where it shows up
   for owner-managers, what documentation to keep, and practical next steps.
 publishedAt: '2026-08-19'
+updatedAt: '2026-08-19'
 author: ALOE Accounting and Tax
 status: draft
 faqs:
