@@ -1,0 +1,27 @@
+# Scheduled AI draft generation.
+#
+# This does NOT run app code in CI — it pings the deployed, secret-protected
+# endpoint, which runs the same generation module the manual "Generate draft"
+# button uses and commits the draft via the GitHub API. On a free host that
+# sleeps, this request also wakes the server.
+#
+# Required repo secrets: SITE_URL (e.g. https://www.aloeaccountingandtax.com),
+# CRON_SECRET (must match the deployed env var).
+name: Generate blog draft
+
+on:
+  schedule:
+    - cron: "0 13 * * 1" # Mondays 13:00 UTC
+  workflow_dispatch: {}
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger generation endpoint
+        env:
+          SITE_URL: ${{ secrets.SITE_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          curl -fsS -X POST "$SITE_URL/api/admin/generate" \
+            -H "Authorization: Bearer $CRON_SECRET"
