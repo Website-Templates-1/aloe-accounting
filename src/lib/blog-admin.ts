@@ -8,8 +8,11 @@ import matter from "gray-matter";
 import {
   parsePost,
   renderMarkdown,
+  filterAllowedSearches,
   type Post,
+  type PostFaq,
   type PostFrontmatter,
+  type PostRelatedSearch,
 } from "@/lib/posts";
 import { deleteFile, listDir, readFile, writeFile } from "@/lib/github";
 
@@ -57,8 +60,62 @@ function serialize(fm: PostFrontmatter, body: string): string {
     ...(fm.updatedAt ? { updatedAt: fm.updatedAt } : {}),
     ...(fm.author ? { author: fm.author } : {}),
     status: fm.status,
+    ...(fm.faqs && fm.faqs.length ? { faqs: fm.faqs } : {}),
+    ...(fm.peopleAlsoSearch && fm.peopleAlsoSearch.length
+      ? { peopleAlsoSearch: fm.peopleAlsoSearch }
+      : {}),
+    ...(fm.tags && fm.tags.length ? { tags: fm.tags } : {}),
   };
   return matter.stringify(`\n${body.trim()}\n`, ordered);
+}
+
+/* ---- editor <-> text helpers (one entry per line) ---- */
+
+/** FAQs as `question | answer` lines. */
+export function faqsToText(faqs?: PostFaq[]): string {
+  return (faqs ?? []).map((f) => `${f.question} | ${f.answer}`).join("\n");
+}
+export function parseFaqsText(text: string): PostFaq[] {
+  return text
+    .split("\n")
+    .map((line) => {
+      const i = line.indexOf("|");
+      if (i === -1) return null;
+      const question = line.slice(0, i).trim();
+      const answer = line.slice(i + 1).trim();
+      return question && answer ? { question, answer } : null;
+    })
+    .filter((f): f is PostFaq => f !== null);
+}
+
+/** People-also-search as `label | /path` lines. */
+export function searchesToText(items?: PostRelatedSearch[]): string {
+  return (items ?? []).map((s) => `${s.label} | ${s.href}`).join("\n");
+}
+export function parseSearchesText(text: string): PostRelatedSearch[] {
+  const items = text
+    .split("\n")
+    .map((line) => {
+      const i = line.indexOf("|");
+      if (i === -1) return null;
+      const label = line.slice(0, i).trim();
+      const href = line.slice(i + 1).trim();
+      return label && href ? { label, href } : null;
+    })
+    .filter((s): s is PostRelatedSearch => s !== null);
+  // Drop any link not in the allowlist (no broken internal links).
+  return filterAllowedSearches(items);
+}
+
+export function parseTagsText(text: string): string[] {
+  return Array.from(
+    new Set(
+      text
+        .split(",")
+        .map((t) => t.trim().toLowerCase())
+        .filter(Boolean),
+    ),
+  );
 }
 
 /** Validate + persist an edited post. Throws on invalid content. */

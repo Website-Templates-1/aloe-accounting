@@ -12,6 +12,9 @@ export interface GeneratedPost {
   metaDescription: string;
   excerpt: string;
   bodyMarkdown: string;
+  faqs: { question: string; answer: string }[];
+  peopleAlsoSearch: { label: string; href: string }[];
+  tags: string[];
 }
 
 const schema = {
@@ -29,8 +32,49 @@ const schema = {
       type: "string",
       description: "Markdown only; no raw HTML or front matter",
     },
+    faqs: {
+      type: "array",
+      description: "4-6 concise question/answer pairs",
+      items: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          question: { type: "string" },
+          answer: { type: "string" },
+        },
+        required: ["question", "answer"],
+      },
+    },
+    peopleAlsoSearch: {
+      type: "array",
+      description:
+        "5-8 related-search chips; href MUST be copied verbatim from the allowed internal paths given in the prompt",
+      items: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          label: { type: "string" },
+          href: { type: "string" },
+        },
+        required: ["label", "href"],
+      },
+    },
+    tags: {
+      type: "array",
+      description: "3-6 lowercase topic tags",
+      items: { type: "string" },
+    },
   },
-  required: ["title", "slug", "metaDescription", "excerpt", "bodyMarkdown"],
+  required: [
+    "title",
+    "slug",
+    "metaDescription",
+    "excerpt",
+    "bodyMarkdown",
+    "faqs",
+    "peopleAlsoSearch",
+    "tags",
+  ],
 } as const;
 
 export async function generateBlogPost(

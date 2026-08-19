@@ -15,6 +15,7 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { marked } from "marked";
+import { services, staticRoutes } from "@/lib/site.config";
 
 // Drop raw HTML blocks/inline HTML so authored or AI content cannot inject
 // <script> or arbitrary markup. Markdown syntax still renders normally.
@@ -22,7 +23,26 @@ marked.use({ gfm: true, renderer: { html: () => "" } });
 
 export type PostStatus = "draft" | "published";
 
-export interface Post {
+/** Visible-HTML FAQ entry. NOTE: never emit FAQPage JSON-LD from these. */
+export interface PostFaq {
+  question: string;
+  answer: string;
+}
+
+/** A "People also search for" internal link (root-relative href only). */
+export interface PostRelatedSearch {
+  label: string;
+  href: string;
+}
+
+/** Enrichment fields shared by Post + PostFrontmatter. */
+interface PostEnrichment {
+  faqs?: PostFaq[];
+  peopleAlsoSearch?: PostRelatedSearch[];
+  tags?: string[];
+}
+
+export interface Post extends PostEnrichment {
   slug: string;
   title: string;
   /** ~140–160 char meta description. */
@@ -41,7 +61,7 @@ export interface Post {
 }
 
 /** Front matter shape as stored on disk (body is separate). */
-export interface PostFrontmatter {
+export interface PostFrontmatter extends PostEnrichment {
   title: string;
   slug: string;
   metaDescription: string;
@@ -67,6 +87,53 @@ export function renderMarkdown(md: string): string {
 /* ------------------------------------------------------------------ */
 const isStatus = (v: unknown): v is PostStatus =>
   v === "draft" || v === "published";
+
+const str = (v: unknown): string => (typeof v === "string" ? v.trim() : "");
+
+/** A safe root-relative path: starts with "/", no protocol, no "//", no spaces. */
+export function normalizeInternalHref(href: string): string | null {
+  const h = str(href).replace(/\/+$/, "") || "/";
+  if (!/^\/(?:[A-Za-z0-9\-._~/]*)$/.test(h)) return null;
+  if (h.includes("//")) return null;
+  return h;
+}
+
+/* Enrichment sanitizers — "sanitize, don't throw": malformed entries are      */
+/* dropped so a bad generation can never fail the build.                       */
+function sanitizeFaqs(v: unknown): PostFaq[] | undefined {
+  if (!Array.isArray(v)) return undefined;
+  const out = v
+    .map((it) => {
+      const o = (it ?? {}) as Record<string, unknown>;
+      // accept {question,answer} (our shape) or {q,a} (FaqSection shape)
+      return {
+        question: str(o.question) || str(o.q),
+        answer: str(o.answer) || str(o.a),
+      };
+    })
+    .filter((f) => f.question && f.answer);
+  return out.length ? out : undefined;
+}
+
+function sanitizeSearches(v: unknown): PostRelatedSearch[] | undefined {
+  if (!Array.isArray(v)) return undefined;
+  const out: PostRelatedSearch[] = [];
+  for (const it of v) {
+    const o = (it ?? {}) as Record<string, unknown>;
+    const label = str(o.label);
+    const href = normalizeInternalHref(str(o.href));
+    if (label && href) out.push({ label, href });
+  }
+  return out.length ? out : undefined;
+}
+
+function sanitizeTags(v: unknown): string[] | undefined {
+  if (!Array.isArray(v)) return undefined;
+  const out = Array.from(
+    new Set(v.map((t) => str(t).toLowerCase()).filter(Boolean)),
+  );
+  return out.length ? out : undefined;
+}
 
 /** Parse one Markdown file's contents into a Post. `expectedSlug` is the filename. */
 export function parsePost(raw: string, expectedSlug: string): Post {
@@ -102,6 +169,9 @@ export function parsePost(raw: string, expectedSlug: string): Post {
     status: fm.status,
     bodyMarkdown: content.trim(),
     bodyHtml: renderMarkdown(content),
+    faqs: sanitizeFaqs(fm.faqs),
+    peopleAlsoSearch: sanitizeSearches(fm.peopleAlsoSearch),
+    tags: sanitizeTags(fm.tags),
   };
 }
 
@@ -167,4 +237,56 @@ export function getSitemapPosts(): {
     publishedAt,
     updatedAt,
   }));
+}
+
+/* ------------------------------------------------------------------ */
+/* Internal-link allowlist + related content                            */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Every internal path a post may link to: static routes + service detail
+ * pages + published resource slugs. Used to guarantee no broken internal
+ * links (render-time filter, generation, and editor save all consult this).
+ */
+export function internalPathAllowlist(): Set<string> {
+  const set = new Set<string>();
+  for (const r of staticRoutes) set.add(r.path);
+  for (const s of services) set.add(`/services/${s.slug}`);
+  for (const p of getAllPosts()) set.add(`/resources/${p.slug}`);
+  return set;
+}
+
+/** Drop any "people also search" link whose href isn't in the allowlist. */
+export function filterAllowedSearches(
+  items?: PostRelatedSearch[],
+): PostRelatedSearch[] {
+  if (!items || items.length === 0) return [];
+  const allow = internalPathAllowlist();
+  return items.filter((i) => {
+    const h = normalizeInternalHref(i.href);
+    return h !== null && allow.has(h);
+  });
+}
+
+/**
+ * Related published posts for a given slug: ranked by shared-tag count, then
+ * newest. Falls back to newest posts when there are no tag overlaps, so the
+ * section is never empty when other posts exist.
+ */
+export function getRelatedPosts(slug: string, limit = 3): Post[] {
+  const self = all.find((p) => p.slug === slug);
+  const selfTags = new Set(self?.tags ?? []);
+  return getAllPosts()
+    .filter((p) => p.slug !== slug)
+    .map((p) => ({
+      p,
+      shared: (p.tags ?? []).filter((t) => selfTags.has(t)).length,
+    }))
+    .sort(
+      (a, b) =>
+        b.shared - a.shared ||
+        Date.parse(b.p.publishedAt) - Date.parse(a.p.publishedAt),
+    )
+    .slice(0, limit)
+    .map((x) => x.p);
 }

@@ -1,7 +1,12 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { requireSession, sameOrigin } from "@/lib/admin-guard";
-import { savePost } from "@/lib/blog-admin";
+import {
+  savePost,
+  parseFaqsText,
+  parseSearchesText,
+  parseTagsText,
+} from "@/lib/blog-admin";
 import type { PostFrontmatter } from "@/lib/posts";
 
 export async function POST(request: NextRequest) {
@@ -24,6 +29,9 @@ export async function POST(request: NextRequest) {
     status: (String(form.get("status") ?? "draft") === "published"
       ? "published"
       : "draft") as PostFrontmatter["status"],
+    faqs: parseFaqsText(String(form.get("faqs") ?? "")),
+    peopleAlsoSearch: parseSearchesText(String(form.get("peopleAlsoSearch") ?? "")),
+    tags: parseTagsText(String(form.get("tags") ?? "")),
   };
   const body = String(form.get("body") ?? "");
 
