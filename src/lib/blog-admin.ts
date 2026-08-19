@@ -11,7 +11,7 @@ import {
   type Post,
   type PostFrontmatter,
 } from "@/lib/posts";
-import { listDir, readFile, writeFile } from "@/lib/github";
+import { deleteFile, listDir, readFile, writeFile } from "@/lib/github";
 
 const DIR = "content/resources";
 const filePath = (slug: string) => `${DIR}/${slug}.md`;
@@ -77,6 +77,16 @@ export async function savePost(
   parsePost(text, slug); // throws if the result is invalid
   renderMarkdown(body); // surfaces any Markdown parse error early
   await writeFile(filePath(slug), text, message);
+}
+
+/** Delete a draft. Refuses to delete a published post (guard against footguns). */
+export async function deletePost(slug: string): Promise<void> {
+  const file = await readFile(filePath(slug));
+  if (!file) throw new Error(`Post "${slug}" not found.`);
+  const { data } = matter(file.text);
+  if ((data as PostFrontmatter).status !== "draft")
+    throw new Error("Only drafts can be deleted.");
+  await deleteFile(filePath(slug), `Delete draft: ${slug}`);
 }
 
 /** Flip a draft to published (the approval action). */
