@@ -34,12 +34,20 @@ export default async function DashboardPage({
               : "Local content (GitHub not configured)."}
           </p>
         </div>
-        <SubmitAction
-          action="/api/admin/generate"
-          label="Generate draft"
-          pendingLabel="Generating…"
-          className="rounded-md border border-brand-700 px-4 py-2 text-sm font-semibold text-brand-700 hover:bg-brand-50 disabled:hover:bg-transparent"
-        />
+        <div className="flex items-center gap-3">
+          <Link
+            href="/admin/posts/new"
+            className="rounded-md bg-brand-700 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-800"
+          >
+            New post
+          </Link>
+          <SubmitAction
+            action="/api/admin/generate"
+            label="Generate draft"
+            pendingLabel="Generating…"
+            className="rounded-md border border-brand-700 px-4 py-2 text-sm font-semibold text-brand-700 hover:bg-brand-50 disabled:hover:bg-transparent"
+          />
+        </div>
       </div>
 
       {notice && (

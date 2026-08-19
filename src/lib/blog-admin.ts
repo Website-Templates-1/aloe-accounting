@@ -136,6 +136,56 @@ export async function savePost(
   await writeFile(filePath(slug), text, message);
 }
 
+/** Slug that would shadow the create route or is otherwise reserved. */
+const RESERVED_SLUGS = new Set(["new"]);
+
+/** Derive a kebab-case slug from a title. */
+export function slugify(input: string): string {
+  return input
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+/**
+ * Create a brand-new draft from the admin panel. Enforces a valid, unique,
+ * non-reserved slug so a manual post can never overwrite an existing file.
+ * Returns the slug of the created draft.
+ */
+export async function createPost(input: {
+  title: string;
+  slug?: string;
+  metaDescription: string;
+  excerpt: string;
+  body: string;
+  author?: string;
+}): Promise<string> {
+  const slug = slugify(input.slug?.trim() || input.title);
+  if (!slug) throw new Error("Could not derive a slug — add a title or slug.");
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug))
+    throw new Error("Slug must be kebab-case (lowercase letters, numbers, hyphens).");
+  if (RESERVED_SLUGS.has(slug))
+    throw new Error(`"${slug}" is a reserved slug — choose another.`);
+
+  const existing = await readFile(filePath(slug));
+  if (existing) throw new Error(`A post with the slug "${slug}" already exists.`);
+
+  const today = new Date().toISOString().slice(0, 10);
+  const fm: PostFrontmatter = {
+    title: input.title.trim(),
+    slug,
+    metaDescription: input.metaDescription.trim(),
+    excerpt: input.excerpt.trim(),
+    publishedAt: today,
+    author: input.author?.trim() || "ALOE Accounting and Tax",
+    status: "draft",
+  };
+  // savePost validates via parsePost and refuses to write invalid content.
+  await savePost(slug, fm, input.body, `Create draft: ${slug}`);
+  return slug;
+}
+
 /** Delete a draft. Refuses to delete a published post (guard against footguns). */
 export async function deletePost(slug: string): Promise<void> {
   const file = await readFile(filePath(slug));
