@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DeleteDraftButton } from "./DeleteDraftButton";
 import { listAllPosts } from "@/lib/blog-admin";
 import { usingGitHub } from "@/lib/github";
 import { formatDate } from "@/lib/format";
@@ -15,9 +16,11 @@ export default async function DashboardPage({
 
   const notice = sp.approved
     ? "Post approved — it will go live on the next deploy."
-    : sp.generated
-      ? `Draft generated: ${sp.generated}`
-      : null;
+    : sp.deleted
+      ? "Draft deleted."
+      : sp.generated
+        ? `Draft generated: ${sp.generated}`
+        : null;
   const error = typeof sp.error === "string" ? sp.error : null;
 
   return (
@@ -87,6 +90,7 @@ export default async function DashboardPage({
                       Approve
                     </button>
                   </form>
+                  <DeleteDraftButton slug={p.slug} />
                 </div>
               </li>
             ))}

@@ -111,6 +111,29 @@ export async function writeFile(
     throw new Error(`GitHub write ${repoPath} failed: ${res.status}`);
 }
 
+/** Delete a single file (no-op if it doesn't exist). */
+export async function deleteFile(
+  repoPath: string,
+  message: string,
+): Promise<void> {
+  if (!usingGitHub) {
+    await fs.rm(abs(repoPath), { force: true });
+    return;
+  }
+  const existing = await readFile(repoPath);
+  if (!existing?.sha) return; // already gone
+  const res = await fetch(
+    `${API}/repos/${OWNER}/${REPO}/contents/${repoPath}`,
+    {
+      method: "DELETE",
+      headers: { ...ghHeaders(), "Content-Type": "application/json" },
+      body: JSON.stringify({ message, sha: existing.sha, branch: BRANCH }),
+    },
+  );
+  if (!res.ok)
+    throw new Error(`GitHub delete ${repoPath} failed: ${res.status}`);
+}
+
 /** Commit several files atomically (used by the generator: post + backlog). */
 export async function commitFiles(
   files: { path: string; text: string }[],
