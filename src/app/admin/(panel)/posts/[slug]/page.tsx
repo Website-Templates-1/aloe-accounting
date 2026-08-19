@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getPostForEdit } from "@/lib/blog-admin";
+import {
+  getPostForEdit,
+  faqsToText,
+  searchesToText,
+} from "@/lib/blog-admin";
 
 export const dynamic = "force-dynamic";
 
@@ -92,6 +96,45 @@ export default async function EditPostPage({
               <option value="published">published</option>
             </select>
           </div>
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-ink">
+            Tags <span className="text-slate-body">(comma-separated)</span>
+          </label>
+          <input
+            name="tags"
+            defaultValue={(post.tags ?? []).join(", ")}
+            className={field}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-ink">
+            FAQs{" "}
+            <span className="text-slate-body">
+              (one per line: <code>question | answer</code>)
+            </span>
+          </label>
+          <textarea
+            name="faqs"
+            defaultValue={faqsToText(post.faqs)}
+            rows={6}
+            className={`${field} font-mono text-sm`}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-ink">
+            People also search for{" "}
+            <span className="text-slate-body">
+              (one per line: <code>label | /path</code>; off-site or unknown
+              paths are dropped)
+            </span>
+          </label>
+          <textarea
+            name="peopleAlsoSearch"
+            defaultValue={searchesToText(post.peopleAlsoSearch)}
+            rows={6}
+            className={`${field} font-mono text-sm`}
+          />
         </div>
         <div>
           <label className="block text-sm font-medium text-ink">

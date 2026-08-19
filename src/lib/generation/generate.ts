@@ -7,7 +7,12 @@
  */
 import "server-only";
 import matter from "gray-matter";
-import { parsePost, type PostFrontmatter } from "@/lib/posts";
+import {
+  parsePost,
+  internalPathAllowlist,
+  filterAllowedSearches,
+  type PostFrontmatter,
+} from "@/lib/posts";
 import { readFile } from "@/lib/github";
 import { generateBlogPost } from "@/lib/generation/openai";
 
@@ -38,8 +43,26 @@ export async function generateDraft(): Promise<GenerationResult> {
   const next = backlog.topics.find((t) => !t.used);
   if (!next) throw new Error("Topic backlog is empty — add topics to generate.");
 
-  const user = `Chosen topic: ${next.topic}\nNotes: ${next.notes ?? "(none)"}`;
+  const allowedPaths = Array.from(internalPathAllowlist()).sort();
+  const user = [
+    `Chosen topic: ${next.topic}`,
+    `Notes: ${next.notes ?? "(none)"}`,
+    "",
+    "Allowed internal paths for peopleAlsoSearch hrefs (copy verbatim; do NOT invent any others):",
+    ...allowedPaths.map((p) => `- ${p}`),
+  ].join("\n");
   const gen = await generateBlogPost(promptFile.text, user);
+
+  // Sanitize enrichment before commit: drop malformed FAQs, drop any related
+  // link not in the allowlist, normalize tags. A bad generation can never
+  // produce a broken link or fail the build.
+  const faqs = gen.faqs
+    ?.map((f) => ({ question: f.question?.trim(), answer: f.answer?.trim() }))
+    .filter((f) => f.question && f.answer) as PostFrontmatter["faqs"];
+  const peopleAlsoSearch = filterAllowedSearches(gen.peopleAlsoSearch);
+  const tags = Array.from(
+    new Set((gen.tags ?? []).map((t) => t.trim().toLowerCase()).filter(Boolean)),
+  );
 
   const today = new Date().toISOString().slice(0, 10);
   const fm: PostFrontmatter = {
@@ -50,6 +73,9 @@ export async function generateDraft(): Promise<GenerationResult> {
     publishedAt: today,
     author: "ALOE Accounting and Tax",
     status: "draft",
+    ...(faqs && faqs.length ? { faqs } : {}),
+    ...(peopleAlsoSearch.length ? { peopleAlsoSearch } : {}),
+    ...(tags.length ? { tags } : {}),
   };
   const text = matter.stringify(`\n${gen.bodyMarkdown.trim()}\n`, {
     title: fm.title,
@@ -59,6 +85,9 @@ export async function generateDraft(): Promise<GenerationResult> {
     publishedAt: fm.publishedAt,
     author: fm.author,
     status: fm.status,
+    ...(fm.faqs ? { faqs: fm.faqs } : {}),
+    ...(fm.peopleAlsoSearch ? { peopleAlsoSearch: fm.peopleAlsoSearch } : {}),
+    ...(fm.tags ? { tags: fm.tags } : {}),
   });
 
   // First line of defense: never commit a post that would fail the build.

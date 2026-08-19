@@ -1,9 +1,16 @@
-import { Container, Section } from "@/components/ui/primitives";
+import Link from "next/link";
+import { Container, Section, SectionHeading } from "@/components/ui/primitives";
 import { PageHero } from "@/components/sections/PageHero";
 import { CtaBand } from "@/components/sections/CtaBand";
+import { FaqSection } from "@/components/sections/FaqSection";
+import { PeopleAlsoSearch } from "@/components/sections/PeopleAlsoSearch";
 import { JsonLd, breadcrumbSchema, blogPostingSchema } from "@/lib/jsonld";
 import { formatDate } from "@/lib/format";
-import type { Post } from "@/lib/posts";
+import {
+  filterAllowedSearches,
+  getRelatedPosts,
+  type Post,
+} from "@/lib/posts";
 
 /**
  * Canonical article renderer shared by the public route
@@ -24,6 +31,10 @@ export function Article({
     { name: "Resources", path: "/resources" },
     { name: post.title, path },
   ];
+
+  const faqs = post.faqs ?? [];
+  const searches = filterAllowedSearches(post.peopleAlsoSearch);
+  const related = getRelatedPosts(post.slug);
 
   return (
     <>
@@ -52,6 +63,52 @@ export function Article({
           />
         </Container>
       </Section>
+
+      {faqs.length > 0 && (
+        <Section tone="surface">
+          <FaqSection faqs={faqs.map((f) => ({ q: f.question, a: f.answer }))} />
+        </Section>
+      )}
+
+      {related.length > 0 && (
+        <Section>
+          <Container>
+            <SectionHeading eyebrow="Keep reading" title="Related content" />
+            <ul className="mt-8 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {related.map((r) => (
+                <li key={r.slug}>
+                  <Link
+                    href={`/resources/${r.slug}`}
+                    className="group flex h-full flex-col gap-4 rounded-card border border-border-soft bg-white p-7 transition-shadow hover:shadow-lg hover:shadow-navy-900/5"
+                  >
+                    <time
+                      dateTime={r.publishedAt}
+                      className="text-xs font-semibold uppercase tracking-eyebrow text-slate-body"
+                    >
+                      {formatDate(r.publishedAt)}
+                    </time>
+                    <h3 className="text-xl font-bold text-ink group-hover:text-brand-700">
+                      {r.title}
+                    </h3>
+                    <p className="text-slate-body">{r.excerpt}</p>
+                    <span className="mt-auto pt-2 text-sm font-semibold text-brand-700">
+                      Read article →
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </Container>
+        </Section>
+      )}
+
+      {searches.length > 0 && (
+        <Section tone="surface">
+          <Container>
+            <PeopleAlsoSearch items={searches} />
+          </Container>
+        </Section>
+      )}
 
       <CtaBand />
 
