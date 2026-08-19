@@ -14,6 +14,31 @@
       "topic": "Salary vs dividends for owner-managers",
       "notes": "Trade-offs, CPP, RRSP room; keep general.",
       "used": true
+    },
+    {
+      "topic": "TOSI refresher: common situations for owner-managers and family members (Canada)",
+      "notes": "Break down the most common TOSI triggers, what documentation helps, and practical ways to structure reasonable compensation/engagement.",
+      "used": false
+    },
+    {
+      "topic": "Claiming home office expenses correctly (employees vs incorporated owner-managers)",
+      "notes": "Explain the eligible costs, CRA methodology (simplified vs detailed), and common pitfalls that lead to denied deductions.",
+      "used": false
+    },
+    {
+      "topic": "Tax instalments for corporations: when you’re required and how to avoid penalties",
+      "notes": "Cover how corporate instalments are calculated, payment schedules, and what to do if profits change materially mid-year.",
+      "used": false
+    },
+    {
+      "topic": "Preparing for tax season with an owner-managed business: a year-round document checklist",
+      "notes": "Provide a practical checklist of records to gather monthly/quarterly (payroll, bank/credit, contractor slips, CRA accounts) to reduce year-end stress.",
+      "used": false
+    },
+    {
+      "topic": "Shareholder loans (director/shareholder loans) and repayment strategies",
+      "notes": "Discuss what happens with outstanding balances, CRA review indicators, interest/imputed benefits considerations, and repayment/clearance timing.",
+      "used": false
     }
   ]
 }
