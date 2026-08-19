@@ -8,8 +8,9 @@ excerpt: >-
   Starting a business? Here’s a practical overview of GST/HST registration and
   filing basics in Canada—thresholds, frequencies, and common pitfalls.
 publishedAt: '2026-08-19'
+updatedAt: '2026-08-19'
 author: ALOE Accounting and Tax
-status: draft
+status: published
 ---
 
 Starting a new business in Canada can be exciting—and complicated fast. If you sell goods or services, GST/HST may apply. Below is a plain-language guide to the key GST/HST filing basics for small businesses, including registration thresholds, filing frequency, and common mistakes.
