@@ -142,6 +142,12 @@ export interface ServiceDef {
   bullets: string[];
   /** Label for the bullet block, e.g. "Our services include". */
   bulletsHeading: string;
+  /** Outcome-focused benefit cards (3–4). */
+  benefits?: { title: string; body: string }[];
+  /** Ideal clients / situations for this service (4–6). */
+  whoFor?: string[];
+  /** "What to expect" engagement steps (3–4). */
+  process?: { title: string; body: string }[];
 }
 
 export const services: ServiceDef[] = [
@@ -165,6 +171,49 @@ export const services: ServiceDef[] = [
       "Compilation engagements",
       "Ongoing accounting support & advisory",
     ],
+    benefits: [
+      {
+        title: "Books that are always current",
+        body: "Monthly reconciliations mean you're never scrambling at year-end — your numbers stay accurate and decision-ready whenever you need them.",
+      },
+      {
+        title: "Payroll done right, on time",
+        body: "QBO payroll, source deductions, and remittances handled correctly, so you avoid CRA penalties and your team is paid without fuss.",
+      },
+      {
+        title: "A clean year-end handoff",
+        body: "Organized records and year-end adjusting entries make tax time faster, smoother, and less expensive.",
+      },
+      {
+        title: "More time on your business",
+        body: "Offload day-to-day bookkeeping and administration so you can focus on running and growing your company.",
+      },
+    ],
+    whoFor: [
+      "Small and growing businesses that have outgrown DIY bookkeeping",
+      "Owners running payroll for employees or themselves",
+      "Businesses on QuickBooks Online, or ready to move to it",
+      "Companies that want tidy, CRA-ready books all year — not just at tax time",
+      "Anyone behind on their bookkeeping and needing a catch-up",
+    ],
+    process: [
+      {
+        title: "Onboarding & setup",
+        body: "We review your current bookkeeping, set up or clean up your QBO file, and agree on a monthly workflow.",
+      },
+      {
+        title: "Ongoing bookkeeping & payroll",
+        body: "We reconcile accounts, process payroll and remittances, and keep your records current each period.",
+      },
+      {
+        title: "Reporting",
+        body: "You receive clear, up-to-date financial statements and management reports you can actually use.",
+      },
+      {
+        title: "Year-end preparation",
+        body: "We complete year-end adjusting entries and hand off clean records for tax filing.",
+      },
+    ],
   },
   {
     slug: "corporate-tax",
@@ -186,6 +235,49 @@ export const services: ServiceDef[] = [
       "Owner-manager tax planning",
       "CRA correspondence & support",
     ],
+    benefits: [
+      {
+        title: "Fewer year-end surprises",
+        body: "By reviewing your position through the year, we help you anticipate what you'll owe — no last-minute shocks at filing time.",
+      },
+      {
+        title: "A tax position managed all year",
+        body: "Corporate tax isn't just a once-a-year form. We look for opportunities to manage your position as business decisions come up.",
+      },
+      {
+        title: "Owner-manager tax efficiency",
+        body: "We coordinate your corporate and personal tax so your salary and dividend mix and remuneration are structured sensibly.",
+      },
+      {
+        title: "Confident CRA compliance",
+        body: "Accurate T2 returns and GST/HST filings, prepared to CPA standards, keep your corporation onside with the CRA.",
+      },
+    ],
+    whoFor: [
+      "Incorporated businesses and Canadian-controlled private corporations (CCPCs)",
+      "Owner-managers taking salary, dividends, or both",
+      "Corporations registered for — or needing to register for — GST/HST",
+      "Companies behind on T2 filings or facing CRA correspondence",
+      "Businesses planning a transaction, purchase, or restructuring",
+    ],
+    process: [
+      {
+        title: "Review & scope",
+        body: "We review your corporation's financials, prior returns, and structure to understand your full tax picture.",
+      },
+      {
+        title: "Prepare & optimize",
+        body: "We prepare your T2 and GST/HST filings while identifying deductions, credits, and planning opportunities.",
+      },
+      {
+        title: "File & remit",
+        body: "We file accurately and on time, and make sure you know what to remit and when.",
+      },
+      {
+        title: "Plan ahead",
+        body: "We flag decisions and strategies to manage next year's tax before the year closes.",
+      },
+    ],
   },
   {
     slug: "financial-statements-assurance",
@@ -204,6 +296,49 @@ export const services: ServiceDef[] = [
       "Compilation engagements",
       "Review engagements",
       "Audit engagements",
+    ],
+    benefits: [
+      {
+        title: "Statements stakeholders trust",
+        body: "Financial statements prepared to professional standards give lenders, investors, and partners confidence in your numbers.",
+      },
+      {
+        title: "The right level of assurance",
+        body: "Whether you need a compilation, review, or audit, we scope the engagement to what your situation actually requires — no over-servicing.",
+      },
+      {
+        title: "Clarity for better decisions",
+        body: "Well-prepared statements aren't just for compliance; they help you understand and steer your business.",
+      },
+      {
+        title: "Professional, on-time delivery",
+        body: "Careful preparation and clear communication mean your reporting is ready when your bank, board, or deadline needs it.",
+      },
+    ],
+    whoFor: [
+      "Businesses whose lender or investors require financial statements",
+      "Companies needing a compilation, review, or audit engagement",
+      "Not-for-profits with board or funder reporting requirements",
+      "Owners who want credible, well-structured year-end statements",
+      "Businesses preparing for financing, a sale, or due diligence",
+    ],
+    process: [
+      {
+        title: "Determine the engagement",
+        body: "We discuss your needs and your stakeholders' requirements to choose the right level of assurance.",
+      },
+      {
+        title: "Gather & prepare",
+        body: "We collect the necessary records and prepare your financial statements to the applicable standard.",
+      },
+      {
+        title: "Review & finalize",
+        body: "We perform the required procedures, resolve questions with you, and finalize the statements.",
+      },
+      {
+        title: "Deliver & explain",
+        body: "We deliver your statements and walk you through what they show.",
+      },
     ],
   },
   {
@@ -226,6 +361,49 @@ export const services: ServiceDef[] = [
       "Tax and business planning",
       "Ongoing owner advisory",
     ],
+    benefits: [
+      {
+        title: "Decisions backed by numbers",
+        body: "We turn your financial data into clear insight, so you can evaluate opportunities with confidence rather than guesswork.",
+      },
+      {
+        title: "Cash flow you can see coming",
+        body: "Cash flow planning and forecasting help you anticipate crunches and fund growth on your terms.",
+      },
+      {
+        title: "A plan, not just a report",
+        body: "Budgets and forecasts give you targets to steer toward and a way to measure how you're tracking.",
+      },
+      {
+        title: "A sounding board that knows your business",
+        body: "Ongoing advisory means you have a CPA to think through the big decisions with, as they come up.",
+      },
+    ],
+    whoFor: [
+      "Owners scaling an established business",
+      "Entrepreneurs planning growth, hiring, or investment",
+      "Businesses that want budgeting and forecasting, not just history",
+      "Owners weighing a major decision, purchase, or expansion",
+      "Companies that want a CPA involved beyond tax season",
+    ],
+    process: [
+      {
+        title: "Understand your goals",
+        body: "We start with where you want to take the business and what decisions are on the table.",
+      },
+      {
+        title: "Analyze the numbers",
+        body: "We dig into your financials — margins, cash flow, and performance — to see what they're telling us.",
+      },
+      {
+        title: "Build the plan",
+        body: "We develop budgets, forecasts, and options tailored to your goals.",
+      },
+      {
+        title: "Review & adjust",
+        body: "We revisit the plan as things change, so it stays useful rather than static.",
+      },
+    ],
   },
   {
     slug: "personal-tax",
@@ -245,6 +423,49 @@ export const services: ServiceDef[] = [
       "Owner-manager remuneration planning",
       "Investment and other income reporting",
       "Tax advisory and support",
+    ],
+    benefits: [
+      {
+        title: "Personal and corporate tax, considered together",
+        body: "We look at your T1 alongside your corporation, so decisions on salary, dividends, and timing make sense across both.",
+      },
+      {
+        title: "Remuneration that fits your goals",
+        body: "We help structure how you pay yourself to balance tax, cash flow, and long-term planning.",
+      },
+      {
+        title: "All your income, handled correctly",
+        body: "Investment, dividend, and other income reported accurately, so your return is complete and optimized.",
+      },
+      {
+        title: "Advice you can act on",
+        body: "Beyond filing, we flag planning opportunities relevant to your personal situation.",
+      },
+    ],
+    whoFor: [
+      "Owner-managers of our corporate clients",
+      "Business owners taking a salary and dividend mix",
+      "Individuals with investment or other income to report",
+      "Owners who want personal and corporate tax coordinated",
+      "People who want proactive advice, not just a filed return",
+    ],
+    process: [
+      {
+        title: "Gather your information",
+        body: "We collect your slips and details, and factor in your corporate position where relevant.",
+      },
+      {
+        title: "Prepare & optimize",
+        body: "We prepare your T1, applying the credits and strategies that fit your situation.",
+      },
+      {
+        title: "Review together",
+        body: "We walk you through your return and answer your questions before filing.",
+      },
+      {
+        title: "File & advise",
+        body: "We file on time and note planning points to consider for next year.",
+      },
     ],
   },
   {
@@ -267,6 +488,49 @@ export const services: ServiceDef[] = [
       "Tax account reviews",
       "Representation and communication with CRA",
     ],
+    benefits: [
+      {
+        title: "A professional in your corner",
+        body: "You don't face the CRA alone — we deal with them on your behalf, so you're not navigating it under pressure.",
+      },
+      {
+        title: "The issue understood, then addressed",
+        body: "We take the time to understand what the CRA is asking and prepare the right documentation to respond.",
+      },
+      {
+        title: "Clear, timely communication",
+        body: "We manage correspondence and deadlines, so nothing slips and the matter keeps moving.",
+      },
+      {
+        title: "Your rights and options protected",
+        body: "From reassessments to notices of objection, we help you respond appropriately and pursue the options available to you.",
+      },
+    ],
+    whoFor: [
+      "Businesses or individuals under CRA audit or review",
+      "Taxpayers who received a reassessment they disagree with",
+      "Anyone needing to file a notice of objection",
+      "People behind on filings or facing CRA correspondence",
+      "Owners who want a CPA to handle the CRA on their behalf",
+    ],
+    process: [
+      {
+        title: "Understand the situation",
+        body: "We review the CRA's request or assessment and your records to understand exactly what's at issue.",
+      },
+      {
+        title: "Prepare the response",
+        body: "We assemble the appropriate documentation and position, and agree on the approach with you.",
+      },
+      {
+        title: "Represent you with the CRA",
+        body: "We communicate with the CRA on your behalf and manage the back-and-forth.",
+      },
+      {
+        title: "Resolve & prevent",
+        body: "We work toward a resolution and flag steps to help avoid similar issues going forward.",
+      },
+    ],
   },
   {
     slug: "tax-planning",
@@ -287,6 +551,49 @@ export const services: ServiceDef[] = [
       "Year-end tax planning",
       "Transaction and restructuring considerations",
       "Ongoing tax advisory",
+    ],
+    benefits: [
+      {
+        title: "Plan before the deadline, not after",
+        body: "Effective planning happens through the year, while there's still time to act — not scrambling at filing time.",
+      },
+      {
+        title: "Decisions made with tax in mind",
+        body: "We consider the tax impact of your business and personal decisions before you make them.",
+      },
+      {
+        title: "A coordinated corporate and personal strategy",
+        body: "We look at both sides together, so remuneration and timing work in your favour.",
+      },
+      {
+        title: "Fewer surprises, more control",
+        body: "Anticipating tax implications means better cash-flow planning and no unwelcome year-end shocks.",
+      },
+    ],
+    whoFor: [
+      "Incorporated owners planning remuneration and dividends",
+      "Businesses approaching year-end wanting to manage their position",
+      "Owners considering a transaction, restructuring, or major purchase",
+      "People who want proactive strategy, not just compliance",
+      "Clients coordinating corporate and personal tax decisions",
+    ],
+    process: [
+      {
+        title: "Assess your circumstances",
+        body: "We review your business and personal situation to understand the full picture.",
+      },
+      {
+        title: "Identify opportunities",
+        body: "We pinpoint strategies — remuneration, timing, and structure — that fit your goals.",
+      },
+      {
+        title: "Map the plan",
+        body: "We lay out the decisions and their tax implications, so you know what to do and when.",
+      },
+      {
+        title: "Revisit regularly",
+        body: "We review the plan as circumstances and rules change, especially before year-end.",
+      },
     ],
   },
 ];

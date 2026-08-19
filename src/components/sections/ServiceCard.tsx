@@ -1,3 +1,6 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import { Icon } from "@/components/ui/Icon";
 import { ArrowLink } from "@/components/ui/primitives";
 import type { ServiceDef } from "@/lib/site.config";
@@ -10,10 +13,14 @@ export function ServiceCard({
   service: ServiceDef;
   featured?: boolean;
 }) {
+  const router = useRouter();
   const href = `/services/${service.slug}`;
   if (featured) {
     return (
-      <article className="group relative flex flex-col overflow-hidden rounded-card bg-navy-900 p-8 text-white sm:p-10">
+      <article
+        className="group relative flex cursor-pointer flex-col overflow-hidden rounded-card bg-navy-900 p-8 text-white sm:p-10"
+        onClick={() => router.push(href)}
+      >
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_120%_at_100%_0%,rgba(21,197,140,0.16),transparent_55%)]"
@@ -42,7 +49,10 @@ export function ServiceCard({
     );
   }
   return (
-    <article className="group flex flex-col gap-5 rounded-card border border-border-soft bg-white p-8 transition-shadow hover:shadow-lg hover:shadow-navy-900/5">
+    <article
+      className="group flex cursor-pointer flex-col gap-5 rounded-card border border-border-soft bg-white p-8 transition-shadow hover:shadow-lg hover:shadow-navy-900/5"
+      onClick={() => router.push(href)}
+    >
       <span className="grid h-12 w-12 place-items-center rounded-2xl bg-brand-50 text-brand-700">
         <Icon name={service.icon} className="h-6 w-6" />
       </span>

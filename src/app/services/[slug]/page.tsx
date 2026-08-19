@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { Container, Section, ButtonLink, ArrowLink } from "@/components/ui/primitives";
+import {
+  Container,
+  Section,
+  ButtonLink,
+  ArrowLink,
+  SectionHeading,
+} from "@/components/ui/primitives";
 import { PageHero } from "@/components/sections/PageHero";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { Icon } from "@/components/ui/Icon";
 import { buildMetadata } from "@/lib/seo";
-import {
-  JsonLd,
-  breadcrumbSchema,
-  serviceSchema,
-} from "@/lib/jsonld";
+import { JsonLd, breadcrumbSchema, serviceSchema } from "@/lib/jsonld";
 import { services, getService, contact } from "@/lib/site.config";
 
 /** Prerender every service at build. */
@@ -29,6 +31,21 @@ export async function generateMetadata({
     description: service.metaDescription,
     path: `/services/${service.slug}`,
   });
+}
+
+/** Small green check used across lists. */
+function Check({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" className={className} aria-hidden="true">
+      <path
+        d="M4 10.5l3.5 3.5L16 6"
+        stroke="currentColor"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
 }
 
 export default async function ServiceDetailPage({
@@ -59,10 +76,10 @@ export default async function ServiceDetailPage({
         </ButtonLink>
       </PageHero>
 
+      {/* Overview + what's included */}
       <Section tone="surface">
         <Container>
           <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr]">
-            {/* Main */}
             <div>
               <p className="text-lg leading-relaxed text-slate-body">
                 {service.intro}
@@ -78,15 +95,7 @@ export default async function ServiceDetailPage({
                     className="flex items-start gap-3 rounded-2xl border border-border-soft bg-white p-4"
                   >
                     <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-700">
-                      <svg viewBox="0 0 20 20" fill="none" className="h-3.5 w-3.5" aria-hidden="true">
-                        <path
-                          d="M4 10.5l3.5 3.5L16 6"
-                          stroke="currentColor"
-                          strokeWidth="2.2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
+                      <Check className="h-3.5 w-3.5" />
                     </span>
                     <span className="text-ink">{b}</span>
                   </li>
@@ -124,8 +133,98 @@ export default async function ServiceDetailPage({
         </Container>
       </Section>
 
+      {/* Benefits & outcomes */}
+      {service.benefits && service.benefits.length > 0 && (
+        <Section tone="alt">
+          <Container>
+            <SectionHeading
+              eyebrow="Benefits"
+              title="What you gain"
+              accent={`with ${service.title.toLowerCase()}.`}
+            />
+            <div className="mt-12 grid gap-6 sm:grid-cols-2">
+              {service.benefits.map((b) => (
+                <div
+                  key={b.title}
+                  className="flex flex-col gap-4 rounded-card border border-border-soft bg-white p-8"
+                >
+                  <span className="grid h-11 w-11 place-items-center rounded-2xl bg-brand-50 text-brand-700">
+                    <Check className="h-5 w-5" />
+                  </span>
+                  <h3 className="text-lg font-bold text-ink">{b.title}</h3>
+                  <p className="leading-relaxed text-slate-body">{b.body}</p>
+                </div>
+              ))}
+            </div>
+          </Container>
+        </Section>
+      )}
+
+      {/* Who it's for */}
+      {service.whoFor && service.whoFor.length > 0 && (
+        <Section tone="surface">
+          <Container>
+            <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+              <div>
+                <SectionHeading eyebrow="Who it's for" title="Is this right for you?" />
+                <p className="mt-5 text-lg leading-relaxed text-slate-body">
+                  We tailor {service.title.toLowerCase()} to your situation. It&apos;s
+                  a strong fit if you recognise yourself below — and if you&apos;re
+                  not sure, a quick call will tell us both.
+                </p>
+                <ArrowLink href="/industries" className="mt-6">
+                  See the industries we serve
+                </ArrowLink>
+              </div>
+              <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+                {service.whoFor.map((w) => (
+                  <li
+                    key={w}
+                    className="flex items-start gap-3 rounded-2xl border border-border-soft bg-white p-4"
+                  >
+                    <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-700">
+                      <Check className="h-3.5 w-3.5" />
+                    </span>
+                    <span className="text-ink">{w}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Container>
+        </Section>
+      )}
+
+      {/* How it works / process */}
+      {service.process && service.process.length > 0 && (
+        <Section tone="alt">
+          <Container>
+            <SectionHeading
+              eyebrow="How it works"
+              title="What to expect"
+              accent="when you work with us."
+            />
+            <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {service.process.map((step, i) => (
+                <li
+                  key={step.title}
+                  className="flex flex-col gap-4 rounded-card border border-border-soft bg-white p-8"
+                >
+                  <span className="text-4xl font-extrabold text-brand-300">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="text-lg font-bold text-ink">{step.title}</h3>
+                  <p className="text-sm leading-relaxed text-slate-body">
+                    {step.body}
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </Container>
+        </Section>
+      )}
+
       {/* Related services */}
-      <Section tone="alt">
+      <Section tone="surface">
         <Container>
           <div className="flex items-end justify-between gap-4">
             <h2 className="text-2xl font-bold text-ink">Related services</h2>
