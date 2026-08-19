@@ -12,7 +12,7 @@ excerpt: >-
 publishedAt: '2026-08-19'
 updatedAt: '2026-08-19'
 author: ALOE Accounting and Tax
-status: draft
+status: published
 faqs:
   - question: Does TOSI only apply to dividends?
     answer: >-
