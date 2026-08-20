@@ -9,8 +9,9 @@ excerpt: >-
   records, matching documents to transactions, and retaining them long enough
   for CRA.
 publishedAt: '2026-08-20'
+updatedAt: '2026-08-20'
 author: ALOE Accounting and Tax
-status: draft
+status: published
 faqs:
   - question: What records does CRA typically expect a business to keep?
     answer: >-
