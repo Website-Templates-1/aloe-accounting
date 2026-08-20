@@ -155,6 +155,14 @@ export default async function DashboardPage({
                   >
                     Edit
                   </Link>
+                  <SubmitAction
+                    action="/api/admin/delete"
+                    hidden={{ slug: p.slug }}
+                    confirm={`Delete the PUBLISHED post "${p.title}"? It will be removed from the live site and its URL will 404 after the next deploy. This can't be undone here.`}
+                    label="Delete"
+                    pendingLabel="Deleting…"
+                    className="rounded-md border border-red-300 px-3 py-1.5 font-semibold text-red-600 hover:bg-red-50"
+                  />
                 </div>
               </li>
             ))}

@@ -186,14 +186,19 @@ export async function createPost(input: {
   return slug;
 }
 
-/** Delete a draft. Refuses to delete a published post (guard against footguns). */
+/**
+ * Delete a post (draft or published). Deleting a published post removes its
+ * live page — the caller (admin UI) is responsible for confirming that.
+ * Internal links self-heal: related content + the search allowlist are
+ * computed from published posts, so the removed slug drops out on rebuild.
+ */
 export async function deletePost(slug: string): Promise<void> {
   const file = await readFile(filePath(slug));
   if (!file) throw new Error(`Post "${slug}" not found.`);
   const { data } = matter(file.text);
-  if ((data as PostFrontmatter).status !== "draft")
-    throw new Error("Only drafts can be deleted.");
-  await deleteFile(filePath(slug), `Delete draft: ${slug}`);
+  const status = (data as PostFrontmatter).status;
+  const label = status === "published" ? "published post" : "draft";
+  await deleteFile(filePath(slug), `Delete ${label}: ${slug}`);
 }
 
 /** Flip a draft to published (the approval action). */
