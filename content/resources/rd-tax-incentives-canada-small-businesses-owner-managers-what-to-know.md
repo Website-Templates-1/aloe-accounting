@@ -12,8 +12,9 @@ excerpt: >-
   claims often stall without the right documentation and clear
   scientific/technological goals.
 publishedAt: '2026-08-20'
+updatedAt: '2026-08-20'
 author: ALOE Accounting and Tax
-status: draft
+status: published
 faqs:
   - question: Do all new products or software updates qualify as R&D in Canada?
     answer: >-
