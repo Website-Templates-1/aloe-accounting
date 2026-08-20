@@ -11,8 +11,9 @@ excerpt: >-
   versus incorporated owner-managers. Here’s a practical guide to eligible costs
   and common mistakes.
 publishedAt: '2026-08-20'
+updatedAt: '2026-08-20'
 author: ALOE Accounting and Tax
-status: draft
+status: published
 faqs:
   - question: >-
       Can I claim home office expenses if I only work from home part of the
