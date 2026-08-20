@@ -11,8 +11,9 @@ excerpt: >-
   instalments are required, how CRA calculates them, and what to do if your
   profits change mid-year.
 publishedAt: '2026-08-20'
+updatedAt: '2026-08-20'
 author: ALOE Accounting and Tax
-status: draft
+status: published
 faqs:
   - question: Do all Canadian corporations have to pay income tax instalments?
     answer: >-
