@@ -38,7 +38,7 @@
     {
       "topic": "Shareholder loans (director/shareholder loans) and repayment strategies",
       "notes": "Discuss what happens with outstanding balances, CRA review indicators, interest/imputed benefits considerations, and repayment/clearance timing.",
-      "used": false
+      "used": true
     }
   ]
 }
