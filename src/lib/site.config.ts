@@ -44,12 +44,12 @@ export const contact = {
     city: "Brampton",
     region: "ON",
     regionName: "Ontario",
-    postalCode: "L6Y 0B5",
+    postalCode: "L6Y 0P8",
     country: "CA",
     countryName: "Canada",
   },
   /** Human-readable one-liner. */
-  addressLine: "285 Steeles Ave W., Suite 201, Brampton, ON L6Y 0B5",
+  addressLine: "285 Steeles Ave W., Suite 201, Brampton, ON L6Y 0P8",
   serviceArea: "Greater Toronto Area and across Canada",
 } as const;
 

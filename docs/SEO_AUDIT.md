@@ -13,7 +13,6 @@ _Audited against the live local build (Next.js 16 App Router, static/SSG). Focus
 
 ## 🔴 Critical — migration & launch
 1. **This is a WordPress → Next.js migration.** The domain currently serves a live WP site. Before cutover, export the list of currently-indexed URLs (GSC → Pages, plus `site:aloeaccountingandtax.com`) and build a **301 redirect map** old→new to preserve link equity. Add to the redirect table in `site.config.ts`. Missing this = lost rankings.
-2. **NAP inconsistency.** Google Business Profile shows postal code **L6Y 0P8** (no suite); the site uses **L6Y 0B5, Suite 201**. Pick the correct one and make site + GBP + all citations identical. NAP consistency is a core local ranking factor.
 3. **Pick www vs non-www.** Google/GBP list **www**; the site canonical is **non-www**. Choose one, 301 the other at the host, and set the same as the GSC property + GBP website URL.
 4. **Deploy + submit.** Ship to production, submit `sitemap.xml` in Google Search Console (and Bing Webmaster). Ensure any staging environment is `noindex`.
 
@@ -46,5 +45,5 @@ _Audited against the live local build (Next.js 16 App Router, static/SSG). Focus
 - **Geo:** `43.6594316, -79.7398342`
 - **Google Maps (hasMap / cid):** `https://maps.google.com/?cid=7668074435045977325`
 - **Google primaryType:** `accounting` → schema type `AccountingService`
-- **NAP (pending reconciliation):** 285 Steeles Ave W [Suite 201?], Brampton, ON **L6Y 0B5 vs L6Y 0P8**
+- **NAP (pending reconciliation):** 285 Steeles Ave W [Suite 201?], Brampton, ON L6Y 0P8
 - **Canonical host decision:** www vs non-www (Google lists www; site uses non-www)

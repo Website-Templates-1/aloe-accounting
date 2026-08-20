@@ -57,8 +57,6 @@ The domain currently runs WordPress; this site replaces it. Preserve link equity
 **Accept:** with no id, output is unchanged (Ads only); with a test `G-` id, GA4 gtag config appears once.
 
 ### 6. Apply the NAP + host decisions (owner-supplied)
-Once the owner confirms:
-- **Postal code:** reconcile `L6Y 0B5` vs `L6Y 0P8` (and whether "Suite 201" is included) — update `contact.address` + `addressLine` in `site.config.ts` (one place; footer, contact page, and schema all follow).
 - **Canonical host:** if switching to `www`, update `site.domain` in `site.config.ts` (everything derives from it) and note that the host must 301 non-www → www (or vice-versa).
 **Accept:** the chosen NAP/host appears consistently in footer, contact page, sitemap, robots `host`, and all JSON-LD.
 
@@ -77,6 +75,6 @@ Replace `public/og-default.png` with a designed 1200×630 (brand headline + logo
 - Geo: `43.6594316, -79.7398342`
 - Google Maps (cid): `https://maps.google.com/?cid=7668074435045977325`
 - Google primaryType: `accounting` → `AccountingService`
-- NAP (pending owner reconciliation): 285 Steeles Ave W [Suite 201?], Brampton, ON — **L6Y 0B5 or L6Y 0P8**
+- NAP (pending owner reconciliation): 285 Steeles Ave W [Suite 201?], Brampton, ON — L6Y 0P8
 - Canonical host: **www vs non-www** (owner to decide)
 - Ads tag already set: `AW-11251511415`; GSC verification already set.

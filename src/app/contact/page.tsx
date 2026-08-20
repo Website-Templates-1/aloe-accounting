@@ -68,7 +68,7 @@ export default function ContactPage() {
                   <span>
                     285 Steeles Ave W., Suite 201
                     <br />
-                    Brampton, ON L6Y 0B5
+                    Brampton, ON L6Y 0P8
                   </span>
                 }
               />

@@ -98,7 +98,7 @@ export function Footer() {
                 <span>
                   285 Steeles Ave W., Suite 201
                   <br />
-                  Brampton, ON L6Y 0B5
+                  Brampton, ON L6Y 0P8
                 </span>
               </p>
               <p className="flex items-center gap-2.5">
