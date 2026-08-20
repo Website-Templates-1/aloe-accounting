@@ -96,7 +96,7 @@ export async function generateDraft(): Promise<GenerationResult> {
   return {
     slug: gen.slug,
     files: [
-      { path: `content/resources/${gen.slug}.md`, text },
+      { path: `content/blog/${gen.slug}.md`, text },
       { path: BACKLOG_PATH, text: serializeBacklog(updatedBacklog) },
     ],
   };

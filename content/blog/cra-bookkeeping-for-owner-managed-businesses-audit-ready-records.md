@@ -57,7 +57,7 @@ peopleAlsoSearch:
   - label: Corporate tax services
     href: /services/corporate-tax
   - label: Resources for business owners
-    href: /resources
+    href: /blog
 tags:
   - cra
   - bookkeeping

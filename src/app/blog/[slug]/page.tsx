@@ -13,14 +13,14 @@ export function generateStaticParams() {
 
 export async function generateMetadata({
   params,
-}: PageProps<"/resources/[slug]">): Promise<Metadata> {
+}: PageProps<"/blog/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) return { title: "Article not found", robots: { index: false } };
   return buildMetadata({
     title: post.title,
     description: post.metaDescription,
-    path: `/resources/${post.slug}`,
+    path: `/blog/${post.slug}`,
     ogType: "article",
     publishedTime: post.publishedAt,
     modifiedTime: post.updatedAt,
@@ -29,7 +29,7 @@ export async function generateMetadata({
 
 export default async function ArticlePage({
   params,
-}: PageProps<"/resources/[slug]">) {
+}: PageProps<"/blog/[slug]">) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) notFound();

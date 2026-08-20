@@ -54,7 +54,7 @@ faqs:
       appropriate.
 peopleAlsoSearch:
   - label: Shareholder loans overview
-    href: /resources
+    href: /blog
   - label: Corporate tax planning
     href: /services/tax-planning
   - label: CRA representation

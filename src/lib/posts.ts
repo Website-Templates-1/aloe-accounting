@@ -1,7 +1,7 @@
 /**
  * In-repo blog/resource registry — "Git is the database".
  *
- * Posts are Markdown files with front matter under `content/resources/*.md`.
+ * Posts are Markdown files with front matter under `content/blog/*.md`.
  * Adding/approving a post is a file change committed to the repo; the public
  * accessors below drive the route, metadata, JSON-LD, and sitemap with no other
  * wiring. Drafts live in the same folder, marked `status: draft`, and are
@@ -69,7 +69,7 @@ export interface Post extends PostEnrichment {
   title: string;
   /** ~140–160 char meta description. */
   metaDescription: string;
-  /** Short summary for the Resources index. */
+  /** Short summary for the Blog index. */
   excerpt: string;
   /** ISO date. Future-dated or draft posts never reach production. */
   publishedAt: string;
@@ -94,7 +94,7 @@ export interface PostFrontmatter extends PostEnrichment {
   status: PostStatus;
 }
 
-export const RESOURCES_DIR = path.join(process.cwd(), "content", "resources");
+export const BLOG_DIR = path.join(process.cwd(), "content", "blog");
 
 /* ------------------------------------------------------------------ */
 /* Markdown rendering — raw HTML disabled so authored/AI content can    */
@@ -203,14 +203,14 @@ export function parsePost(raw: string, expectedSlug: string): Post {
 function loadAll(): Post[] {
   let files: string[];
   try {
-    files = fs.readdirSync(RESOURCES_DIR).filter((f) => f.endsWith(".md"));
+    files = fs.readdirSync(BLOG_DIR).filter((f) => f.endsWith(".md"));
   } catch {
     return []; // no content dir yet — empty blog
   }
   const seen = new Set<string>();
   const posts = files.map((file) => {
     const slug = file.replace(/\.md$/, "");
-    const raw = fs.readFileSync(path.join(RESOURCES_DIR, file), "utf8");
+    const raw = fs.readFileSync(path.join(BLOG_DIR, file), "utf8");
     const post = parsePost(raw, slug);
     if (seen.has(post.slug))
       throw new Error(`Duplicate post slug: "${post.slug}".`);
@@ -274,7 +274,7 @@ export function internalPathAllowlist(): Set<string> {
   const set = new Set<string>();
   for (const r of staticRoutes) set.add(r.path);
   for (const s of services) set.add(`/services/${s.slug}`);
-  for (const p of getAllPosts()) set.add(`/resources/${p.slug}`);
+  for (const p of getAllPosts()) set.add(`/blog/${p.slug}`);
   return set;
 }
 

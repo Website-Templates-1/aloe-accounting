@@ -181,7 +181,7 @@ export function blogPostingSchema(opts: {
   };
 }
 
-/** ItemList for an index (e.g. resources, services hub). */
+/** ItemList for an index (e.g. blog, services hub). */
 export function itemListSchema(items: { name: string; path: string }[]) {
   return {
     "@context": "https://schema.org",

@@ -29,7 +29,7 @@ export default async function DashboardPage({
     <div className="space-y-10">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-ink">Resources</h1>
+          <h1 className="text-2xl font-bold text-ink">Blog</h1>
           <p className="mt-1 text-sm text-slate-body">
             {usingGitHub
               ? "Live from GitHub."
@@ -144,7 +144,7 @@ export default async function DashboardPage({
                 </div>
                 <div className="flex items-center gap-3 text-sm">
                   <Link
-                    href={`/resources/${p.slug}`}
+                    href={`/blog/${p.slug}`}
                     className="text-slate-body hover:text-ink"
                   >
                     View live

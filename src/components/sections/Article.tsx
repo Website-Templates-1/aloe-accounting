@@ -14,7 +14,7 @@ import {
 
 /**
  * Canonical article renderer shared by the public route
- * (`/resources/[slug]`) and the auth-gated admin preview
+ * (`/blog/[slug]`) and the auth-gated admin preview
  * (`/admin/preview/[slug]`), so "what you approve is what ships".
  * In `preview` mode it shows a draft banner and omits JSON-LD.
  */
@@ -25,10 +25,10 @@ export function Article({
   post: Post;
   preview?: boolean;
 }) {
-  const path = `/resources/${post.slug}`;
+  const path = `/blog/${post.slug}`;
   const crumbs = [
     { name: "Home", path: "/" },
-    { name: "Resources", path: "/resources" },
+    { name: "Blog", path: "/blog" },
     { name: post.title, path },
   ];
 
@@ -38,7 +38,7 @@ export function Article({
 
   return (
     <>
-      <PageHero eyebrow="Resources" title={post.title} crumbs={crumbs}>
+      <PageHero eyebrow="Blog" title={post.title} crumbs={crumbs}>
         <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-white/60">
           <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
           {post.author && (
@@ -78,7 +78,7 @@ export function Article({
               {related.map((r) => (
                 <li key={r.slug}>
                   <Link
-                    href={`/resources/${r.slug}`}
+                    href={`/blog/${r.slug}`}
                     className="group flex h-full flex-col gap-4 rounded-card border border-border-soft bg-white p-7 transition-shadow hover:shadow-lg hover:shadow-navy-900/5"
                   >
                     <time

@@ -50,7 +50,7 @@ peopleAlsoSearch:
   - label: Personal tax
     href: /services/personal-tax
   - label: Resources
-    href: /resources
+    href: /blog
 tags:
   - tax-season
   - corporate-tax

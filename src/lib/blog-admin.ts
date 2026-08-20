@@ -16,7 +16,7 @@ import {
 } from "@/lib/posts";
 import { deleteFile, listDir, readFile, writeFile } from "@/lib/github";
 
-const DIR = "content/resources";
+const DIR = "content/blog";
 const filePath = (slug: string) => `${DIR}/${slug}.md`;
 
 /** Every post (incl. drafts), read live from the store. */

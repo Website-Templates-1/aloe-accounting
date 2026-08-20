@@ -24,7 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const postEntries: MetadataRoute.Sitemap = getSitemapPosts().map((p) => ({
-    url: absoluteUrl(`/resources/${p.slug}`),
+    url: absoluteUrl(`/blog/${p.slug}`),
     lastModified: new Date(p.updatedAt ?? p.publishedAt),
     changeFrequency: "yearly",
     priority: 0.6,

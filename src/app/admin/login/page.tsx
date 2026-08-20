@@ -20,7 +20,7 @@ export default async function LoginPage({
     <main className="mx-auto flex min-h-screen max-w-sm flex-col justify-center px-6 py-16">
       <h1 className="text-2xl font-bold text-ink">ALOE admin</h1>
       <p className="mt-2 text-sm text-slate-body">
-        Owner sign-in for reviewing and publishing Resources.
+        Owner sign-in for reviewing and publishing Blog posts.
       </p>
 
       {error && (

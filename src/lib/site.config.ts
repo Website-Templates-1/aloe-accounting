@@ -800,7 +800,7 @@ export const primaryNav: NavItem[] = [
   { label: "Services", href: "/services" },
   { label: "About", href: "/about" },
   { label: "Industries", href: "/industries" },
-  { label: "Resources", href: "/resources" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -825,7 +825,7 @@ export const footerNav = {
     items: [
       { label: "About", href: "/about" },
       { label: "Industries", href: "/industries" },
-      { label: "Resources", href: "/resources" },
+      { label: "Blog", href: "/blog" },
       { label: "Contact", href: "/contact" },
       { label: "Privacy Policy", href: "/privacy" },
     ],
@@ -848,7 +848,7 @@ export const staticRoutes: StaticRoute[] = [
   { path: "/services", changeFrequency: "monthly", priority: 0.9 },
   { path: "/about", changeFrequency: "monthly", priority: 0.7 },
   { path: "/industries", changeFrequency: "monthly", priority: 0.6 },
-  { path: "/resources", changeFrequency: "weekly", priority: 0.6 },
+  { path: "/blog", changeFrequency: "weekly", priority: 0.6 },
   { path: "/contact", changeFrequency: "yearly", priority: 0.8 },
   { path: "/privacy", changeFrequency: "yearly", priority: 0.3 },
 ];
@@ -867,8 +867,8 @@ export interface RedirectDef {
 export const redirects: RedirectDef[] = [
   { source: "/services/assurance", destination: "/services/financial-statements-assurance", permanent: true },
   { source: "/services/cra", destination: "/services/cra-representation", permanent: true },
-  { source: "/blog", destination: "/resources", permanent: true },
-  { source: "/blog/:slug", destination: "/resources/:slug", permanent: true },
+  { source: "/resources", destination: "/blog", permanent: true },
+  { source: "/resources/:slug", destination: "/blog/:slug", permanent: true },
   { source: "/privacy-policy", destination: "/privacy", permanent: true },
 ];
 

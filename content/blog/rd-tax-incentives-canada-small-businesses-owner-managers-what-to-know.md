@@ -47,16 +47,16 @@ faqs:
 peopleAlsoSearch:
   - label: CRA bookkeeping for owner-managed businesses (audit-ready records)
     href: >-
-      /resources/cra-bookkeeping-for-owner-managed-businesses-audit-ready-records
+      /blog/cra-bookkeeping-for-owner-managed-businesses-audit-ready-records
   - label: Year-round tax season prep checklist
     href: >-
-      /resources/year-round-tax-season-prep-checklist-owner-managed-business-canada
+      /blog/year-round-tax-season-prep-checklist-owner-managed-business-canada
   - label: Tax planning for owner-managed businesses
     href: /services/tax-planning
   - label: Business advisory services
     href: /services/business-advisory
   - label: 'Corporate tax instalments: when required'
-    href: /resources/corporate-tax-instalments-when-required-how-to-avoid-penalties
+    href: /blog/corporate-tax-instalments-when-required-how-to-avoid-penalties
   - label: Services for CRA representation
     href: /services/cra-representation
 tags:
@@ -126,7 +126,7 @@ Good documentation helps you support both eligibility and cost treatment. Consid
 - Internal approvals or planning notes that demonstrate systematic investigation
 
 If you’re unsure what records CRA expects to see, see also our resource on audit-ready bookkeeping: 
-- [CRA bookkeeping for owner-managed businesses: audit-ready records](/resources/cra-bookkeeping-for-owner-managed-businesses-audit-ready-records)
+- [CRA bookkeeping for owner-managed businesses: audit-ready records](/blog/cra-bookkeeping-for-owner-managed-businesses-audit-ready-records)
 
 ## 5) Key pitfalls that cause delays or denials
 Here are issues we commonly see that slow down claims:
@@ -145,7 +145,7 @@ R&D incentives are claimed in your corporate tax filing for your fiscal period. 
 - Ensure the information needed to support the claim is available before filing
 
 If you want a broader year-round approach to preparing for filing, our checklist may help:
-- [Year-round tax season prep checklist for owner-managed business in Canada](/resources/year-round-tax-season-prep-checklist-owner-managed-business-canada)
+- [Year-round tax season prep checklist for owner-managed business in Canada](/blog/year-round-tax-season-prep-checklist-owner-managed-business-canada)
 
 ## What to do next
 If you’re considering an R&D claim, start by reviewing your past work packages: identify the projects that involved technological uncertainty, gather labour and project evidence, and document how the work advanced your capability.

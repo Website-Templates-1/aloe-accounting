@@ -60,7 +60,7 @@ peopleAlsoSearch:
   - label: Accounting and payroll
     href: /services/accounting-payroll
   - label: Resources
-    href: /resources
+    href: /blog
   - label: Contact us
     href: /contact
 tags:

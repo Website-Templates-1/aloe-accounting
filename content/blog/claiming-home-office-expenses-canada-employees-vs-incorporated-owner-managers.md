@@ -52,7 +52,7 @@ faqs:
       the proper treatment.
 peopleAlsoSearch:
   - label: Resources
-    href: /resources
+    href: /blog
   - label: Personal tax services
     href: /services/personal-tax
   - label: Corporate tax services
