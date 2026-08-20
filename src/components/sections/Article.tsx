@@ -122,6 +122,7 @@ export function Article({
               path,
               datePublished: post.publishedAt,
               dateModified: post.updatedAt,
+              author: post.author,
             })}
           />
         </>

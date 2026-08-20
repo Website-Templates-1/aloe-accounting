@@ -8,18 +8,17 @@ import { getSitemapPosts } from "@/lib/posts";
  * future-dated posts are already excluded by getSitemapPosts().
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
-
+  // Static + service pages: no tracked modification date, so we omit
+  // lastModified rather than restamp it to build time on every deploy (a
+  // churning, misleading freshness signal). Posts carry real dates.
   const staticEntries: MetadataRoute.Sitemap = staticRoutes.map((r) => ({
     url: absoluteUrl(r.path),
-    lastModified: now,
     changeFrequency: r.changeFrequency,
     priority: r.priority,
   }));
 
   const serviceEntries: MetadataRoute.Sitemap = services.map((s) => ({
     url: absoluteUrl(`/services/${s.slug}`),
-    lastModified: now,
     changeFrequency: "monthly",
     priority: 0.8,
   }));

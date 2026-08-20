@@ -152,6 +152,8 @@ export function blogPostingSchema(opts: {
   datePublished: string;
   dateModified?: string;
   image?: string;
+  /** Author name; the firm authors posts, so this maps to an Organization. */
+  author?: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -163,6 +165,11 @@ export function blogPostingSchema(opts: {
     datePublished: opts.datePublished,
     ...(opts.dateModified ? { dateModified: opts.dateModified } : {}),
     image: absoluteUrl(opts.image ?? site.ogImage),
+    author: {
+      "@type": "Organization",
+      name: opts.author?.trim() || site.brand,
+      url: site.domain,
+    },
     publisher: {
       "@type": "Organization",
       name: site.brand,
