@@ -14,8 +14,67 @@ npm run start    # serve the production build
 npm run lint
 ```
 
-No environment variables are required to build or run — see `.env.example` for
-the optional email delivery config.
+No environment variables are required to build or run the public site — see
+`.env.example` for optional email, reviews, and admin config.
+
+## Deploy on Netlify
+
+This is a Next.js 16 App Router app. Marketing pages are statically rendered,
+but the contact form (Server Action) and `/admin` APIs need Netlify’s Next.js
+runtime. Do **not** use static HTML export or a publish directory of `out`.
+
+1. [app.netlify.com](https://app.netlify.com) → **Add new site** → **Import an
+   existing project** → GitHub → this repo.
+2. Confirm **Build command** `npm run build` and **Publish directory** `.next`.
+3. Deploy. The first URL is `https://<site-name>.netlify.app`.
+
+### Environment variables
+
+Set these in **Site settings → Environment variables**, then **clear cache and
+deploy** so functions pick them up. None are required for the public marketing
+build.
+
+**Admin** (`/admin`)
+- `AUTH_SECRET` — `openssl rand -base64 32` (≥16 chars)
+- `OWNER_USERNAME`
+- `OWNER_PASSWORD_HASH` — scrypt `saltHex:hashHex` (see `.env.example`)
+
+**Git-as-database** (approve / save / generate persist to the repo)
+- `GITHUB_TOKEN` — fine-grained PAT, this repo only, Contents: Read and write
+- `GITHUB_OWNER`, `GITHUB_REPO`, `GITHUB_BRANCH` (`main`)
+
+**Scheduled drafts** (matches `.github/workflows/generate-draft.yml`)
+- `CRON_SECRET` — same value as the GitHub Actions secret
+- `OPENAI_API_KEY` (optional `OPENAI_MODEL=gpt-4o`)
+
+**Optional later:** `EMAIL_PROVIDER=resend`, `RESEND_API_KEY`, `CONTACT_INBOX`,
+`CONTACT_SENDER`; `GOOGLE_MAPS_API_KEY` for live reviews.
+
+GitHub repo secrets for the Monday cron: `SITE_URL` (canonical
+`https://www.aloeaccountingandtax.com`, or the `*.netlify.app` URL until DNS
+is live) and `CRON_SECRET` (same as Netlify).
+
+### Custom domain
+
+Canonical host is `https://www.aloeaccountingandtax.com`; `next.config.ts`
+301s the apex to www.
+
+In Netlify **Domain management**, add `www` as primary, add the apex, enable
+HTTPS. Point DNS: `www` CNAME to the Netlify site hostname; apex ALIAS/ANAME
+(or Netlify’s apex → www redirect). Redeploy once HTTPS is active so the
+admin session cookie (`Secure`) works.
+
+### After deploy
+
+- Homepage `200`, no trailing slash; apex → www `301` once DNS is on
+- `/sitemap.xml` and `/robots.txt` use the www origin
+- Contact form submits (console adapter until Resend is set)
+- `/admin/login` signs in; `POST /api/admin/generate` without a bearer is 401
+
+Netlify Functions default to a **10s** timeout on Starter. `/api/admin/generate`
+calls OpenAI + GitHub and can exceed that (Pro can go to 26s). Approving a post
+commits to `main` and triggers a rebuild — published posts appear after that
+deploy finishes.
 
 ## Architecture
 

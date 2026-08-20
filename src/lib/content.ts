@@ -26,17 +26,30 @@ export const stats: Stat[] = [
  * `wide` flags the horizontal wordmark so the strip can size it consistently
  * against the portrait seals.
  */
+// width/height are the assets' intrinsic pixel dimensions — passed to
+// next/image so the box is reserved (no CLS) and the display size is set
+// responsively in CSS via a fixed height + w-auto.
 export const trustLogos = [
-  { src: "/trust/bbb.png", alt: "BBB Accredited Business", wide: false },
+  {
+    src: "/trust/bbb.png",
+    alt: "BBB Accredited Business",
+    wide: false,
+    width: 187,
+    height: 300,
+  },
   {
     src: "/trust/cpa.png",
     alt: "CPA — Chartered Professional Accountants Ontario",
     wide: true,
+    width: 392,
+    height: 129,
   },
   {
     src: "/trust/quickbooks.png",
     alt: "QuickBooks Certified ProAdvisor",
     wide: false,
+    width: 226,
+    height: 300,
   },
 ];
 

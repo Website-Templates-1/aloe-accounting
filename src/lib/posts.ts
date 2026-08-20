@@ -17,9 +17,31 @@ import matter from "gray-matter";
 import { marked } from "marked";
 import { services, staticRoutes } from "@/lib/site.config";
 
+// Allow only web-safe URL schemes on Markdown links/images. Anything with a
+// scheme other than http/https/mailto (e.g. `javascript:`, `data:`) is dropped;
+// relative, root-relative, and anchor URLs pass through untouched.
+function safeUrl(href: string): string {
+  // Strip control chars (incl. embedded newlines/tabs used to smuggle schemes).
+  const cleaned = href.trim().replace(/[\u0000-\u001F]/g, "");
+  const scheme = /^([a-z][a-z0-9+.-]*):/i.exec(cleaned)?.[1]?.toLowerCase();
+  if (scheme && scheme !== "http" && scheme !== "https" && scheme !== "mailto") {
+    return "";
+  }
+  return cleaned;
+}
+
 // Drop raw HTML blocks/inline HTML so authored or AI content cannot inject
 // <script> or arbitrary markup. Markdown syntax still renders normally.
-marked.use({ gfm: true, renderer: { html: () => "" } });
+// walkTokens sanitizes link/image hrefs before the default renderer runs.
+marked.use({
+  gfm: true,
+  renderer: { html: () => "" },
+  walkTokens: (token) => {
+    if (token.type === "link" || token.type === "image") {
+      token.href = safeUrl(token.href ?? "");
+    }
+  },
+});
 
 export type PostStatus = "draft" | "published";
 

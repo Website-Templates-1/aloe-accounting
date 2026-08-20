@@ -15,8 +15,11 @@ export function JsonLd({ data }: { data: Record<string, unknown> }) {
   return (
     <script
       type="application/ld+json"
-      // Content is our own trusted, static data.
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      // Content is our own trusted, static data. Escape `<` so a literal
+      // "</script>" in any field can't break out of the script element.
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(data).replace(/</g, "\\u003c"),
+      }}
     />
   );
 }

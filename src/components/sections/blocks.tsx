@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Icon } from "@/components/ui/Icon";
 import { Container, SectionHeading } from "@/components/ui/primitives";
 import { ServiceCard } from "@/components/sections/ServiceCard";
@@ -47,10 +48,11 @@ export function TrustStrip() {
           <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-5 sm:gap-x-12">
             {trustLogos.map((logo) => (
               <li key={logo.src} className="flex items-center">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={logo.src}
                   alt={logo.alt}
+                  width={logo.width}
+                  height={logo.height}
                   className={`w-auto ${logo.wide ? "h-10 sm:h-11" : "h-14 sm:h-16"}`}
                   loading="lazy"
                 />
