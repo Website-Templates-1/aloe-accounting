@@ -39,6 +39,31 @@
       "topic": "Shareholder loans (director/shareholder loans) and repayment strategies",
       "notes": "Discuss what happens with outstanding balances, CRA review indicators, interest/imputed benefits considerations, and repayment/clearance timing.",
       "used": false
+    },
+    {
+      "topic": "CRA’s GST/HST “Input Tax Credits” (ITCs): common owner-manager mistakes",
+      "notes": "Explain when ITCs are claimable, how to handle partial exemptions, and documentation to support ITC claims.",
+      "used": false
+    },
+    {
+      "topic": "Recordkeeping for a Canadian owner-managed business: what to keep, for how long, and why",
+      "notes": "Provide practical guidance on organizing receipts, bank/credit card statements, invoices, contracts, and retention periods.",
+      "used": false
+    },
+    {
+      "topic": "Paying yourself from an incorporated business: aligning payroll, shareholder draws, and corporate bookkeeping",
+      "notes": "Cover how to avoid inconsistencies between payroll remittances, director compensation, and corporate expenses when owners take money out.",
+      "used": false
+    },
+    {
+      "topic": "Capital cost allowance (CCA) basics for owner-managers: choosing classes, rates, and when assets are “available for use”",
+      "notes": "Walk through how CCA works in Canada, common pitfalls (timing, mixed-use assets), and how to plan for asset purchases.",
+      "used": false
+    },
+    {
+      "topic": "Automobile and travel expenses in Canada for owner-managers: business-use substantiation and tax traps",
+      "notes": "Compare tracking methods (logbook vs reasonable allocation), treatment of parking/tolls, and handling commuting vs business travel.",
+      "used": false
     }
   ]
 }
