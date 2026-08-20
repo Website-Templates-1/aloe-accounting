@@ -10,8 +10,9 @@ excerpt: >-
   Director and shareholder loans can create tax issues if they’re not cleared.
   Here’s what CRA looks for and practical strategies to manage repayment timing.
 publishedAt: '2026-08-20'
+updatedAt: '2026-08-20'
 author: ALOE Accounting and Tax
-status: draft
+status: published
 faqs:
   - question: 'What is a director/shareholder loan, and how does it usually happen?'
     answer: >-
