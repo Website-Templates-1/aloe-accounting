@@ -8,8 +8,9 @@ excerpt: >-
   Reduce year-end stress with a practical, Canada-focused checklist of records
   to gather monthly and quarterly—plus what to compile before filing.
 publishedAt: '2026-08-20'
+updatedAt: '2026-08-20'
 author: ALOE Accounting and Tax
-status: draft
+status: published
 faqs:
   - question: What documents should I gather monthly for tax season prep?
     answer: >-
