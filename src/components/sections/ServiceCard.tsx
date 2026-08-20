@@ -59,7 +59,9 @@ export function ServiceCard({
       <h3 className="text-xl font-bold text-ink">{service.title}</h3>
       <p className="text-slate-body">{service.summary}</p>
       <div className="mt-auto pt-2">
-        <ArrowLink href={href}>Learn more</ArrowLink>
+        <ArrowLink href={href}>
+          Learn more<span className="sr-only"> about {service.title}</span>
+        </ArrowLink>
       </div>
     </article>
   );
