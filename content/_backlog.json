@@ -39,6 +39,31 @@
       "topic": "Shareholder loans (director/shareholder loans) and repayment strategies",
       "notes": "Discuss what happens with outstanding balances, CRA review indicators, interest/imputed benefits considerations, and repayment/clearance timing.",
       "used": true
+    },
+    {
+      "topic": "CRA bookkeeping for owner-managed businesses: keep it audit-ready",
+      "notes": "Practical guidance on what records to keep, retention expectations, and how to document transactions so support is easy to find during reviews/audits.",
+      "used": false
+    },
+    {
+      "topic": "R&D tax incentives in Canada for small businesses: what owner-managers should know",
+      "notes": "Overview of eligibility basics, common qualifying activities, documentation to gather, and key pitfalls that slow or deny credits.",
+      "used": false
+    },
+    {
+      "topic": "Payroll compliance for growing businesses: common missteps with ROEs, remittances, and T4/T5",
+      "notes": "A “watch-outs” post covering typical timing/filing issues for owner-managed employers and how to prevent costly penalties and reconciliations problems.",
+      "used": false
+    },
+    {
+      "topic": "Capital cost allowance (CCA) for small business owners: choosing classes and avoiding underclaiming",
+      "notes": "Explain how to determine asset classes, handle additions/disposals, and structure purchases to stay tax-effective without triggering surprises.",
+      "used": false
+    },
+    {
+      "topic": "Small business vs investment income: when your corporation might face refundable vs non-refundable tax",
+      "notes": "Help owner-managers understand how passive/investment income inside a corporation can change the tax outcome and what planning is worth considering (high level, not advice).",
+      "used": false
     }
   ]
 }
