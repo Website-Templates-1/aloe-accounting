@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Container, ButtonLink, Section } from "@/components/ui/primitives";
 import {
   StatsRow,
@@ -57,19 +58,15 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/*
-              PHOTO SLOT — hero portrait / office shot (owner to supply).
-              Drop the real image at /public/photos/hero.jpg (or similar) and
-              replace this placeholder with a next/image, e.g.:
-                <Image src="/photos/hero.jpg" alt="…" width={720} height={900}
-                  priority className="h-full w-full rounded-card object-cover" />
-              Recommended ~4:5 portrait. Hidden below lg so mobile stays tight.
-            */}
-            <div
-              aria-hidden="true"
-              className="hidden aspect-[4/5] w-full items-center justify-center rounded-card border border-white/10 bg-white/5 text-sm text-white/40 lg:flex"
-            >
-              Photo
+            <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-card border border-white/10 bg-white/5 lg:max-w-none">
+              <Image
+                src="/photos/hero-khush.jpg"
+                alt="Khushpreet Sran, CPA and founder of ALOE Accounting and Tax"
+                fill
+                priority
+                sizes="(min-width: 1024px) 40vw, 90vw"
+                className="object-cover object-top"
+              />
             </div>
           </div>
           <div className="mt-16 border-t border-white/10 pt-10">

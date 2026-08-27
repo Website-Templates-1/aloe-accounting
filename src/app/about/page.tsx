@@ -15,7 +15,7 @@ const crumbs = [
 ];
 
 const aboutStats = [
-  { value: "12+", label: "Years experience" },
+  { value: "10+", label: "Years experience" },
   { value: "GTA", label: "Service region" },
   { value: "CPA", label: "Fully licensed" },
 ];
@@ -72,7 +72,17 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <aside className="lg:sticky lg:top-24 lg:self-start">
+            <aside className="flex flex-col gap-6 lg:sticky lg:top-24 lg:self-start">
+              <div className="overflow-hidden rounded-card border border-border-soft">
+                <Image
+                  src="/photos/khush-working.jpg"
+                  alt="Khushpreet Sran reviewing a client's financials"
+                  width={933}
+                  height={1400}
+                  sizes="(min-width: 1024px) 360px, 90vw"
+                  className="h-auto w-full"
+                />
+              </div>
               <div className="rounded-card border border-border-soft bg-surface-alt p-8">
                 <p className="text-xs font-bold uppercase tracking-eyebrow text-slate-body">
                   At a glance
@@ -107,8 +117,8 @@ export default function AboutPage() {
                 <Image
                   src={founder.image}
                   alt={`${founder.name}, ${founder.jobTitle} at ALOE Accounting and Tax`}
-                  width={1024}
-                  height={1280}
+                  width={933}
+                  height={1400}
                   sizes="(min-width: 1024px) 400px, 90vw"
                   className="h-auto w-full"
                 />

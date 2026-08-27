@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Section } from "@/components/ui/primitives";
+import Image from "next/image";
+import { Container, Section } from "@/components/ui/primitives";
 import { PageHero } from "@/components/sections/PageHero";
 import { ServicesGrid } from "@/components/sections/blocks";
 import { CtaBand } from "@/components/sections/CtaBand";
@@ -29,6 +30,17 @@ export default function ServicesPage() {
         crumbs={crumbs}
       />
       <Section tone="surface">
+        <Container>
+          <div className="relative mb-12 aspect-[3/1] w-full overflow-hidden rounded-card border border-border-soft">
+            <Image
+              src="/photos/calculator-receipts.jpg"
+              alt="Reviewing receipts with a calculator at ALOE Accounting and Tax"
+              fill
+              sizes="(min-width: 1152px) 1088px, 100vw"
+              className="object-cover"
+            />
+          </div>
+        </Container>
         <ServicesGrid heading={false} />
       </Section>
       <CtaBand />

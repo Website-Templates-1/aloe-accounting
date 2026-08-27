@@ -175,7 +175,7 @@ export const industriesFaqs: Faq[] = [
 export const founder = {
   name: "Khushpreet Sran, CPA",
   jobTitle: "Lead CPA",
-  image: "/khushpreet-sran.jpg",
+  image: "/photos/khush-portrait.jpg",
   /** Credentials visible in the supplied portrait — owner-approved. */
   credentials: "CPA · Bachelor of Business Administration, Wilfrid Laurier University",
   bio: [

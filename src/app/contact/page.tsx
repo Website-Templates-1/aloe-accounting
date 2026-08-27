@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Phone, Mail, MapPin, Clock, ExternalLink } from "lucide-react";
 import { Container, Section } from "@/components/ui/primitives";
 import { PageHero } from "@/components/sections/PageHero";
@@ -35,6 +36,16 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.2fr]">
             {/* Contact methods */}
             <div className="flex flex-col gap-4">
+              <div className="overflow-hidden rounded-card border border-border-soft">
+                <Image
+                  src="/photos/business-card.jpg"
+                  alt="An ALOE Accounting and Tax team member handing a business card to a client"
+                  width={1200}
+                  height={959}
+                  sizes="(min-width: 1024px) 40vw, 90vw"
+                  className="h-auto w-full"
+                />
+              </div>
               <ContactRow
                 icon={<Phone className="h-5 w-5" />}
                 label="Phone"
