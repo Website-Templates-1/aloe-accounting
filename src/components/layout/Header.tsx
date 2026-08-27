@@ -63,7 +63,7 @@ export function Header() {
 
           <button
             type="button"
-            className="grid h-11 w-11 place-items-center rounded-full border border-border-soft text-ink md:hidden"
+            className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-border-soft text-ink md:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? "Close menu" : "Open menu"}

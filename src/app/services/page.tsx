@@ -25,7 +25,7 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="Services"
         title="Everything your business needs from a CPA firm."
-        intro="From day-to-day bookkeeping to assurance and proactive tax strategy — senior-level expertise, tailored to your business and never outsourced."
+        intro="From day-to-day bookkeeping to assurance and proactive tax strategy: senior-level expertise, tailored to your business and never outsourced."
         crumbs={crumbs}
       />
       <Section tone="surface">

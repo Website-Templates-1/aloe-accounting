@@ -31,28 +31,45 @@ export default function HomePage() {
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(130%_120%_at_10%_0%,rgba(21,197,140,0.16),transparent_50%)]"
         />
         <Container className="relative py-16 sm:py-24">
-          <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-2.5 rounded-pill border border-white/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-eyebrow text-white/80">
-              <span className="h-2 w-2 rounded-full bg-brand" aria-hidden="true" />
-              Now accepting 2026 clients
-            </span>
-            <h1 className="h-display mt-6 text-4xl sm:text-6xl md:text-[4.25rem]">
-              Precision accounting for{" "}
-              <span className="italic text-brand">ambitious</span> Canadian
-              businesses.
-            </h1>
-            <p className="mt-7 max-w-2xl text-lg leading-relaxed text-white/70 sm:text-xl">
-              ALOE is a Chartered Professional Accountant firm in Brampton —
-              building clarity, compliance, and growth strategy for founders,
-              family businesses, and not-for-profits across the GTA.
-            </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <ButtonLink href="/contact" variant="primary" withArrow>
-                Book a free consultation
-              </ButtonLink>
-              <ButtonLink href="/services" variant="ghost-dark">
-                Explore services
-              </ButtonLink>
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+            <div className="max-w-3xl">
+              <span className="inline-flex items-center gap-2.5 rounded-pill border border-white/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-eyebrow text-white/80">
+                <span className="h-2 w-2 rounded-full bg-brand" aria-hidden="true" />
+                Now accepting 2026 clients
+              </span>
+              <h1 className="h-display mt-6 text-4xl sm:text-6xl md:text-[4.25rem]">
+                Precision accounting for{" "}
+                <span className="italic text-brand">ambitious</span> Canadian
+                businesses.
+              </h1>
+              <p className="mt-7 max-w-2xl text-lg leading-relaxed text-white/70 sm:text-xl">
+                ALOE is a Chartered Professional Accountant firm in Brampton,
+                building clarity, compliance, and growth strategy for founders,
+                family businesses, and not-for-profits across the GTA.
+              </p>
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+                <ButtonLink href="/contact" variant="primary" withArrow>
+                  Book a free consultation
+                </ButtonLink>
+                <ButtonLink href="/services" variant="ghost-dark">
+                  Explore services
+                </ButtonLink>
+              </div>
+            </div>
+
+            {/*
+              PHOTO SLOT — hero portrait / office shot (owner to supply).
+              Drop the real image at /public/photos/hero.jpg (or similar) and
+              replace this placeholder with a next/image, e.g.:
+                <Image src="/photos/hero.jpg" alt="…" width={720} height={900}
+                  priority className="h-full w-full rounded-card object-cover" />
+              Recommended ~4:5 portrait. Hidden below lg so mobile stays tight.
+            */}
+            <div
+              aria-hidden="true"
+              className="hidden aspect-[4/5] w-full items-center justify-center rounded-card border border-white/10 bg-white/5 text-sm text-white/40 lg:flex"
+            >
+              Photo
             </div>
           </div>
           <div className="mt-16 border-t border-white/10 pt-10">

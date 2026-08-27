@@ -43,8 +43,7 @@ export async function submitContact(
   const errors: Record<string, string> = {};
   if (name.length < 2) errors.name = "Please enter your name.";
   if (!EMAIL_RE.test(email)) errors.email = "Please enter a valid email address.";
-  if (message.length < 10)
-    errors.message = "Please add a little more detail (10+ characters).";
+  if (!service) errors.service = "Please select a service.";
 
   if (Object.keys(errors).length > 0) {
     return { status: "error", message: "Please fix the fields below.", errors };

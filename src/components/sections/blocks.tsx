@@ -77,7 +77,7 @@ export function ServicesGrid({ heading = true }: { heading?: boolean }) {
           eyebrow="Services"
           title="Full-spectrum financial clarity,"
           accent="tailored to your firm."
-          intro="Whether you're filing your first return or restructuring a multi-entity group, ALOE provides senior-level expertise — never outsourced."
+          intro="Whether you're filing your first return or restructuring a multi-entity group, ALOE provides senior-level expertise, never outsourced."
         />
       )}
       <div className="mt-12 grid gap-6 lg:grid-cols-3">
@@ -103,7 +103,16 @@ export function ValuesGrid() {
         eyebrow="Why choose ALOE"
         title="The standards we hold"
         accent="every engagement to."
-        intro="Assets = Liabilities + Owner's Equity. Your numbers should do more than balance — they should help you move your business forward."
+        intro={
+          <>
+            <strong className="font-bold text-brand">A</strong>ssets ={" "}
+            <strong className="font-bold text-brand">L</strong>iabilities +{" "}
+            <strong className="font-bold text-brand">O</strong>wner&apos;s{" "}
+            <strong className="font-bold text-brand">E</strong>quity. Your
+            numbers should do more than balance. They should help you move your
+            business forward.
+          </>
+        }
       />
       <div className="mt-12 grid gap-px overflow-hidden rounded-card border border-border-soft bg-border-soft sm:grid-cols-2 lg:grid-cols-3">
         {values.map((v, i) => (
@@ -167,7 +176,7 @@ export function IndustriesGrid({
           eyebrow="Industries served"
           title="Specialized expertise across"
           accent="Canadian industries."
-          intro="From single-truck operators to multi-location retailers — we speak your sector's language and know its tax landscape."
+          intro="From single-truck operators to multi-location retailers, we speak your sector's language and know its tax landscape."
         />
       )}
       <div

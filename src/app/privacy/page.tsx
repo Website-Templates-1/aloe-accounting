@@ -41,7 +41,7 @@ export default function PrivacyPage() {
 
             <h2>Information we collect</h2>
             <p>
-              We collect information you provide directly — such as your name,
+              We collect information you provide directly, such as your name,
               email address, phone number, business details, and the contents of
               any message you send us through our contact form, by email, or by
               phone. We collect this information so we can respond to your

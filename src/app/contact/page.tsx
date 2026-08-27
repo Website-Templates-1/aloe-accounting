@@ -16,7 +16,7 @@ const crumbs = [
 export const metadata: Metadata = buildMetadata({
   title: "Contact Us",
   description:
-    "Book a complimentary consultation with a Brampton CPA. Call, email, or visit us at 285 Steeles Ave W., Suite 201 — we reply within one business day.",
+    "Book a complimentary consultation with a Brampton CPA. Call, email, or visit us at 285 Steeles Ave W., Suite 201. We reply within one business day.",
   path: "/contact",
 });
 
@@ -26,13 +26,13 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Let's talk"
         title="Bring clarity to your numbers."
-        intro="Book a complimentary 30-minute consultation. No pressure, no obligation — just clear, senior-level guidance on your next step. Reach us by email, phone, or in person."
+        intro="Book a complimentary 30-minute consultation. No pressure, no obligation, just clear, senior-level guidance on your next step. Reach us by email, phone, or in person."
         crumbs={crumbs}
       />
 
       <Section tone="surface">
         <Container>
-          <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr]">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.2fr]">
             {/* Contact methods */}
             <div className="flex flex-col gap-4">
               <ContactRow
@@ -66,12 +66,22 @@ export default function ContactPage() {
                 label="Office"
                 value={
                   <span>
-                    285 Steeles Ave W., Suite 201
+                    #201 - 285 Steeles Ave W
                     <br />
-                    Brampton, ON L6Y 0P8
+                    Brampton, ON L6Y 0B6
                   </span>
                 }
               />
+
+              <div className="overflow-hidden rounded-card border border-border-soft bg-white">
+                <iframe
+                  title="ALOE Accounting & Tax office location"
+                  src="https://www.google.com/maps?q=285+Steeles+Ave+W+Suite+201+Brampton+ON+L6Y+0B6&output=embed"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="h-64 w-full border-0"
+                />
+              </div>
 
               <div className="flex items-start gap-4 rounded-card border border-border-soft bg-white p-6">
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-brand-50 text-brand-700">

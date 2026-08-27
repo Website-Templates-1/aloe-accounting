@@ -40,16 +40,16 @@ export const contact = {
   portalUrl:
     "https://app.mycpacrm.com/drop/31cca604-1cb9-4a4b-8469-52fb9e314640",
   address: {
-    street: "285 Steeles Ave W., Suite 201",
+    street: "#201 - 285 Steeles Ave W",
     city: "Brampton",
     region: "ON",
     regionName: "Ontario",
-    postalCode: "L6Y 0P8",
+    postalCode: "L6Y 0B6",
     country: "CA",
     countryName: "Canada",
   },
   /** Human-readable one-liner. */
-  addressLine: "285 Steeles Ave W., Suite 201, Brampton, ON L6Y 0P8",
+  addressLine: "#201 - 285 Steeles Ave W, Brampton, ON L6Y 0B6",
   serviceArea: "Greater Toronto Area and across Canada",
 } as const;
 
@@ -113,8 +113,8 @@ export const businessHours = {
   closes: "17:30",
   /** Human-readable rows for the Contact page. */
   display: [
-    { label: "Monday – Friday", value: "9:00 AM – 5:30 PM" },
-    { label: "Saturday – Sunday", value: "Closed" },
+    { label: "Monday to Friday", value: "9:00 AM to 5:30 PM" },
+    { label: "Saturday & Sunday", value: "Closed" },
   ],
 } as const;
 
@@ -165,9 +165,9 @@ export const services: ServiceDef[] = [
     navLabel: "Accounting & Payroll",
     icon: "calculator",
     metaDescription:
-      "Tailored accounting and payroll for GTA businesses — full-cycle bookkeeping, QBO payroll and remittances, year-end entries, and financial statement preparation.",
+      "Tailored accounting and payroll for GTA businesses: full-cycle bookkeeping, QBO payroll and remittances, year-end entries, and financial statement preparation.",
     summary:
-      "Accurate, current financial records — from day-to-day bookkeeping to year-end reporting.",
+      "Accurate, current financial records, from day-to-day bookkeeping to year-end reporting.",
     intro:
       "We provide tailored accounting and payroll solutions designed to keep your financial records accurate, current, and ready when you need them. From day-to-day bookkeeping to year-end reporting, we handle the details so you can focus on your business.",
     bulletsHeading: "Our services include",
@@ -182,7 +182,7 @@ export const services: ServiceDef[] = [
     benefits: [
       {
         title: "Books that are always current",
-        body: "Monthly reconciliations mean you're never scrambling at year-end — your numbers stay accurate and decision-ready whenever you need them.",
+        body: "Monthly reconciliations mean you're never scrambling at year-end. Your numbers stay accurate and decision-ready whenever you need them.",
       },
       {
         title: "Payroll done right, on time",
@@ -201,7 +201,7 @@ export const services: ServiceDef[] = [
       "Small and growing businesses that have outgrown DIY bookkeeping",
       "Owners running payroll for employees or themselves",
       "Businesses on QuickBooks Online, or ready to move to it",
-      "Companies that want tidy, CRA-ready books all year — not just at tax time",
+      "Companies that want tidy, CRA-ready books all year, not just at tax time",
       "Anyone behind on their bookkeeping and needing a catch-up",
     ],
     process: [
@@ -225,7 +225,7 @@ export const services: ServiceDef[] = [
     faqs: [
       {
         q: "Do you work in QuickBooks Online?",
-        a: "Yes — we work primarily in QuickBooks Online, and can help you migrate to it. Bookkeeping, payroll, and remittances all live in one place so your records stay consistent.",
+        a: "Yes. We work primarily in QuickBooks Online, and can help you migrate to it. Bookkeeping, payroll, and remittances all live in one place so your records stay consistent.",
       },
       {
         q: "Can you catch up books that are behind?",
@@ -243,9 +243,9 @@ export const services: ServiceDef[] = [
     navLabel: "Corporate Tax",
     icon: "building",
     metaDescription:
-      "Proactive corporate tax for Canadian businesses — T2 returns, GST/HST compliance, tax-efficient structuring, owner-manager planning, and CRA support.",
+      "Proactive corporate tax for Canadian businesses: T2 returns, GST/HST compliance, tax-efficient structuring, owner-manager planning, and CRA support.",
     summary:
-      "A proactive approach to corporate tax — compliance plus decisions that manage your position year-round.",
+      "A proactive approach to corporate tax: compliance plus decisions that manage your position year-round.",
     intro:
       "We take a proactive approach to corporate tax, helping you meet your filing obligations while identifying opportunities to manage your tax position effectively. Our approach goes beyond compliance to support better financial decisions throughout the year.",
     bulletsHeading: "Our services include",
@@ -260,7 +260,7 @@ export const services: ServiceDef[] = [
     benefits: [
       {
         title: "Fewer year-end surprises",
-        body: "By reviewing your position through the year, we help you anticipate what you'll owe — no last-minute shocks at filing time.",
+        body: "By reviewing your position through the year, we help you anticipate what you'll owe, with no last-minute shocks at filing time.",
       },
       {
         title: "A tax position managed all year",
@@ -278,7 +278,7 @@ export const services: ServiceDef[] = [
     whoFor: [
       "Incorporated businesses and Canadian-controlled private corporations (CCPCs)",
       "Owner-managers taking salary, dividends, or both",
-      "Corporations registered for — or needing to register for — GST/HST",
+      "Corporations registered for, or needing to register for, GST/HST",
       "Companies behind on T2 filings or facing CRA correspondence",
       "Businesses planning a transaction, purchase, or restructuring",
     ],
@@ -307,7 +307,7 @@ export const services: ServiceDef[] = [
       },
       {
         q: "Should I pay myself salary or dividends?",
-        a: "It depends on your income, cash flow, and goals — there's no single right answer. We look at your corporate and personal positions together to recommend a mix that fits you.",
+        a: "It depends on your income, cash flow, and goals. There's no single right answer. We look at your corporate and personal positions together to recommend a mix that fits you.",
       },
       {
         q: "Do you handle GST/HST filings too?",
@@ -321,9 +321,9 @@ export const services: ServiceDef[] = [
     navLabel: "Financial Statements & Assurance",
     icon: "clipboard-check",
     metaDescription:
-      "Clear, credible financial statements and assurance from a Brampton CPA firm — compilation, review, and audit engagements prepared to professional standards.",
+      "Clear, credible financial statements and assurance from a Brampton CPA firm: compilation, review, and audit engagements prepared to professional standards.",
     summary:
-      "Clear, credible financial information — prepared to the standard you expect from a CPA firm.",
+      "Clear, credible financial information, prepared to the standard you expect from a CPA firm.",
     intro:
       "Clear, credible financial information is essential to making informed business decisions. We prepare financial statements tailored to your needs and provide assurance services with the professionalism and attention to detail you expect from a CPA firm.",
     bulletsHeading: "Our services include",
@@ -340,7 +340,7 @@ export const services: ServiceDef[] = [
       },
       {
         title: "The right level of assurance",
-        body: "Whether you need a compilation, review, or audit, we scope the engagement to what your situation actually requires — no over-servicing.",
+        body: "Whether you need a compilation, review, or audit, we scope the engagement to what your situation actually requires, with no over-servicing.",
       },
       {
         title: "Clarity for better decisions",
@@ -383,7 +383,7 @@ export const services: ServiceDef[] = [
       },
       {
         q: "Does my business need audited financial statements?",
-        a: "Not always — many small businesses need only a compilation or review. It usually depends on what your lender, investors, or bylaws require. We'll help you determine the right level.",
+        a: "Not always. Many small businesses need only a compilation or review. It usually depends on what your lender, investors, or bylaws require. We'll help you determine the right level.",
       },
       {
         q: "Can you prepare statements for my bank or investors?",
@@ -397,9 +397,9 @@ export const services: ServiceDef[] = [
     navLabel: "Business Advisory",
     icon: "trending-up",
     metaDescription:
-      "Business advisory for owners — financial analysis, cash flow planning, budgeting and forecasting, and performance analysis to guide confident decisions.",
+      "Business advisory for owners: financial analysis, cash flow planning, budgeting and forecasting, and performance analysis to guide confident decisions.",
     summary:
-      "Financial statements that shape what comes next — analysis, planning, and owner advisory.",
+      "Financial statements that shape what comes next: analysis, planning, and owner advisory.",
     intro:
       "Your financial statements shouldn't just report the past, they should help shape what comes next. We work with business owners to understand their numbers, evaluate opportunities, and make informed decisions with confidence.",
     bulletsHeading: "Our services include",
@@ -443,7 +443,7 @@ export const services: ServiceDef[] = [
       },
       {
         title: "Analyze the numbers",
-        body: "We dig into your financials — margins, cash flow, and performance — to see what they're telling us.",
+        body: "We dig into your financials, margins, cash flow, and performance, to see what they're telling us.",
       },
       {
         title: "Build the plan",
@@ -457,7 +457,7 @@ export const services: ServiceDef[] = [
     faqs: [
       {
         q: "Do I need to be a large company to benefit from advisory?",
-        a: "No. Owners of small and growing businesses often benefit most — having a CPA to interpret your numbers and plan ahead is valuable at any size.",
+        a: "No. Owners of small and growing businesses often benefit most. Having a CPA to interpret your numbers and plan ahead is valuable at any size.",
       },
       {
         q: "What does business advisory actually include?",
@@ -465,7 +465,7 @@ export const services: ServiceDef[] = [
       },
       {
         q: "How is advisory different from bookkeeping or tax?",
-        a: "Bookkeeping and tax look after compliance and history; advisory is forward-looking — using your numbers to help you make better decisions.",
+        a: "Bookkeeping and tax look after compliance and history; advisory is forward-looking, using your numbers to help you make better decisions.",
       },
     ],
   },
@@ -475,9 +475,9 @@ export const services: ServiceDef[] = [
     navLabel: "Personal Tax",
     icon: "user",
     metaDescription:
-      "Personal tax for business owners — T1 returns, owner-manager remuneration planning, and investment income reporting aligned with your corporate strategy.",
+      "Personal tax for business owners: T1 returns, owner-manager remuneration planning, and investment income reporting aligned with your corporate strategy.",
     summary:
-      "Personal tax that complements your corporate strategy — considered together, not in isolation.",
+      "Personal tax that complements your corporate strategy, considered together, not in isolation.",
     intro:
       "For our corporate clients, we provide personal tax services designed to complement their broader business and tax strategy. We consider your personal and corporate tax positions together to help you make informed decisions.",
     bulletsHeading: "Our services include",
@@ -538,7 +538,7 @@ export const services: ServiceDef[] = [
       },
       {
         q: "Can you coordinate my personal and corporate taxes?",
-        a: "Yes — that's the point. We consider both together so decisions on salary, dividends, and timing work in your favour across the board.",
+        a: "Yes, that's the point. We consider both together so decisions on salary, dividends, and timing work in your favour across the board.",
       },
       {
         q: "When is my personal tax return due?",
@@ -552,7 +552,7 @@ export const services: ServiceDef[] = [
     navLabel: "CRA Representation",
     icon: "shield",
     metaDescription:
-      "CRA representation and tax dispute support — audit assistance, reassessments, notices of objection, and clear communication with the CRA on your behalf.",
+      "CRA representation and tax dispute support: audit assistance, reassessments, notices of objection, and clear communication with the CRA on your behalf.",
     summary:
       "We understand the issue, prepare the documentation, and communicate with the CRA on your behalf.",
     intro:
@@ -569,7 +569,7 @@ export const services: ServiceDef[] = [
     benefits: [
       {
         title: "A professional in your corner",
-        body: "You don't face the CRA alone — we deal with them on your behalf, so you're not navigating it under pressure.",
+        body: "You don't face the CRA alone. We deal with them on your behalf, so you're not navigating it under pressure.",
       },
       {
         title: "The issue understood, then addressed",
@@ -616,7 +616,7 @@ export const services: ServiceDef[] = [
       },
       {
         q: "What should I do if I received a reassessment?",
-        a: "Don't ignore it — there are deadlines. Send it to us and we'll review it, explain your options, and help you respond, including filing a notice of objection if appropriate.",
+        a: "Don't ignore it. There are deadlines. Send it to us and we'll review it, explain your options, and help you respond, including filing a notice of objection if appropriate.",
       },
       {
         q: "I'm behind on my filings. Can you help?",
@@ -630,9 +630,9 @@ export const services: ServiceDef[] = [
     navLabel: "Tax Planning",
     icon: "calendar-clock",
     metaDescription:
-      "Proactive tax planning for businesses and owners — remuneration strategies, tax-efficient decisions, year-end planning, and restructuring considerations.",
+      "Proactive tax planning for businesses and owners: remuneration strategies, tax-efficient decisions, year-end planning, and restructuring considerations.",
     summary:
-      "Effective tax planning starts well before the filing deadline — anticipate, don't react.",
+      "Effective tax planning starts well before the filing deadline. Anticipate, don't react.",
     intro:
       "Effective tax planning starts well before the filing deadline. We assess your business and personal circumstances to identify opportunities, anticipate tax implications, and help you make decisions with tax in mind.",
     bulletsHeading: "Our approach includes",
@@ -647,7 +647,7 @@ export const services: ServiceDef[] = [
     benefits: [
       {
         title: "Plan before the deadline, not after",
-        body: "Effective planning happens through the year, while there's still time to act — not scrambling at filing time.",
+        body: "Effective planning happens through the year, while there's still time to act, not scrambling at filing time.",
       },
       {
         title: "Decisions made with tax in mind",
@@ -676,7 +676,7 @@ export const services: ServiceDef[] = [
       },
       {
         title: "Identify opportunities",
-        body: "We pinpoint strategies — remuneration, timing, and structure — that fit your goals.",
+        body: "We pinpoint strategies (remuneration, timing, and structure) that fit your goals.",
       },
       {
         title: "Map the plan",
@@ -690,7 +690,7 @@ export const services: ServiceDef[] = [
     faqs: [
       {
         q: "When should I start tax planning?",
-        a: "Before year-end, and ideally throughout the year — that's when there's still time to act. Planning after the year closes leaves far fewer options.",
+        a: "Before year-end, and ideally throughout the year. That's when there's still time to act. Planning after the year closes leaves far fewer options.",
       },
       {
         q: "Isn't tax planning just for large businesses?",
@@ -698,7 +698,7 @@ export const services: ServiceDef[] = [
       },
       {
         q: "How is tax planning different from filing my taxes?",
-        a: "Filing reports what already happened; planning shapes what happens next — making decisions with tax in mind so you're not just reacting at the deadline.",
+        a: "Filing reports what already happened; planning shapes what happens next, making decisions with tax in mind so you're not just reacting at the deadline.",
       },
     ],
   },
@@ -729,7 +729,7 @@ export const industries: IndustryDef[] = [
     name: "Transportation",
     icon: "truck",
     blurb:
-      "Owner-operators and fleets — fuel, per-diem, and compliance handled with sector-specific know-how.",
+      "Owner-operators and fleets: fuel, per-diem, and compliance handled with sector-specific know-how.",
   },
   {
     name: "Manufacturing",
@@ -741,7 +741,7 @@ export const industries: IndustryDef[] = [
     name: "Professional Services",
     icon: "briefcase",
     blurb:
-      "Physicians, dentists, lawyers, PRECs, and consultants — including owner-manager tax strategy.",
+      "Physicians, dentists, lawyers, PRECs, and consultants, including owner-manager tax strategy.",
   },
   {
     name: "Not-for-Profits",
@@ -764,7 +764,7 @@ export const industries: IndustryDef[] = [
 export const values = [
   {
     title: "Quality",
-    body: "Quality is more than completing an engagement — it is building a relationship you can rely on. We communicate clearly, meet deadlines, and deliver work with care. Our pricing is transparent, with no unexpected surprises.",
+    body: "Quality is more than completing an engagement. It is building a relationship you can rely on. We communicate clearly, meet deadlines, and deliver work with care. Our pricing is transparent, with no unexpected surprises.",
   },
   {
     title: "Customization & Collaboration",

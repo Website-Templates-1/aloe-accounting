@@ -75,12 +75,15 @@ export function ContactForm() {
 
       <div className="flex flex-col gap-2">
         <label htmlFor={`${uid}-service`} className="text-sm font-semibold text-ink">
-          Service of interest (optional)
+          Service <span className="text-brand-700">*</span>
         </label>
         <select
           id={`${uid}-service`}
           name="service"
           defaultValue=""
+          required
+          aria-invalid={!!err.service}
+          aria-describedby={err.service ? `${uid}-service-err` : undefined}
           className="rounded-xl border border-border-soft bg-white px-4 py-3 text-ink focus:border-brand focus:outline-none"
         >
           <option value="">Select a service…</option>
@@ -91,17 +94,21 @@ export function ContactForm() {
           ))}
           <option value="General enquiry">General enquiry</option>
         </select>
+        {err.service && (
+          <p id={`${uid}-service-err`} className="text-sm text-red-700">
+            {err.service}
+          </p>
+        )}
       </div>
 
       <div className="flex flex-col gap-2">
         <label htmlFor={`${uid}-message`} className="text-sm font-semibold text-ink">
-          How can we help? <span className="text-brand-700">*</span>
+          How can we help? (optional)
         </label>
         <textarea
           id={`${uid}-message`}
           name="message"
           rows={5}
-          required
           aria-invalid={!!err.message}
           aria-describedby={err.message ? `${uid}-message-err` : undefined}
           className="rounded-xl border border-border-soft bg-white px-4 py-3 text-ink focus:border-brand focus:outline-none"

@@ -24,7 +24,7 @@ export function CtaBand() {
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-white/70">
             Book a complimentary 30-minute consultation. No pressure, no
-            obligation — just clear, senior-level guidance on your next step.
+            obligation, just clear, senior-level guidance on your next step.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
             <ButtonLink href="/contact" variant="primary" withArrow>

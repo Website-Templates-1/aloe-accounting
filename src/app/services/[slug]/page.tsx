@@ -123,7 +123,7 @@ export default async function ServiceDetailPage({
                 </h2>
                 <p className="mt-3 text-sm leading-relaxed text-slate-body">
                   Book a complimentary 30-minute consultation, or reach us
-                  directly — we respond within one business day.
+                  directly. We respond within one business day.
                 </p>
                 <div className="mt-6 flex flex-col gap-3">
                   <ButtonLink href="/contact" variant="dark" withArrow>
@@ -178,7 +178,7 @@ export default async function ServiceDetailPage({
                 <SectionHeading eyebrow="Who it's for" title="Is this right for you?" />
                 <p className="mt-5 text-lg leading-relaxed text-slate-body">
                   We tailor {service.title.toLowerCase()} to your situation. It&apos;s
-                  a strong fit if you recognise yourself below — and if you&apos;re
+                  a strong fit if you recognise yourself below, and if you&apos;re
                   not sure, a quick call will tell us both.
                 </p>
                 <ArrowLink href="/industries" className="mt-6">
@@ -237,7 +237,7 @@ export default async function ServiceDetailPage({
         <Section tone="surface">
           <FaqSection
             faqs={service.faqs}
-            title={`${service.title} — questions, answered.`}
+            title={`${service.title}: questions, answered.`}
           />
         </Section>
       )}

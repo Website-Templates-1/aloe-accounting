@@ -16,9 +16,9 @@ export interface Stat {
 
 /** Owner-approved headline metrics (confirm accuracy before launch). */
 export const stats: Stat[] = [
-  { value: "12+", label: "Years CPA practice" },
-  { value: "400+", label: "Returns filed annually" },
+  { value: "10+", label: "Years of CPA experience" },
   { value: "98%", label: "Client retention" },
+  { value: "100+", label: "Clients served" },
 ];
 
 /**
@@ -39,7 +39,7 @@ export const trustLogos = [
   },
   {
     src: "/trust/cpa.png",
-    alt: "CPA — Chartered Professional Accountants Ontario",
+    alt: "CPA Chartered Professional Accountants Ontario",
     wide: true,
     width: 392,
     height: 129,
@@ -68,7 +68,7 @@ export const howWeWork: Step[] = [
   {
     number: "02",
     title: "Tailored proposal",
-    body: "A clear scope, fixed-fee pricing, and a roadmap — no surprises, no per-email billing.",
+    body: "A clear scope, fixed-fee pricing, and a roadmap, with no surprises and no per-email billing.",
   },
   {
     number: "03",
@@ -115,7 +115,7 @@ export interface Faq {
 export const faqs: Faq[] = [
   {
     q: "Where is ALOE based and who do you serve?",
-    a: "We are based in Brampton, Ontario, and serve clients across the Greater Toronto Area and Canada — both in-person and through secure cloud-based workflows.",
+    a: "We are based in Brampton, Ontario, and serve clients across the Greater Toronto Area and Canada, both in-person and through secure cloud-based workflows.",
   },
   {
     q: "What does onboarding look like?",
@@ -123,7 +123,7 @@ export const faqs: Faq[] = [
   },
   {
     q: "Do you work with sole proprietors and incorporated businesses?",
-    a: "Yes. We work with sole proprietors, incorporated businesses, professional corporations (including PRECs), and not-for-profits — and we tailor our services to your structure and stage of growth.",
+    a: "Yes. We work with sole proprietors, incorporated businesses, professional corporations (including PRECs), and not-for-profits, and we tailor our services to your structure and stage of growth.",
   },
   {
     q: "How is pricing structured?",
@@ -139,7 +139,7 @@ export const faqs: Faq[] = [
 export const aboutFaqs: Faq[] = [
   {
     q: "Where is ALOE located?",
-    a: "We're at 285 Steeles Ave W, Suite 201 in Brampton, Ontario, and serve clients across the GTA and Canada — in person and through secure cloud-based workflows.",
+    a: "We're at 285 Steeles Ave W, Suite 201 in Brampton, Ontario, and serve clients across the GTA and Canada, in person and through secure cloud-based workflows.",
   },
   {
     q: "Who will I be working with?",
@@ -147,11 +147,11 @@ export const aboutFaqs: Faq[] = [
   },
   {
     q: "Is ALOE a licensed CPA firm?",
-    a: "Yes — ALOE Accounting and Tax is a licensed public accounting firm in Ontario, upholding the standards and ethics of the CPA profession.",
+    a: "Yes. ALOE Accounting and Tax is a licensed public accounting firm in Ontario, upholding the standards and ethics of the CPA profession.",
   },
   {
     q: "What industries do you work with?",
-    a: "A diverse range — including professional services (physicians, dentists, lawyers, PRECs), retail, transportation, manufacturing, and not-for-profits.",
+    a: "A diverse range, including professional services (physicians, dentists, lawyers, PRECs), retail, transportation, manufacturing, and not-for-profits.",
   },
 ];
 
@@ -163,11 +163,11 @@ export const industriesFaqs: Faq[] = [
   },
   {
     q: "Do you understand the tax rules specific to my sector?",
-    a: "Yes — different industries carry different tax and reporting considerations, and we tailor our work to yours, whether you're in transportation, retail, professional services, or beyond.",
+    a: "Yes. Different industries carry different tax and reporting considerations, and we tailor our work to yours, whether you're in transportation, retail, professional services, or beyond.",
   },
   {
     q: "Do you work with professional corporations (PRECs, medical, dental, legal)?",
-    a: "We do. Professional services — including physicians, dentists, lawyers, and PRECs — are a core part of our practice, including owner-manager tax strategy.",
+    a: "We do. Professional services, including physicians, dentists, lawyers, and PRECs, are a core part of our practice, including owner-manager tax strategy.",
   },
 ];
 
@@ -180,6 +180,6 @@ export const founder = {
   credentials: "CPA · Bachelor of Business Administration, Wilfrid Laurier University",
   bio: [
     "Khushpreet is the lead CPA at ALOE Accounting and Tax, bringing experience across audit, taxation, bookkeeping, payroll, and financial reporting to every engagement.",
-    "She has worked with clients across the GTA and Canada — serving retail, professional services, transportation, manufacturing, and not-for-profits — and is known for clear communication, dependability, and going above and beyond for the people she works with.",
+    "She has worked with clients across the GTA and Canada, serving retail, professional services, transportation, manufacturing, and not-for-profits, and is known for clear communication, dependability, and going above and beyond for the people she works with.",
   ],
 };

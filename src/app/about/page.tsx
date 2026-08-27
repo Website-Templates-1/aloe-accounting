@@ -23,7 +23,7 @@ const aboutStats = [
 export const metadata: Metadata = buildMetadata({
   title: "About Our Firm",
   description:
-    "Meet ALOE Accounting and Tax — a licensed Brampton CPA firm led by Khushpreet Sran, CPA, delivering accounting, tax, and advisory across the GTA and Canada.",
+    "Meet ALOE Accounting and Tax, a licensed Brampton CPA firm led by Khushpreet Sran, CPA, delivering accounting, tax, and advisory across the GTA and Canada.",
   path: "/about",
 });
 
@@ -32,7 +32,7 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="Meet ALOE"
-        title="Accounting that works for your business — not the other way around."
+        title="Accounting that works for your business, not the other way around."
         intro="A progressive, licensed public accounting firm in Brampton, Ontario, combining technical expertise with a practical, business-minded approach."
         crumbs={crumbs}
       />
@@ -52,7 +52,7 @@ export default function AboutPage() {
                 We provide tailored accounting, tax, financial reporting,
                 payroll, and advisory services to businesses across the GTA and
                 remotely throughout Canada. Our experience spans a diverse range
-                of industries — including professional services (physicians,
+                of industries, including professional services (physicians,
                 dentists, lawyers, PRECs), consulting, retail, transportation,
                 manufacturing, and not-for-profits.
               </p>
@@ -67,7 +67,7 @@ export default function AboutPage() {
               <p>
                 Your business is unique and your accounting should be too. We
                 take the time to understand your business, explain your numbers,
-                and provide guidance you can actually use — so you can focus on
+                and provide guidance you can actually use, so you can focus on
                 the part of your business you really enjoy.
               </p>
             </div>
