@@ -5,6 +5,7 @@ import {
   faqsToText,
   searchesToText,
 } from "@/lib/blog-admin";
+import { internalPathAllowlist } from "@/lib/posts";
 
 export const dynamic = "force-dynamic";
 
@@ -19,6 +20,7 @@ export default async function EditPostPage({
 
   const saved = Boolean(sp.saved);
   const error = typeof sp.error === "string" ? sp.error : null;
+  const allowedPaths = Array.from(internalPathAllowlist()).sort();
 
   const field =
     "mt-1 w-full rounded-md border border-border-soft px-3 py-2 text-ink";
@@ -136,6 +138,23 @@ export default async function EditPostPage({
             className={`${field} font-mono text-sm`}
           />
         </div>
+        <details className="rounded-md border border-border-soft bg-surface-alt px-4 py-3">
+          <summary className="cursor-pointer text-sm font-medium text-ink">
+            Available internal links ({allowedPaths.length}) — for body links
+            like <code>[corporate tax](/services/corporate-tax)</code>
+          </summary>
+          <ul className="mt-3 grid gap-1 sm:grid-cols-2">
+            {allowedPaths.map((p) => (
+              <li key={p} className="font-mono text-xs text-slate-body">
+                {p}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-2 text-xs text-slate-body">
+            Links to anything not on this list are removed automatically, so
+            posts never have broken internal links.
+          </p>
+        </details>
         <div>
           <label className="block text-sm font-medium text-ink">
             Body (Markdown)

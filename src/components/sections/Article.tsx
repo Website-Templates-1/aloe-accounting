@@ -9,6 +9,8 @@ import { formatDate } from "@/lib/format";
 import {
   filterAllowedSearches,
   getRelatedPosts,
+  internalPathAllowlist,
+  sanitizeBodyHtml,
   type Post,
 } from "@/lib/posts";
 
@@ -32,6 +34,8 @@ export function Article({
     { name: post.title, path },
   ];
 
+  const allow = internalPathAllowlist();
+  const bodyHtml = sanitizeBodyHtml(post.bodyHtml, allow);
   const faqs = post.faqs ?? [];
   const searches = filterAllowedSearches(post.peopleAlsoSearch);
   const related = getRelatedPosts(post.slug);
@@ -59,7 +63,7 @@ export function Article({
         <Container className="max-w-3xl">
           <div
             className="prose-aloe"
-            dangerouslySetInnerHTML={{ __html: post.bodyHtml }}
+            dangerouslySetInnerHTML={{ __html: bodyHtml }}
           />
         </Container>
       </Section>

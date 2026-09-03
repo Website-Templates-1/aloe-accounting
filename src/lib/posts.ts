@@ -104,6 +104,32 @@ export function renderMarkdown(md: string): string {
   return marked.parse(md, { async: false }) as string;
 }
 
+/**
+ * Neutralize unsafe/broken links in rendered post HTML — the guarantee behind
+ * inline internal linking. For every anchor:
+ *  - internal path in the allowlist → kept,
+ *  - internal path NOT in the allowlist (broken / deleted target) → unwrapped
+ *    to plain text (so a link never 404s),
+ *  - http(s) external → kept but marked rel="noopener nofollow" target,
+ *  - mailto:/tel: → kept,
+ *  - anything else (relative, bare, javascript:) → unwrapped to text.
+ * Runs at render time (Article), where the full allowlist is available.
+ */
+export function sanitizeBodyHtml(html: string, allow: Set<string>): string {
+  return html.replace(
+    /<a\b[^>]*\bhref="([^"]*)"[^>]*>([\s\S]*?)<\/a>/gi,
+    (_m, href: string, inner: string) => {
+      const h = href.trim();
+      if (/^https?:\/\//i.test(h))
+        return `<a href="${h}" rel="noopener nofollow" target="_blank">${inner}</a>`;
+      if (/^(mailto:|tel:)/i.test(h)) return `<a href="${h}">${inner}</a>`;
+      const norm = normalizeInternalHref(h);
+      if (norm && allow.has(norm)) return `<a href="${norm}">${inner}</a>`;
+      return inner; // broken/disallowed → drop the link, keep the text
+    },
+  );
+}
+
 /* ------------------------------------------------------------------ */
 /* Parsing + validation (throws on bad data → fails the build loudly)   */
 /* ------------------------------------------------------------------ */

@@ -42,7 +42,8 @@ export async function generateDraft(): Promise<GenerationResult> {
     `Chosen topic: ${next.topic}`,
     `Notes: ${next.notes ?? "(none)"}`,
     "",
-    "Allowed internal paths for peopleAlsoSearch hrefs (copy verbatim; do NOT invent any others):",
+    "Allowed internal paths — use these verbatim both for inline body links",
+    "([text](/path)) and for peopleAlsoSearch hrefs. Do NOT invent any others:",
     ...allowedPaths.map((p) => `- ${p}`),
   ].join("\n");
   const gen = await generateBlogPost(promptFile.text, user);

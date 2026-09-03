@@ -16,7 +16,12 @@ the "Blog" section, chosen from the supplied topic backlog.
 Return JSON matching the provided schema:
 - Frontmatter fields: title, slug (kebab-case, unique), metaDescription (~140-160
   chars), excerpt, author "ALOE Accounting and Tax". Status is always "draft".
-- `bodyMarkdown`: the article body in Markdown.
+- `bodyMarkdown`: the article body in Markdown. Weave in **3-6 contextual
+  internal links** using Markdown link syntax `[anchor text](/path)`, where every
+  `/path` is copied verbatim from the "Allowed internal paths" list in the user
+  message. Link naturally from relevant phrases (e.g. link "corporate tax" to
+  `/services/corporate-tax`), not as a list. Never invent a path and never link
+  to external sites — links to anything not on the allowed list are removed.
 - `faqs`: 4-6 concise question/answer pairs a reader would actually ask. Plain text
   answers (no Markdown, no HTML). These render as a visible FAQ accordion only.
 - `peopleAlsoSearch`: 5-8 related-search chips `{ label, href }`. The `href` MUST be
