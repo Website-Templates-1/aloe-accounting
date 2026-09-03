@@ -64,6 +64,31 @@
       "topic": "Small business vs investment income: when your corporation might face refundable vs non-refundable tax",
       "notes": "Help owner-managers understand how passive/investment income inside a corporation can change the tax outcome and what planning is worth considering (high level, not advice).",
       "used": true
+    },
+    {
+      "topic": "Owner-managers and the GST/HST “small supplier” threshold: planning when you’re close",
+      "notes": "Explain how the $30,000 threshold works, when it’s prorated, and what triggers registration for a Canadian owner-managed business.",
+      "used": false
+    },
+    {
+      "topic": "CRA penalties and interest in plain language: how to minimize interest even when you owe",
+      "notes": "Cover common sources of penalties/interest (late filings, instalments, trust remittances, payroll) and practical steps to reduce cost.",
+      "used": false
+    },
+    {
+      "topic": "The difference between a “reasonable salary” and dividends: documenting your pay decisions",
+      "notes": "Provide a practical approach to setting and documenting compensation for T2 owners—what CRA typically looks for, without re-litigating salary vs dividends.",
+      "used": false
+    },
+    {
+      "topic": "Vehicle expenses for owner-managers: logging, allocation, and common CRA red flags",
+      "notes": "Walk through business vs personal use, T4 vs corporate treatment basics, recordkeeping expectations, and how to avoid overclaims.",
+      "used": false
+    },
+    {
+      "topic": "Intercompany agreements and expense reimbursements inside a Canadian corporation",
+      "notes": "Discuss when formal agreements are needed, how to properly charge expenses between related parties, and documentation to support reimbursements.",
+      "used": false
     }
   ]
 }
