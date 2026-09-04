@@ -6,7 +6,7 @@ slug: >-
   small-business-vs-investment-income-in-a-corporation-refundable-vs-non-refundable-tax
 metaDescription: >-
   When your owner-managed corporation earns investment or passive income, the
-  tax result can change—sometimes creating refundable amounts. Learn the basics.
+  tax result can change, sometimes creating refundable amounts. Learn the basics.
 excerpt: >-
   Investment income in a corporation isn’t always taxed the same as active
   business income. Here’s how refundable vs non-refundable tax can arise and
@@ -70,7 +70,7 @@ tags:
   - tax-planning
 ---
 
-Running a Canadian corporation as an owner-manager usually means you plan around your **small business income**—the portion of income your corporation earns from an active business. But if your corporation also earns **investment or passive income** (for example, interest, dividends from portfolio investments, or certain rental-type receipts), the tax story can change.
+Running a Canadian corporation as an owner-manager usually means you plan around your **small business income**, the portion of income your corporation earns from an active business. But if your corporation also earns **investment or passive income** (for example, interest, dividends from portfolio investments, or certain rental-type receipts), the tax story can change.
 
 In particular, passive income may lead to different types of corporate tax and, depending on the year’s facts and the corporation’s tax profile, you may see amounts described as **refundable** versus **non-refundable**.
 
@@ -85,11 +85,11 @@ For many Canadian owner-managed businesses, the tax outcome is influenced by whe
 
 A corporation can have both in the same tax year. That mix matters when you look at year-end tax calculations and what the corporation paid during the year.
 
-If you want to understand how corporate taxes are handled more broadly (including timing), see [corporate tax instalments—when required: how to avoid penalties](/blog/corporate-tax-instalments-when-required-how-to-avoid-penalties).
+If you want to understand how corporate taxes are handled more broadly (including timing), see when [corporate tax instalments](/blog/corporate-tax-instalments-when-required-how-to-avoid-penalties) are required.
 
 ## 2) Why “refundable” can show up with investment income
 
-When corporate tax is **refundable**, it generally means some portion of the corporate tax paid is intended to be recovered later—often when the corporation pays out funds to shareholders (for example, through dividends) or otherwise meets certain conditions.
+When corporate tax is **refundable**, it generally means some portion of the corporate tax paid is intended to be recovered later, often when the corporation pays out funds to shareholders (for example, through dividends) or otherwise meets certain conditions.
 
 When corporate tax is **non-refundable**, it generally means the corporation (or its shareholders) can’t recover that portion in the same way later.
 
@@ -116,7 +116,7 @@ Investment income inside a corporation can come from many sources. Without getti
 - **Rental or similar income** (depending on the facts, it may not behave like active business income for tax purposes)
 - **Timing and allocation** issues (income recognition timing can affect what belongs in the year)
 
-These items may also change how your corporation prepares its financial statements and tax workpapers. If you’re trying to stay audit-ready and reduce surprises, start with clean records using guidance like [CRA bookkeeping for owner-managed businesses: audit-ready records](/blog/cra-bookkeeping-for-owner-managed-businesses-audit-ready-records).
+These items may also change how your corporation prepares its financial statements and tax workpapers. If you’re trying to stay audit-ready and reduce surprises, start with clean, [audit-ready bookkeeping records](/blog/cra-bookkeeping-for-owner-managed-businesses-audit-ready-records).
 
 ## 5) Why bookkeeping and classification are more important than ever
 

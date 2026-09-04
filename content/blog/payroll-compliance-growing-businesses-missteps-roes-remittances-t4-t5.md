@@ -4,12 +4,12 @@ title: >-
   Remittances, and T4/T5
 slug: payroll-compliance-growing-businesses-missteps-roes-remittances-t4-t5
 metaDescription: >-
-  Learn common payroll compliance mistakes in Canada—ROEs, remittances, and
-  T4/T5 slips—plus practical timing tips to help avoid CRA penalties.
+  Learn common payroll compliance mistakes in Canada, ROEs, remittances, and
+  T4/T5 slips, plus practical timing tips to help avoid CRA penalties.
 excerpt: >-
   ROEs, remittances, and T4/T5 slips are frequent problem spots for
   owner-managed employers. Here are the most common timing and filing
-  missteps—and how to prevent them.
+  missteps, and how to prevent them.
 publishedAt: '2026-08-24'
 author: ALOE Accounting and Tax
 status: draft
@@ -61,7 +61,7 @@ tags:
 
 As your business grows, payroll compliance can become harder to manage. Workflows change, staff turnover happens, and it’s easier to miss a due date or enter information incorrectly.
 
-Below are common watch-outs for owner-managed Canadian businesses—focused on three areas that commonly trigger CRA follow-ups: ROEs (Record of Employment), remittances, and T4/T5 slip reporting.
+Below are common watch-outs for owner-managed Canadian businesses, focused on three areas that commonly trigger CRA follow-ups: ROEs (Record of Employment), remittances, and T4/T5 slip reporting.
 
 ## 1) ROEs: avoid timing and “missing information” errors
 An ROE is required when an employee experiences an interruption of earnings and is still employed by the employer under specific conditions (and may also be required in other situations depending on the circumstances). Many problems come from treating the ROE like a “nice-to-have” administrative step.
@@ -119,7 +119,7 @@ Many compliance problems are avoidable with consistent checks:
 If you’ve had CRA requests for adjustments, or your accounting and payroll systems don’t reconcile cleanly, it can help to have your workflow reviewed.
 
 ## 5) Where ALOE Accounting and Tax can help
-Owner-managed employers often benefit from a practical compliance review—especially around ROEs, remittances, and year-end slip preparation and reconciliation. If you want support tightening your process (or troubleshooting a discrepancy), reach out to us.
+Owner-managed employers often benefit from a practical compliance review, especially around ROEs, remittances, and year-end slip preparation and reconciliation. If you want support tightening your process (or troubleshooting a discrepancy), reach out to us.
 
 [Contact ALOE Accounting and Tax](/contact)
 

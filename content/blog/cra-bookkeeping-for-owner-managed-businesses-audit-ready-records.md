@@ -5,7 +5,7 @@ metaDescription: >-
   Learn what bookkeeping records to keep for CRA, how long to retain them, and
   how to document transactions so support is easy to find.
 excerpt: >-
-  Audit-ready bookkeeping isn’t about being perfect—it’s about keeping clear
+  Audit-ready bookkeeping isn’t about being perfect, it’s about keeping clear
   records, matching documents to transactions, and retaining them long enough
   for CRA.
 publishedAt: '2026-08-20'
@@ -16,7 +16,7 @@ faqs:
   - question: What records does CRA typically expect a business to keep?
     answer: >-
       In general, CRA expects source documents and supporting records for
-      income, expenses, GST/HST, and (if applicable) payroll—such as invoices,
+      income, expenses, GST/HST, and (if applicable) payroll, such as invoices,
       receipts, contracts, bank statements, and proof of payment. The key is
       that the records support what you reported on your tax return.
   - question: How long do I need to retain my bookkeeping records in Canada?
@@ -69,7 +69,7 @@ tags:
 ## Why “audit-ready” bookkeeping matters
 If CRA asks questions about your income, expenses, GST/HST, or payroll, your best defence is documentation. For owner-managed businesses, audit-ready bookkeeping means you can quickly show what happened, when it happened, how you recorded it, and where the source documents are.
 
-This guide is general information for Canadian businesses. Your specific requirements can vary based on your business type, GST/HST position, and filing history—so it’s a good idea to review your approach with ALOE Accounting and Tax.
+This guide is general information for Canadian businesses. Your specific requirements can vary based on your business type, GST/HST position, and filing history, so it’s a good idea to review your approach with ALOE Accounting and Tax.
 
 ## The core records to keep (and how to organize them)
 Aim to keep a complete trail from source document → accounting entry → tax return.
@@ -168,7 +168,7 @@ Watch for:
 - Ensure bank reconciliations are done regularly, not only at year-end.
 - Put a short policy in place for incoming receipts: scan/save promptly, attach to transactions, and categorize consistently.
 
-If you want a second set of eyes on your process—especially if you’re reorganizing your files or moving to new software—reach out to ALOE Accounting and Tax.
+If you want a second set of eyes on your process, especially if you’re reorganizing your files or moving to new software, reach out to ALOE Accounting and Tax.
 
 ## Closing thought
 Audit-ready bookkeeping is less about complicated systems and more about discipline: clear records, consistent categories, and documentation that lets CRA (and you) understand every transaction quickly.

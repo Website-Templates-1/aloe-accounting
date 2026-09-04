@@ -6,7 +6,7 @@ metaDescription: >-
   monthly/quarterly (payroll, banks, contractors, CRA) to ease year-end.
 excerpt: >-
   Reduce year-end stress with a practical, Canada-focused checklist of records
-  to gather monthly and quarterly—plus what to compile before filing.
+  to gather monthly and quarterly, plus what to compile before filing.
 publishedAt: '2026-08-20'
 updatedAt: '2026-08-20'
 author: ALOE Accounting and Tax
@@ -61,7 +61,7 @@ tags:
 ---
 
 ## Why year-round prep matters
-Tax season feels overwhelming partly because the records you need are scattered across accounts, emails, and spreadsheets. For owner-managed businesses, a simple routine—monthly and quarterly—can make year-end faster, cleaner, and less stressful.
+Tax season feels overwhelming partly because the records you need are scattered across accounts, emails, and spreadsheets. For owner-managed businesses, a simple routine, monthly and quarterly, can make year-end faster, cleaner, and less stressful.
 
 Below is a practical checklist you can use throughout the year. It’s general guidance for Canadian owner-managed businesses. If you’d like help building a schedule that fits your business, contact ALOE Accounting and Tax.
 
@@ -93,7 +93,7 @@ Collect and categorize expenses monthly:
 - **Monthly expense summaries** from your accounting system
 - **Meals, travel, and entertainment** receipts (with business purpose where required)
 - **Vehicle logs or mileage tracking** (if you claim vehicle expenses)
-- **Home office records** (if you claim—square footage, utilities, and method)
+- **Home office records** (if you claim, square footage, utilities, and method)
 
 Make a rule: no receipt, no category. If you can’t locate the receipt later, it’s harder to support the claim.
 
@@ -168,7 +168,7 @@ You don’t need anything fancy. Pick a method you’ll stick to:
 - **One “Receipts” folder** with consistent naming (vendor-date-amount)
 - **Monthly reports export** from your accounting software
 
-If you do this monthly, you’ll enter tax season with everything already organized—rather than scrambling to reconstruct the year.
+If you do this monthly, you’ll enter tax season with everything already organized, rather than scrambling to reconstruct the year.
 
 ---
 

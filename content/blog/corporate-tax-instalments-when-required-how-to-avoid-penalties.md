@@ -32,13 +32,13 @@ faqs:
       taxation year-end (for calendar-year corporations, commonly March 15, June
       15, September 15, and December 15). Confirm the exact due dates for your
       fiscal year in CRA’s records.
-  - question: What if my profits are lower than last year—can I reduce instalments?
+  - question: What if my profits are lower than last year, can I reduce instalments?
     answer: >-
       Potentially. If you expect lower tax payable for the current year, you may
       be able to vary/reduce instalments using a reasonable estimate. The
       reduction should be supportable; otherwise penalties or interest may still
       apply.
-  - question: What if my profits increase mid-year—will I be penalized?
+  - question: What if my profits increase mid-year, will I be penalized?
     answer: >-
       If instalments are too low compared to the eventual tax payable, interest
       and instalment-related charges can apply. Updating your forecast and
@@ -114,7 +114,7 @@ What to do:
 - Set internal reminders well in advance so you can process payments on time.
 
 ## What happens if profits change materially mid-year?
-If your corporation’s profits swing—up or down—during the year, instalments set earlier using prior-year results may no longer match reality.
+If your corporation’s profits swing, up or down, during the year, instalments set earlier using prior-year results may no longer match reality.
 
 ### If profits are lower than expected
 You may be able to **reduce** upcoming instalment amounts to better align with the lower expected tax payable. This can reduce the risk of paying too much instalment (and potentially needing to wait for a refund at filing).

@@ -68,7 +68,7 @@ tags:
 ---
 
 ## R&D tax incentives in Canada: a practical overview for owner-managers
-Research and Development (R&D) tax incentives can be valuable for Canadian small businesses, especially when you’re developing new products, improving processes, or tackling technical uncertainty. That said, the rules are specific—and many claims are delayed or denied due to weak support for eligibility or incorrect treatment of costs.
+Research and Development (R&D) tax incentives can be valuable for Canadian small businesses, especially when you’re developing new products, improving processes, or tackling technical uncertainty. That said, the rules are specific, and many claims are delayed or denied due to weak support for eligibility or incorrect treatment of costs.
 
 This guide gives you a practical checklist of what owner-managers should understand: eligibility basics, common qualifying activities, documentation to gather, and common pitfalls.
 
@@ -80,7 +80,7 @@ In general, the R&D work must involve:
 - **Systematic investigation** or formal development process
 - **Technological uncertainty** that you’re trying to resolve through experimentation, testing, or iteration
 
-You don’t need a lab coat—but you do need to show that the work goes beyond routine or ordinary engineering and that there was meaningful uncertainty being addressed.
+You don’t need a lab coat, but you do need to show that the work goes beyond routine or ordinary engineering and that there was meaningful uncertainty being addressed.
 
 Also, the incentives are typically claimed for eligible Canadian activities performed by (or under contract to) a qualifying corporation, usually in connection with your corporate tax return for your **fiscal period**.
 
@@ -126,7 +126,7 @@ Good documentation helps you support both eligibility and cost treatment. Consid
 - Internal approvals or planning notes that demonstrate systematic investigation
 
 If you’re unsure what records CRA expects to see, see also our resource on audit-ready bookkeeping: 
-- [CRA bookkeeping for owner-managed businesses: audit-ready records](/blog/cra-bookkeeping-for-owner-managed-businesses-audit-ready-records)
+- How to keep [audit-ready bookkeeping records](/blog/cra-bookkeeping-for-owner-managed-businesses-audit-ready-records)
 
 ## 5) Key pitfalls that cause delays or denials
 Here are issues we commonly see that slow down claims:
@@ -145,7 +145,7 @@ R&D incentives are claimed in your corporate tax filing for your fiscal period. 
 - Ensure the information needed to support the claim is available before filing
 
 If you want a broader year-round approach to preparing for filing, our checklist may help:
-- [Year-round tax season prep checklist for owner-managed business in Canada](/blog/year-round-tax-season-prep-checklist-owner-managed-business-canada)
+- A [year-round tax prep checklist](/blog/year-round-tax-season-prep-checklist-owner-managed-business-canada)
 
 ## What to do next
 If you’re considering an R&D claim, start by reviewing your past work packages: identify the projects that involved technological uncertainty, gather labour and project evidence, and document how the work advanced your capability.

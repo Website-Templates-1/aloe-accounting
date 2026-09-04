@@ -5,7 +5,7 @@ title: >-
 slug: capital-cost-allowance-cca-choosing-classes-and-avoiding-underclaiming
 metaDescription: >-
   Learn how Canadian small businesses choose CCA classes, track
-  additions/disposals, and avoid underclaiming—so CRA doesn’t create surprises
+  additions/disposals, and avoid underclaiming, so CRA doesn’t create surprises
   later.
 excerpt: >-
   CCA can be a big part of your tax planning, but class errors and missed
@@ -29,7 +29,7 @@ faqs:
   - question: Can underclaiming CCA create problems later?
     answer: >-
       Yes. Underclaiming can mean you claim less than you should now, and later
-      adjustments may be needed—especially if disposals or additions were missed
+      adjustments may be needed, especially if disposals or additions were missed
       or classified incorrectly.
   - question: Should I update my CCA schedule during the year or only at tax time?
     answer: >-
@@ -61,12 +61,12 @@ tags:
   - tax-planning
 ---
 
-Capital cost allowance (CCA) is how Canadian businesses deduct the cost of eligible assets over time. For owner-managed businesses, it’s also one of the easiest areas to make mistakes—especially when assets are grouped incorrectly, disposed of without tracking, or purchases are missing from your CCA schedule.
+Capital cost allowance (CCA) is how Canadian businesses deduct the cost of eligible assets over time. For owner-managed businesses, it’s also one of the easiest areas to make mistakes, especially when assets are grouped incorrectly, disposed of without tracking, or purchases are missing from your CCA schedule.
 
-This guide covers practical steps to choose the right asset classes, handle additions/disposals properly, and keep your tax position structured—without “surprises” from CRA questions later. (For your specific facts, contact ALOE Accounting and Tax.)
+This guide covers practical steps to choose the right asset classes, handle additions/disposals properly, and keep your tax position structured, without “surprises” from CRA questions later. (For your specific facts, contact ALOE Accounting and Tax.)
 
 ## 1) Start with what you actually bought (not what you call it)
-In Canada, CCA is based on the type of property—not your internal category. For example, “computer” is often treated differently from “computer software,” and “furniture” can be a different class than “tools” or “leasehold improvements.”
+In Canada, CCA is based on the type of property, not your internal category. For example, “computer” is often treated differently from “computer software,” and “furniture” can be a different class than “tools” or “leasehold improvements.”
 
 ### How to determine the CCA class
 Use these sources, in order:
@@ -92,13 +92,13 @@ A better approach:
 - Cost details, including delivery/installation where applicable
 - Disposal date and proceeds (if sold)
 
-If CRA reviews your records, a clean audit trail matters. See also: [CRA bookkeeping for owner-managed businesses: audit-ready records](/blog/cra-bookkeeping-for-owner-managed-businesses-audit-ready-records).
+If CRA reviews your records, a clean audit trail matters. Keeping [audit-ready bookkeeping records](/blog/cra-bookkeeping-for-owner-managed-businesses-audit-ready-records) makes this far easier.
 
 ## 3) Know how additions and disposals change your CCA math
 CCA is calculated annually using the opening UCC (undepreciated capital cost) for each class, plus/minus additions and dispositions.
 
 ### Additions (purchases during the year)
-Purchases typically fall into the class(s) that match the asset type. The timing matters—because most CCA classes use a “half-year rule” concept (subject to certain exceptions), your deduction can be impacted if the purchase is late in the year.
+Purchases typically fall into the class(s) that match the asset type. The timing matters, because most CCA classes use a “half-year rule” concept (subject to certain exceptions), your deduction can be impacted if the purchase is late in the year.
 
 Practical takeaway: plan purchases with the tax year in mind, but don’t delay simply to chase a small timing benefit. Inaccurate classing is a bigger long-term risk.
 
@@ -126,10 +126,10 @@ Before you finalize your return:
 - Review any asset deletions/sales and confirm the disposal impacts the correct class
 - Check that each class’s UCC calculation ties out across the year
 
-You may also want a year-round habit checklist. See: [Year-round tax season prep checklist for owner-managed business Canada](/blog/year-round-tax-season-prep-checklist-owner-managed-business-canada).
+You may also want to build [year-round tax prep habits](/blog/year-round-tax-season-prep-checklist-owner-managed-business-canada).
 
-## 5) Don’t structure purchases to “game” CCA—structure to be correct
-Some owners try to structure purchases to maximize deductions, for example by bundling or splitting invoices. The issue isn’t whether you deduct—you generally can. The issue is whether the tax treatment matches what you actually bought and how it’s supported by paperwork.
+## 5) Don’t structure purchases to “game” CCA, structure to be correct
+Some owners try to structure purchases to maximize deductions, for example by bundling or splitting invoices. The issue isn’t whether you deduct, you generally can. The issue is whether the tax treatment matches what you actually bought and how it’s supported by paperwork.
 
 ### What tax-effective structure should look like
 - Clear contracts and invoices that reflect the nature of the property
@@ -144,11 +144,11 @@ Some owners try to structure purchases to maximize deductions, for example by bu
 A well-supported classification is usually better than an aggressive one.
 
 ## 6) When in doubt, use components and documentation (not guesswork)
-If you’re unsure about whether something belongs in a specific CCA class—or whether it should be treated as a component—pause and verify with the right guidance. The “cost” of being wrong can show up later when the UCC calculation is corrected.
+If you’re unsure about whether something belongs in a specific CCA class, or whether it should be treated as a component, pause and verify with the right guidance. The “cost” of being wrong can show up later when the UCC calculation is corrected.
 
 If you want a second set of eyes, contact ALOE Accounting and Tax. We can help you build a defensible CCA schedule and improve your year-end process so your deductions align with your records.
 
 ## Final thoughts
-Choosing the right CCA classes and tracking additions/disposals accurately protects your tax position. Most underclaiming issues are avoidable with consistent asset register updates, good documentation, and a disciplined CCA schedule that’s maintained—not recreated at the last minute.
+Choosing the right CCA classes and tracking additions/disposals accurately protects your tax position. Most underclaiming issues are avoidable with consistent asset register updates, good documentation, and a disciplined CCA schedule that’s maintained, not recreated at the last minute.
 
 If you’d like help reviewing your current process, we’re happy to discuss your situation with general guidance and next steps.

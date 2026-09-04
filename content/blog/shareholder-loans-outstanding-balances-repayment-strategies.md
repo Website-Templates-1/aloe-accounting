@@ -42,7 +42,7 @@ faqs:
       professional.
   - question: What’s the best time to repay a shareholder loan?
     answer: >-
-      Generally, earlier is better—reducing the balance before your
+      Generally, earlier is better, reducing the balance before your
       corporation’s fiscal year-end can lower risk. A repayment plan that aligns
       with your cash flow and keeps clear records is usually more defensible
       than sporadic late repayments.
@@ -104,7 +104,7 @@ CRA may review shareholder loans where the situation looks like a personal spend
 
 Even if you intend to repay, the pattern can look like a distribution.
 
-## Interest and imputed benefits: don’t guess—document
+## Interest and imputed benefits: don’t guess, document
 Interest can matter depending on whether the shareholder is borrowing from the corporation or the corporation is borrowing from the shareholder.
 
 Key points to keep in mind:
