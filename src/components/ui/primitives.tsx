@@ -61,7 +61,6 @@ export function Eyebrow({
     <span
       className={`inline-flex items-center gap-2 rounded-pill border px-4 py-1.5 text-xs font-semibold uppercase tracking-eyebrow ${styles}`}
     >
-      <Icon name="sparkles" className="h-3.5 w-3.5 text-brand" strokeWidth={2} />
       {children}
     </span>
   );

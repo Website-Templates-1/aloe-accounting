@@ -12,7 +12,8 @@ export type ConversionEvent =
   | "quote_form_success"
   | "phone_click"
   | "email_click"
-  | "portal_click";
+  | "portal_click"
+  | "calendly_click";
 
 /** Map event → Google Ads conversion label ("AW-xxxx/LABEL"). Fill at launch. */
 const conversionLabels: Partial<Record<ConversionEvent, string>> = {
@@ -20,6 +21,7 @@ const conversionLabels: Partial<Record<ConversionEvent, string>> = {
   // phone_click: "XXXXXXXX",
   // email_click: "XXXXXXXX",
   // portal_click: "XXXXXXXX",
+  // calendly_click: "XXXXXXXX",
 };
 
 type GtagFn = (...args: unknown[]) => void;

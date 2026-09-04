@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PasswordField } from "./PasswordField";
 
 export const metadata: Metadata = {
   title: "Admin sign in",
@@ -46,19 +47,7 @@ export default async function LoginPage({
             className="mt-1 w-full rounded-md border border-border-soft px-3 py-2 text-ink"
           />
         </div>
-        <div>
-          <label htmlFor="password" className="block text-sm font-medium text-ink">
-            Password
-          </label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            autoComplete="current-password"
-            required
-            className="mt-1 w-full rounded-md border border-border-soft px-3 py-2 text-ink"
-          />
-        </div>
+        <PasswordField />
         <button
           type="submit"
           className="w-full rounded-md bg-brand-700 px-4 py-2 font-semibold text-white hover:bg-brand-800"

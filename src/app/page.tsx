@@ -13,7 +13,7 @@ import { Reviews } from "@/components/sections/Reviews";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { buildMetadata } from "@/lib/seo";
-import { site } from "@/lib/site.config";
+import { intakeYear, site } from "@/lib/site.config";
 import { faqs } from "@/lib/content";
 
 export const metadata: Metadata = buildMetadata({
@@ -36,7 +36,7 @@ export default function HomePage() {
             <div className="max-w-3xl">
               <span className="inline-flex items-center gap-2.5 rounded-pill border border-white/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-eyebrow text-white/80">
                 <span className="h-2 w-2 rounded-full bg-brand" aria-hidden="true" />
-                Now accepting 2026 clients
+                Now accepting {intakeYear} clients
               </span>
               <h1 className="h-display mt-6 text-4xl sm:text-6xl md:text-[4.25rem]">
                 Precision accounting for{" "}
@@ -64,6 +64,7 @@ export default function HomePage() {
                 alt="Khushpreet Sran, CPA and founder of ALOE Accounting and Tax"
                 fill
                 priority
+                quality={90}
                 sizes="(min-width: 1024px) 40vw, 90vw"
                 className="object-cover object-top"
               />

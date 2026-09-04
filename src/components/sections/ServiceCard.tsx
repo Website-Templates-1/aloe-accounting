@@ -9,16 +9,18 @@ import type { ServiceDef } from "@/lib/site.config";
 export function ServiceCard({
   service,
   featured = false,
+  className = "",
 }: {
   service: ServiceDef;
   featured?: boolean;
+  className?: string;
 }) {
   const router = useRouter();
   const href = `/services/${service.slug}`;
   if (featured) {
     return (
       <article
-        className="group relative flex cursor-pointer flex-col overflow-hidden rounded-card bg-navy-900 p-8 text-white sm:p-10"
+        className={`group relative flex cursor-pointer flex-col overflow-hidden rounded-card bg-navy-900 p-8 text-white sm:p-10 ${className}`}
         onClick={() => router.push(href)}
       >
         <div
@@ -50,7 +52,7 @@ export function ServiceCard({
   }
   return (
     <article
-      className="group flex cursor-pointer flex-col gap-5 rounded-card border border-border-soft bg-white p-8 transition-shadow hover:shadow-lg hover:shadow-navy-900/5"
+      className={`group flex cursor-pointer flex-col gap-5 rounded-card border border-border-soft bg-white p-8 transition-shadow hover:shadow-lg hover:shadow-navy-900/5 ${className}`}
       onClick={() => router.push(href)}
     >
       <span className="grid h-12 w-12 place-items-center rounded-2xl bg-brand-50 text-brand-700">

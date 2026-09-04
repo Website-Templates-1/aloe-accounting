@@ -84,8 +84,12 @@ export function ServicesGrid({ heading = true }: { heading?: boolean }) {
         <div className="lg:row-span-2">
           <ServiceCard service={featured} featured />
         </div>
-        {rest.map((s) => (
-          <ServiceCard key={s.slug} service={s} />
+        {rest.map((s, i) => (
+          <ServiceCard
+            key={s.slug}
+            service={s}
+            className={i === 4 ? "lg:col-start-2" : undefined}
+          />
         ))}
       </div>
     </Container>
@@ -114,9 +118,14 @@ export function ValuesGrid() {
           </>
         }
       />
-      <div className="mt-12 grid gap-px overflow-hidden rounded-card border border-border-soft bg-border-soft sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-12 grid gap-px overflow-hidden rounded-card border border-border-soft bg-border-soft sm:grid-cols-2 lg:grid-cols-6">
         {values.map((v, i) => (
-          <div key={v.title} className="flex flex-col gap-4 bg-white p-8">
+          <div
+            key={v.title}
+            className={`flex flex-col gap-4 bg-white p-8 ${
+              i < 3 ? "lg:col-span-2" : "lg:col-span-3"
+            } ${i === values.length - 1 ? "sm:col-span-2" : ""}`}
+          >
             <span className="grid h-11 w-11 place-items-center rounded-2xl bg-brand-50 text-brand-700">
               <Icon name={valueIcons[i % valueIcons.length]} className="h-5 w-5" />
             </span>

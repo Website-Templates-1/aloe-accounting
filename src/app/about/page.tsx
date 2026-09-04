@@ -39,55 +39,44 @@ export default function AboutPage() {
 
       <Section tone="surface">
         <Container>
-          <div className="grid gap-12 lg:grid-cols-[1.5fr_1fr]">
-            <div className="prose-aloe max-w-none">
-              <p>
-                ALOE Accounting and Tax is a licensed public accounting firm
-                based in Brampton, Ontario. With deep experience across
-                bookkeeping, financial statements, payroll, and tax, we bring
-                the precision your business needs and the perspective your future
-                demands.
-              </p>
-              <p>
-                We provide tailored accounting, tax, financial reporting,
-                payroll, and advisory services to businesses across the GTA and
-                remotely throughout Canada. Our experience spans a diverse range
-                of industries, including professional services (physicians,
-                dentists, lawyers, PRECs), consulting, retail, transportation,
-                manufacturing, and not-for-profits.
-              </p>
-              <p>
-                Our senior accountant, <strong>{founder.name}</strong>, has
-                worked with clients across the GTA and Canada, bringing both
-                technical depth and a broader understanding of the businesses we
-                serve. Whether you&apos;re building a new business or scaling an
-                established one, we provide the insight, support, and practical
-                guidance needed to make confident financial decisions.
-              </p>
-              <p>
-                Your business is unique and your accounting should be too. We
-                take the time to understand your business, explain your numbers,
-                and provide guidance you can actually use, so you can focus on
-                the part of your business you really enjoy.
-              </p>
-            </div>
-
-            <aside className="flex flex-col gap-6 lg:sticky lg:top-24 lg:self-start">
-              <div className="overflow-hidden rounded-card border border-border-soft">
-                <Image
-                  src="/photos/khush-working.jpg"
-                  alt="Khushpreet Sran reviewing a client's financials"
-                  width={933}
-                  height={1400}
-                  sizes="(min-width: 1024px) 360px, 90vw"
-                  className="h-auto w-full"
-                />
+          <div className="grid gap-12 lg:grid-cols-[1.5fr_1fr] lg:items-stretch">
+            <div>
+              <div className="prose-aloe max-w-none">
+                <p>
+                  ALOE Accounting and Tax is a licensed public accounting firm
+                  based in Brampton, Ontario. With deep experience across
+                  bookkeeping, financial statements, payroll, and tax, we bring
+                  the precision your business needs and the perspective your
+                  future demands.
+                </p>
+                <p>
+                  We provide tailored accounting, tax, financial reporting,
+                  payroll, and advisory services to businesses across the GTA and
+                  remotely throughout Canada. Our experience spans a diverse range
+                  of industries, including professional services (physicians,
+                  dentists, lawyers, PRECs), consulting, retail, transportation,
+                  manufacturing, and not-for-profits.
+                </p>
+                <p>
+                  Our senior accountant, <strong>{founder.name}</strong>, has
+                  worked with clients across the GTA and Canada, bringing both
+                  technical depth and a broader understanding of the businesses we
+                  serve. Whether you&apos;re building a new business or scaling an
+                  established one, we provide the insight, support, and practical
+                  guidance needed to make confident financial decisions.
+                </p>
+                <p>
+                  Your business is unique and your accounting should be too. We
+                  take the time to understand your business, explain your numbers,
+                  and provide guidance you can actually use, so you can focus on
+                  the part of your business you really enjoy.
+                </p>
               </div>
-              <div className="rounded-card border border-border-soft bg-surface-alt p-8">
+              <div className="mt-10 rounded-card border border-border-soft bg-surface-alt p-8">
                 <p className="text-xs font-bold uppercase tracking-eyebrow text-slate-body">
                   At a glance
                 </p>
-                <dl className="mt-6 space-y-6">
+                <dl className="mt-6 grid grid-cols-3 gap-6">
                   {aboutStats.map((s) => (
                     <div key={s.label}>
                       <dt className="sr-only">{s.label}</dt>
@@ -103,6 +92,16 @@ export default function AboutPage() {
                   ))}
                 </dl>
               </div>
+            </div>
+
+            <aside className="relative min-h-80 overflow-hidden rounded-card border border-border-soft lg:h-full">
+              <Image
+                src="/photos/khush-working.jpg"
+                alt="Khushpreet Sran reviewing a client's financials"
+                fill
+                sizes="(min-width: 1024px) 360px, 90vw"
+                className="object-cover object-top"
+              />
             </aside>
           </div>
         </Container>

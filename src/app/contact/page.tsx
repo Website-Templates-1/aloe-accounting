@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Phone, Mail, MapPin, Clock, ExternalLink } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  ExternalLink,
+  Calendar,
+} from "lucide-react";
 import { Container, Section } from "@/components/ui/primitives";
 import { PageHero } from "@/components/sections/PageHero";
 import { ContactForm } from "@/components/contact/ContactForm";
@@ -72,27 +79,6 @@ export default function ContactPage() {
                   </TrackedLink>
                 }
               />
-              <ContactRow
-                icon={<MapPin className="h-5 w-5" />}
-                label="Office"
-                value={
-                  <span>
-                    #201 - 285 Steeles Ave W
-                    <br />
-                    Brampton, ON L6Y 0B5
-                  </span>
-                }
-              />
-
-              <div className="overflow-hidden rounded-card border border-border-soft bg-white">
-                <iframe
-                  title="ALOE Accounting & Tax office location"
-                  src="https://www.google.com/maps?q=285+Steeles+Ave+W+Suite+201+Brampton+ON+L6Y+0B6&output=embed"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="h-64 w-full border-0"
-                />
-              </div>
 
               <div className="flex items-start gap-4 rounded-card border border-border-soft bg-white p-6">
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-brand-50 text-brand-700">
@@ -116,34 +102,58 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="mt-2 rounded-card border border-border-soft bg-surface-alt p-6">
-                <p className="text-sm font-semibold text-ink">
-                  Existing client?
-                </p>
-                <p className="mt-1 text-sm text-slate-body">
-                  Securely upload documents and messages through our client
-                  portal.
-                </p>
-                <TrackedLink
-                  href={contact.portalUrl}
-                  event="portal_click"
-                  external
-                  className="mt-4 inline-flex items-center gap-2 rounded-pill bg-navy-900 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-navy-800"
-                >
-                  Open Client Portal
-                  <ExternalLink className="h-4 w-4" aria-hidden="true" />
-                </TrackedLink>
+              <div className="overflow-hidden rounded-card border border-border-soft bg-white">
+                <iframe
+                  title="ALOE Accounting & Tax office location"
+                  src="https://www.google.com/maps?q=285+Steeles+Ave+W+Suite+201+Brampton+ON+L6Y+0B6&output=embed"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="h-64 w-full border-0"
+                />
               </div>
             </div>
 
             {/* Form */}
-            <div className="rounded-card border border-border-soft bg-white p-8 shadow-sm sm:p-10">
+            <div className="flex h-full flex-col rounded-card border border-border-soft bg-white p-8 shadow-sm sm:p-10">
               <h2 className="text-2xl font-bold text-ink">Send us a message</h2>
               <p className="mt-2 text-slate-body">
                 Tell us a little about your business and how we can help.
               </p>
               <div className="mt-8">
                 <ContactForm />
+              </div>
+
+              <div className="grow" aria-hidden="true" />
+
+              <div className="mt-10 border-t border-border-soft pt-8">
+                <div className="flex items-start gap-4">
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-brand-50 text-brand-700">
+                    <Calendar className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                  <div>
+                    <h3 className="text-lg font-bold text-ink">
+                      Prefer to book a time?
+                    </h3>
+                    <p className="mt-1 text-sm text-slate-body">
+                      Schedule a complimentary 30-minute consultation at a time
+                      that works for you.
+                    </p>
+                    <TrackedLink
+                      href={contact.calendlyUrl}
+                      event="calendly_click"
+                      external
+                      className="mt-4 inline-flex items-center gap-2 rounded-pill bg-navy-900 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-navy-800"
+                    >
+                      Book a free consultation
+                      <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                    </TrackedLink>
+                  </div>
+                </div>
+                <p className="mt-6 text-xs leading-relaxed text-slate-body">
+                  This form and consultation booking are for serious inquiries
+                  about our accounting and tax services only. We do not accept
+                  solicitation.
+                </p>
               </div>
             </div>
           </div>

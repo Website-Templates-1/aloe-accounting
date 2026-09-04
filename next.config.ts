@@ -5,6 +5,11 @@ const nextConfig: NextConfig = {
   // Clean URLs: one host, no trailing slash.
   trailingSlash: false,
 
+  // 75 is Next's default; 90 is used for the home-page hero portrait.
+  images: {
+    qualities: [75, 90],
+  },
+
   // Security response headers on every route (incl. /admin/login).
   async headers() {
     return [

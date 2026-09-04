@@ -27,6 +27,13 @@ export const site = {
   logo: "/aloe-logo.png",
 } as const;
 
+/**
+ * Year advertised for new-client intake (e.g. “Now accepting 2026 clients”).
+ * Follows the calendar year so the badge stays current without a yearly edit.
+ * Evaluated at build time on this SSG site.
+ */
+export const intakeYear = new Date().getFullYear();
+
 /* ------------------------------------------------------------------ */
 /* NAP — name, address, phone (real, public office)                    */
 /* ------------------------------------------------------------------ */
@@ -39,6 +46,8 @@ export const contact = {
   /** Secure client portal (external). */
   portalUrl:
     "https://app.mycpacrm.com/drop/31cca604-1cb9-4a4b-8469-52fb9e314640",
+  /** Complimentary 30-minute consultation (Calendly). */
+  calendlyUrl: "https://calendly.com/aloecpa/30minfreeconsultation",
   address: {
     street: "#201 - 285 Steeles Ave W",
     city: "Brampton",
@@ -804,21 +813,16 @@ export const primaryNav: NavItem[] = [
   { label: "Contact", href: "/contact" },
 ];
 
+/** Header/footer service links — derived from the service registry. */
+export const serviceNav: NavItem[] = services.map((s) => ({
+  label: s.navLabel,
+  href: `/services/${s.slug}`,
+}));
+
 export const footerNav = {
   practice: {
     heading: "Practice",
-    items: [
-      { label: "Accounting & Payroll", href: "/services/accounting-payroll" },
-      { label: "Corporate Tax", href: "/services/corporate-tax" },
-      {
-        label: "Financial Statements & Assurance",
-        href: "/services/financial-statements-assurance",
-      },
-      { label: "Business Advisory", href: "/services/business-advisory" },
-      { label: "Personal Tax", href: "/services/personal-tax" },
-      { label: "CRA Representation", href: "/services/cra-representation" },
-      { label: "Tax Planning", href: "/services/tax-planning" },
-    ],
+    items: serviceNav,
   },
   firm: {
     heading: "Firm",
