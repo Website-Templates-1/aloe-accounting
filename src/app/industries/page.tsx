@@ -16,7 +16,7 @@ const crumbs = [
 export const metadata: Metadata = buildMetadata({
   title: "Industries We Serve",
   description:
-    "Specialized CPA expertise across Canadian industries: retail & e-commerce, transportation, manufacturing, professional services, not-for-profits, and real estate & trusts.",
+    "Specialized CPA expertise across Canadian industries: retail & e-commerce, transportation, manufacturing, professional services, not-for-profits, and real estate.",
   path: "/industries",
 });
 

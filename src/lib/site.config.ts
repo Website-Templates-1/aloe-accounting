@@ -44,12 +44,12 @@ export const contact = {
     city: "Brampton",
     region: "ON",
     regionName: "Ontario",
-    postalCode: "L6Y 0B6",
+    postalCode: "L6Y 0B5",
     country: "CA",
     countryName: "Canada",
   },
   /** Human-readable one-liner. */
-  addressLine: "#201 - 285 Steeles Ave W, Brampton, ON L6Y 0B6",
+  addressLine: "#201 - 285 Steeles Ave W, Brampton, ON L6Y 0B5",
   serviceArea: "Greater Toronto Area and across Canada",
 } as const;
 
@@ -750,10 +750,10 @@ export const industries: IndustryDef[] = [
       "Fund accounting, board-ready statements, and assurance tailored to the not-for-profit sector.",
   },
   {
-    name: "Real Estate & Trusts",
+    name: "Real Estate",
     icon: "landmark",
     blurb:
-      "Structuring, reporting, and tax planning for real estate holdings and trust arrangements.",
+      "Structuring, reporting, and tax planning for real estate holdings.",
   },
 ];
 
