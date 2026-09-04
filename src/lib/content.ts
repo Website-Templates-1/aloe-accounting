@@ -41,8 +41,8 @@ export const trustLogos = [
     src: "/trust/cpa.png",
     alt: "CPA Chartered Professional Accountants Ontario",
     wide: true,
-    width: 392,
-    height: 129,
+    width: 816,
+    height: 278,
   },
   {
     src: "/trust/quickbooks.png",

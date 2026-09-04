@@ -53,7 +53,7 @@ export function TrustStrip() {
                   alt={logo.alt}
                   width={logo.width}
                   height={logo.height}
-                  className={`w-auto ${logo.wide ? "h-10 sm:h-11" : "h-14 sm:h-16"}`}
+                  className={`w-auto ${logo.wide ? "h-12 sm:h-14" : "h-14 sm:h-16"}`}
                   loading="lazy"
                 />
               </li>
