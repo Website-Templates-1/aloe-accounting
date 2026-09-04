@@ -94,13 +94,14 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <aside className="relative min-h-80 overflow-hidden rounded-card border border-border-soft lg:h-full">
+            <aside className="relative overflow-hidden rounded-card border border-border-soft lg:h-full">
               <Image
                 src="/photos/khush-working.jpg"
                 alt="Khushpreet Sran reviewing a client's financials"
-                fill
+                width={933}
+                height={1400}
                 sizes="(min-width: 1024px) 360px, 90vw"
-                className="object-cover object-top"
+                className="h-auto w-full lg:absolute lg:inset-0 lg:h-full lg:object-cover lg:object-[center_70%]"
               />
             </aside>
           </div>
