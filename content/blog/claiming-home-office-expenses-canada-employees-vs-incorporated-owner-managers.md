@@ -82,7 +82,7 @@ Home office expenses are one of the most common areas where CRA requests receipt
 The key is that **employees and incorporated owner-managers (corporations) are treated differently**.
 
 ## Employees working from home (T777 worksheet)
-If you’re an employee, your home office claim generally flows through your personal return. CRA allows a deduction for eligible expenses using **either a simplified method or a detailed method** (you choose the approach that fits your facts).
+If you’re an employee, your home office claim generally flows through your [personal return](/services/personal-tax). CRA allows a deduction for eligible expenses using **either a simplified method or a detailed method** (you choose the approach that fits your facts).
 
 ### Eligible expenses (typical categories)
 In general, employees may claim the business-use portion of eligible costs such as:
@@ -118,7 +118,7 @@ CRA generally allows two ways to calculate your deduction:
 - **Missing support**: CRA may ask for receipts or for how you calculated the business-use percentage.
 
 ## Incorporated owner-managers (corporation pays, then your personal return may still be relevant)
-If you operate through a corporation, the corporation may be able to deduct certain home office costs **if it has the right to claim expenses related to earning its income**. Whether you claim personally (and how) depends on your arrangement.
+If you operate through a [corporation](/services/corporate-tax), the corporation may be able to deduct certain home office costs **if it has the right to claim expenses related to earning its income**. Whether you claim personally (and how) depends on your arrangement.
 
 ### Typical structures
 Most owner-managers fall into one of these patterns:
@@ -169,4 +169,4 @@ Whether you’re an employee or an incorporated owner-manager, you’ll want to:
 - Avoid claiming expenses for areas used solely for personal activities
 
 ## Get clarity for your situation
-Home office claims can be straightforward, but CRA looks closely at eligibility, methodology, and support. If you’re unsure whether your corporation should reimburse you, or which method best fits your facts, speak with ALOE Accounting and Tax so we can help you set up a defensible, compliant process.
+Home office claims can be straightforward, but CRA looks closely at eligibility, methodology, and support. If you’re unsure whether your corporation should reimburse you, or which method best fits your facts, speak with [ALOE Accounting and Tax](/contact) so we can help you set up a defensible, compliant process.

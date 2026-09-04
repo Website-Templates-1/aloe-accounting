@@ -129,7 +129,7 @@ Why this helps:
 - It improves the supportability of your records and reduces the chance the balance is treated as a distribution.
 
 ### 2) Make repayments that match the loan purpose
-Use clear bookkeeping entries and supporting records:
+Use clear [bookkeeping](/services/accounting-payroll) entries and supporting records:
 - Repayment from shareholder’s personal funds to the corporation.
 - Proper categorization (repayment of loan vs. new withdrawal).
 
@@ -161,4 +161,4 @@ Shareholder loans are common, but they can become costly when balances remain ou
 - Which repayment timing strategy fits your facts
 - How to document and support the transactions for CRA
 
-ALOE Accounting and Tax can help you review your shareholder loan ledger and assess practical clearance steps as part of your overall tax-planning for your corporation.
+[ALOE Accounting and Tax](/contact) can help you review your shareholder loan ledger and assess practical clearance steps as part of your overall [tax-planning](/services/tax-planning) for your corporation.

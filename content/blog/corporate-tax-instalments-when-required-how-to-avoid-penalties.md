@@ -76,7 +76,7 @@ If your corporation earns enough taxable income, the CRA may require you to pay 
 
 This article explains, at a general level, when instalments are required, how the amounts are calculated, common payment schedules, and what to do if your profits change materially mid-year.
 
-> Rules can vary based on your facts, including whether you’re on a specific fiscal year-end. Consider speaking with ALOE Accounting and Tax for help reviewing your instalment position.
+> Rules can vary based on your facts, including whether you’re on a specific fiscal year-end. Consider speaking with [ALOE Accounting and Tax](/contact) for help reviewing your instalment position.
 
 ## When a corporation is required to pay instalments
 The CRA generally requires corporations to make quarterly instalment payments if their prior-year balance of taxes owing is high enough.
@@ -143,7 +143,7 @@ Here are concrete actions owner-managers can take during the year:
 - Instalments are based on expected year-end tax. If significant income/loss events are expected later in the year, factor them into your projection.
 
 5) **Plan ahead for filing and payment integration**
-- Even with instalments, there may be a balance due when you file your T2 return. Ensure cashflow planning includes that possibility.
+- Even with instalments, there may be a balance due when you file your [T2 return](/services/corporate-tax). Ensure cashflow planning includes that possibility.
 
 ## When to contact ALOE Accounting and Tax
 If you’re approaching the time when CRA requires instalments (or you’ve received an instalment notice), we can help you understand your corporation’s position, confirm due dates, and review a reasonable approach to forecasting.

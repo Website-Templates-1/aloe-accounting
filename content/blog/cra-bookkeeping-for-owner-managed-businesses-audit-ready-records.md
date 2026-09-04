@@ -93,7 +93,7 @@ For most expenses, you should be able to show:
 Common categories that often draw questions include:
 - Meals and entertainment
 - Vehicle expenses
-- Home office
+- [Home office](/blog/claiming-home-office-expenses-canada-employees-vs-incorporated-owner-managers)
 - Professional fees
 - Advertising and promotion
 - Contract labour/subcontractors
@@ -125,7 +125,7 @@ If you run payroll, keep records for:
 - ROE support (as applicable)
 - Employee pay stubs and records of deductions
 
-Payroll bookkeeping accuracy helps reduce CRA follow-up and supports consistent reporting.
+[Payroll bookkeeping](/services/accounting-payroll) accuracy helps reduce CRA follow-up and supports consistent reporting.
 
 ## Retention expectations: keep records long enough
 CRA generally expects businesses to retain supporting documents for the period relevant to the statute of limitations for reassessments. In practice, that means many businesses retain records for **at least 6 to 7 years** after the end of the tax year (and longer for certain situations).
@@ -138,7 +138,7 @@ Even “good bookkeeping” can become hard to defend if source documents are sc
 ### Use consistent naming and categories
 - Create a predictable folder structure (e.g., `2026 > Sales > Invoices > Customer Name`)
 - Use consistent vendor/customer names across invoices and receipts
-- Match bookkeeping accounts to your financial statement accounts (avoid overly vague accounts)
+- Match bookkeeping accounts to your [financial statement accounts](/services/financial-statements-assurance) (avoid overly vague accounts)
 
 ### Link entries to source documents
 If you use accounting software, aim to:
@@ -168,7 +168,7 @@ Watch for:
 - Ensure bank reconciliations are done regularly, not only at year-end.
 - Put a short policy in place for incoming receipts: scan/save promptly, attach to transactions, and categorize consistently.
 
-If you want a second set of eyes on your process, especially if you’re reorganizing your files or moving to new software, reach out to ALOE Accounting and Tax.
+If you want a second set of eyes on your process, especially if you’re reorganizing your files or moving to new software, reach out to [ALOE Accounting and Tax](/contact).
 
 ## Closing thought
 Audit-ready bookkeeping is less about complicated systems and more about discipline: clear records, consistent categories, and documentation that lets CRA (and you) understand every transaction quickly.

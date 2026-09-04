@@ -63,7 +63,7 @@ tags:
 ## Why year-round prep matters
 Tax season feels overwhelming partly because the records you need are scattered across accounts, emails, and spreadsheets. For owner-managed businesses, a simple routine, monthly and quarterly, can make year-end faster, cleaner, and less stressful.
 
-Below is a practical checklist you can use throughout the year. It’s general guidance for Canadian owner-managed businesses. If you’d like help building a schedule that fits your business, contact ALOE Accounting and Tax.
+Below is a practical checklist you can use throughout the year. It’s general guidance for Canadian owner-managed businesses. If you’d like help building a schedule that fits your business, contact [ALOE Accounting and Tax](/contact).
 
 ---
 
@@ -93,7 +93,7 @@ Collect and categorize expenses monthly:
 - **Monthly expense summaries** from your accounting system
 - **Meals, travel, and entertainment** receipts (with business purpose where required)
 - **Vehicle logs or mileage tracking** (if you claim vehicle expenses)
-- **Home office records** (if you claim, square footage, utilities, and method)
+- **[Home office records](/blog/claiming-home-office-expenses-canada-employees-vs-incorporated-owner-managers)** (if you claim, square footage, utilities, and method)
 
 Make a rule: no receipt, no category. If you can’t locate the receipt later, it’s harder to support the claim.
 
@@ -104,7 +104,7 @@ Each payroll period, keep:
 - **Employer remittance confirmation** for CPP/EI and payroll deductions
 - **T4/TPD setup info** (by year, if you’re on track early)
 
-If you run payroll through a service provider, download the monthly reports and store them.
+If you run [payroll](/services/accounting-payroll) through a service provider, download the monthly reports and store them.
 
 ---
 
@@ -149,8 +149,8 @@ Before your fiscal year-end closes, gather:
 
 ### 9) Owner-related documents (commonly missed items)
 Depending on your situation, compile:
-- **Capital asset purchase/sale documents** (invoices, settlement statements)
-- **Shareholder loan balance details** (opening, repayments, ending)
+- **[Capital asset](/blog/capital-cost-allowance-cca-choosing-classes-and-avoiding-underclaiming) purchase/sale documents** (invoices, settlement statements)
+- **[Shareholder loan balance details](/blog/shareholder-loans-outstanding-balances-repayment-strategies)** (opening, repayments, ending)
 - **Personal contributions made through the business** (and the support for them)
 - **Any compensation details** relevant to filings
 

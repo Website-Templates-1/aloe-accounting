@@ -59,7 +59,7 @@ tags:
   - cra-compliance
 ---
 
-As your business grows, payroll compliance can become harder to manage. Workflows change, staff turnover happens, and it’s easier to miss a due date or enter information incorrectly.
+As your business grows, [payroll compliance](/services/accounting-payroll) can become harder to manage. Workflows change, staff turnover happens, and it’s easier to miss a due date or enter information incorrectly.
 
 Below are common watch-outs for owner-managed Canadian businesses, focused on three areas that commonly trigger CRA follow-ups: ROEs (Record of Employment), remittances, and T4/T5 slip reporting.
 
@@ -106,7 +106,7 @@ Common missteps include:
 - **T5 confusion**: businesses sometimes forget that certain payments may require T5 reporting, or they fail to track payer/payee details accurately throughout the year.
 
 Practical prevention tips:
-- **Run a year-end reconciliation early** (before final pay adjustments). Compare totals from payroll reports to what will populate T4 boxes.
+- **Run a [year-end reconciliation](/blog/year-round-tax-season-prep-checklist-owner-managed-business-canada) early** (before final pay adjustments). Compare totals from payroll reports to what will populate T4 boxes.
 - **Verify employee data** (name and SIN) throughout the year, not just at December.
 - **Track T5-relevant payments** in your accounting system during the year so you aren’t reconstructing details at year-end.
 
