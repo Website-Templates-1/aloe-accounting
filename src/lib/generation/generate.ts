@@ -48,13 +48,30 @@ export async function generateDraft(): Promise<GenerationResult> {
   ].join("\n");
   const gen = await generateBlogPost(promptFile.text, user);
 
+  // Deterministic safety net: strip em/en dashes (the prompt forbids them, but
+  // models slip). Replace with a comma and tidy stray punctuation.
+  const deDash = (s: string): string =>
+    (s ?? "")
+      .replace(/\s*[—–]\s*/g, ", ")
+      .replace(/,\s*([,.;:!?)])/g, "$1")
+      .replace(/\(\s*,\s*/g, "(");
+  gen.title = deDash(gen.title);
+  gen.metaDescription = deDash(gen.metaDescription);
+  gen.excerpt = deDash(gen.excerpt);
+  gen.bodyMarkdown = deDash(gen.bodyMarkdown);
+
   // Sanitize enrichment before commit: drop malformed FAQs, drop any related
   // link not in the allowlist, normalize tags. A bad generation can never
   // produce a broken link or fail the build.
   const faqs = gen.faqs
-    ?.map((f) => ({ question: f.question?.trim(), answer: f.answer?.trim() }))
+    ?.map((f) => ({
+      question: deDash(f.question?.trim() ?? ""),
+      answer: deDash(f.answer?.trim() ?? ""),
+    }))
     .filter((f) => f.question && f.answer) as PostFrontmatter["faqs"];
-  const peopleAlsoSearch = filterAllowedSearches(gen.peopleAlsoSearch);
+  const peopleAlsoSearch = filterAllowedSearches(gen.peopleAlsoSearch).map(
+    (s) => ({ ...s, label: deDash(s.label) }),
+  );
   const tags = Array.from(
     new Set((gen.tags ?? []).map((t) => t.trim().toLowerCase()).filter(Boolean)),
   );
