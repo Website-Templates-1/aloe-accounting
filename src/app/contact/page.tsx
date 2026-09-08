@@ -53,6 +53,29 @@ export default function ContactPage() {
                   className="h-auto w-full"
                 />
               </div>
+
+              <div className="flex items-start gap-4 rounded-card border border-border-soft bg-white p-6">
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-brand-50 text-brand-700">
+                  <Clock className="h-5 w-5" />
+                </span>
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-eyebrow text-slate-body">
+                    Hours
+                  </p>
+                  <dl className="mt-2 space-y-1">
+                    {businessHours.display.map((row) => (
+                      <div
+                        key={row.label}
+                        className="flex justify-between gap-6 text-sm"
+                      >
+                        <dt className="text-slate-body">{row.label}</dt>
+                        <dd className="font-semibold text-ink">{row.value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              </div>
+
               <ContactRow
                 icon={<Phone className="h-5 w-5" />}
                 label="Phone"
@@ -80,27 +103,17 @@ export default function ContactPage() {
                 }
               />
 
-              <div className="flex items-start gap-4 rounded-card border border-border-soft bg-white p-6">
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-brand-50 text-brand-700">
-                  <Clock className="h-5 w-5" />
-                </span>
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-eyebrow text-slate-body">
-                    Hours
-                  </p>
-                  <dl className="mt-2 space-y-1">
-                    {businessHours.display.map((row) => (
-                      <div
-                        key={row.label}
-                        className="flex justify-between gap-6 text-sm"
-                      >
-                        <dt className="text-slate-body">{row.label}</dt>
-                        <dd className="font-semibold text-ink">{row.value}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                </div>
-              </div>
+              <ContactRow
+                icon={<MapPin className="h-5 w-5" />}
+                label="Office"
+                value={
+                  <span>
+                    #201 - 285 Steeles Ave W
+                    <br />
+                    Brampton, ON L6Y 0B6
+                  </span>
+                }
+              />
 
               <div className="overflow-hidden rounded-card border border-border-soft bg-white">
                 <iframe

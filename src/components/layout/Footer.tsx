@@ -147,9 +147,22 @@ export function Footer() {
         </div>
 
         <div className="mt-14 flex flex-col gap-4 border-t border-border-soft pt-8 text-sm text-slate-body sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            © {year} {site.legalName}. All rights reserved.
-          </p>
+          <div className="space-y-1.5">
+            <p>
+              © {year} {site.legalName}. All rights reserved.
+            </p>
+            <p className="text-[11px] font-medium tracking-[0.16em] text-slate-body/40">
+              Site by{" "}
+              <a
+                href={site.studio.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-body/45 transition-colors hover:text-slate-body/70"
+              >
+                {site.studio.name}
+              </a>
+            </p>
+          </div>
           <div className="flex items-center gap-6">
             <Link href="/privacy" className="hover:text-brand-700">
               Privacy Policy

@@ -25,6 +25,11 @@ export const site = {
   /** OG image path (relative). Replace when real artwork is supplied. */
   ogImage: "/og-default.png",
   logo: "/aloe-logo.png",
+  /** Quiet footer credit (studio that built the site). */
+  studio: {
+    name: "Mintek",
+    url: "https://minteksoftware.com",
+  },
 } as const;
 
 /**
