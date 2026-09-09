@@ -89,6 +89,31 @@
       "topic": "Intercompany agreements and expense reimbursements inside a Canadian corporation",
       "notes": "Discuss when formal agreements are needed, how to properly charge expenses between related parties, and documentation to support reimbursements.",
       "used": false
+    },
+    {
+      "topic": "Personal-use versus business-use assets: documenting mixed-use properly (vehicles, phones, computers)",
+      "notes": "Explain CRA expectations for mixed-use property, what records to keep, and how to avoid common audit triggers.",
+      "used": false
+    },
+    {
+      "topic": "Year-end tax planning for incorporated owner-managers: strategies before Dec 31",
+      "notes": "Cover evergreen pre-year-end moves (salary/dividends planning, closing entries, accruals, spousal considerations) without promising outcomes.",
+      "used": false
+    },
+    {
+      "topic": "Corporate vs personal land/building expenses: claiming deductions and allocating costs correctly",
+      "notes": "Discuss how to treat expenses if the property is owned personally vs through a corporation, including common pitfalls (repairs vs improvements, rent and reimbursements).",
+      "used": false
+    },
+    {
+      "topic": "Dividend planning in Canada: eligible vs non-eligible dividends and avoiding unwanted tax consequences",
+      "notes": "Walk through when dividends can be paid, concept of Eligible Dividend Designations, and what documentation should be kept.",
+      "used": false
+    },
+    {
+      "topic": "Payroll for contractors and hiring decisions: when to use employee vs contractor vs third-party services",
+      "notes": "Provide practical guidance on evaluating worker status, documentation to support the relationship, and how CRA reviews misclassification.",
+      "used": false
     }
   ]
 }
