@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { isAuthenticated } from "@/lib/auth";
+import { PanelNav } from "./PanelNav";
 
 export const dynamic = "force-dynamic";
 
@@ -22,9 +23,12 @@ export default async function PanelLayout({
     <div className="min-h-screen bg-surface-alt">
       <header className="border-b border-border-soft bg-white">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-          <Link href="/admin" className="font-bold text-ink">
-            ALOE admin
-          </Link>
+          <div className="flex items-center gap-6">
+            <Link href="/admin" className="font-bold text-ink">
+              ALOE admin
+            </Link>
+            <PanelNav />
+          </div>
           <div className="flex items-center gap-4 text-sm">
             <Link href="/" className="text-slate-body hover:text-ink">
               View site
