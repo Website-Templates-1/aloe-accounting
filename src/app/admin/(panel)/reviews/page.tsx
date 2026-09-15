@@ -14,6 +14,7 @@ import {
   type ReviewView,
 } from "@/lib/reviews-view";
 import { formatDate } from "@/lib/format";
+import { chipIdle, chipOn, listCard, listRow } from "../ui";
 
 export const dynamic = "force-dynamic";
 
@@ -83,7 +84,8 @@ export default async function ReviewsPage({
         </p>
       )}
 
-      <div className="flex flex-wrap items-center gap-2">
+      <div className="-mx-6 overflow-x-auto px-6 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex w-max items-center gap-2">
         {REVIEW_FILTERS.map((f) => {
           const active = f === filter;
           const href = f === "all" ? "/admin/reviews" : `/admin/reviews?filter=${f}`;
@@ -92,11 +94,7 @@ export default async function ReviewsPage({
               key={f}
               href={href}
               aria-current={active ? "page" : undefined}
-              className={`rounded-pill border px-4 py-1.5 text-sm font-semibold ${
-                active
-                  ? "border-brand-700 bg-brand-700 text-white"
-                  : "border-border-soft bg-white text-slate-body hover:text-ink"
-              }`}
+              className={active ? chipOn : chipIdle}
             >
               {filterLabel(f)}
               {f === "needs_review" &&
@@ -113,6 +111,7 @@ export default async function ReviewsPage({
             </Link>
           );
         })}
+        </div>
       </div>
 
       {error ? (
@@ -130,14 +129,14 @@ export default async function ReviewsPage({
           </p>
         </div>
       ) : (
-        <ul className="divide-y divide-border-soft rounded-card border border-border-soft bg-white">
+        <ul className={listCard}>
           {reviews.map((r) => {
             const stage = reviewStage(r);
             return (
               <li key={r.id}>
                 <Link
                   href={`/admin/reviews/${r.id}`}
-                  className="flex flex-wrap items-start justify-between gap-3 px-5 py-4 hover:bg-surface-alt"
+                  className={`${listRow} flex flex-col gap-2 hover:bg-surface-alt sm:flex-row sm:items-start sm:justify-between`}
                 >
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
@@ -155,7 +154,7 @@ export default async function ReviewsPage({
                       </p>
                     )}
                   </div>
-                  <span className={stageBadgeClass(stage)}>
+                  <span className={`${stageBadgeClass(stage)} shrink-0`}>
                     {stageLabel(stage)}
                   </span>
                 </Link>

@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
+import { SiteFooter } from "@/components/layout/SiteFooter";
 import { Analytics } from "@/components/analytics/Analytics";
 import { JsonLd, organizationSchema, websiteSchema, professionalServiceSchema } from "@/lib/jsonld";
 import { site, analytics } from "@/lib/site.config";
@@ -57,7 +57,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main id="main" className="flex-1">
           {children}
         </main>
-        <Footer />
+        <SiteFooter />
 
         <Analytics />
       </body>

@@ -4,6 +4,14 @@ import { listAllPosts } from "@/lib/blog-admin";
 import { readBacklog, unusedCount } from "@/lib/backlog";
 import { usingGitHub } from "@/lib/github";
 import { formatDate } from "@/lib/format";
+import {
+  chipIdle,
+  chipPrimary,
+  chipDanger,
+  listCard,
+  listRow,
+  rowActions,
+} from "./ui";
 
 export const dynamic = "force-dynamic";
 
@@ -26,26 +34,20 @@ export default async function DashboardPage({
   const error = typeof sp.error === "string" ? sp.error : null;
 
   return (
-    <div className="space-y-10">
-      <div className="flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-bold text-ink">Blog</h1>
-          <p className="mt-1 text-sm text-slate-body">
-            {usingGitHub
-              ? "Live from GitHub."
-              : "Local content (GitHub not configured)."}
-          </p>
-        </div>
-        <div className="flex items-center gap-3">
-          <Link
-            href="/admin/backlog"
-            className="rounded-md px-4 py-2 text-sm font-semibold text-slate-body hover:text-ink"
-          >
-            Manage topics ({topicsQueued})
-          </Link>
+    <div className="space-y-8">
+      <div>
+        <h1 className="text-2xl font-bold text-ink">Blog</h1>
+        <p className="mt-1 text-sm text-slate-body">
+          Draft, approve, and publish posts.
+          {!usingGitHub ? " Local content (GitHub not configured)." : ""}
+        </p>
+      </div>
+
+      <div className="-mx-6 overflow-x-auto px-6 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex w-max items-center gap-2">
           <Link
             href="/admin/posts/new"
-            className="rounded-md bg-brand-700 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-800"
+            className={chipPrimary}
           >
             New post
           </Link>
@@ -53,8 +55,19 @@ export default async function DashboardPage({
             action="/api/admin/generate"
             label="Generate draft"
             pendingLabel="Generating…"
-            className="rounded-md border border-brand-700 px-4 py-2 text-sm font-semibold text-brand-700 hover:bg-brand-50 disabled:hover:bg-transparent"
+            className={chipIdle}
           />
+          <Link
+            href="/admin/backlog"
+            className={chipIdle}
+          >
+            Manage topics
+            {topicsQueued > 0 && (
+              <span className="ml-2 rounded-pill bg-surface-alt px-2 py-0.5 text-xs text-ink">
+                {topicsQueued}
+              </span>
+            )}
+          </Link>
         </div>
       </div>
 
@@ -76,29 +89,18 @@ export default async function DashboardPage({
         {drafts.length === 0 ? (
           <p className="mt-3 text-sm text-slate-body">No drafts.</p>
         ) : (
-          <ul className="mt-4 divide-y divide-border-soft rounded-card border border-border-soft bg-white">
+          <ul className={listCard}>
             {drafts.map((p) => (
-              <li
-                key={p.slug}
-                className="flex flex-wrap items-center justify-between gap-3 px-5 py-4"
-              >
-                <div>
-                  <p className="font-semibold text-ink">{p.title}</p>
-                  <p className="text-xs text-slate-body">
-                    {formatDate(p.publishedAt)} · {p.slug}
-                  </p>
-                </div>
-                <div className="flex items-center gap-3 text-sm">
-                  <Link
-                    href={`/admin/preview/${p.slug}`}
-                    className="text-slate-body hover:text-ink"
-                  >
+              <li key={p.slug} className={listRow}>
+                <p className="font-semibold text-ink">{p.title}</p>
+                <p className="mt-0.5 text-xs text-slate-body">
+                  {formatDate(p.publishedAt)} · {p.slug}
+                </p>
+                <div className={rowActions}>
+                  <Link href={`/admin/preview/${p.slug}`} className={chipIdle}>
                     Preview
                   </Link>
-                  <Link
-                    href={`/admin/posts/${p.slug}`}
-                    className="font-semibold text-brand-700 hover:text-brand-800"
-                  >
+                  <Link href={`/admin/posts/${p.slug}`} className={chipIdle}>
                     Edit
                   </Link>
                   <SubmitAction
@@ -106,7 +108,7 @@ export default async function DashboardPage({
                     hidden={{ slug: p.slug }}
                     label="Approve"
                     pendingLabel="Approving…"
-                    className="rounded-md bg-brand-700 px-3 py-1.5 font-semibold text-white hover:bg-brand-800"
+                    className={chipPrimary}
                   />
                   <SubmitAction
                     action="/api/admin/delete"
@@ -114,7 +116,7 @@ export default async function DashboardPage({
                     confirm="Delete this draft? This removes the file from the repo."
                     label="Delete"
                     pendingLabel="Deleting…"
-                    className="rounded-md border border-red-300 px-3 py-1.5 font-semibold text-red-600 hover:bg-red-50"
+                    className={chipDanger}
                   />
                 </div>
               </li>
@@ -130,29 +132,18 @@ export default async function DashboardPage({
         {published.length === 0 ? (
           <p className="mt-3 text-sm text-slate-body">Nothing published yet.</p>
         ) : (
-          <ul className="mt-4 divide-y divide-border-soft rounded-card border border-border-soft bg-white">
+          <ul className={listCard}>
             {published.map((p) => (
-              <li
-                key={p.slug}
-                className="flex flex-wrap items-center justify-between gap-3 px-5 py-4"
-              >
-                <div>
-                  <p className="font-semibold text-ink">{p.title}</p>
-                  <p className="text-xs text-slate-body">
-                    {formatDate(p.publishedAt)} · {p.slug}
-                  </p>
-                </div>
-                <div className="flex items-center gap-3 text-sm">
-                  <Link
-                    href={`/blog/${p.slug}`}
-                    className="text-slate-body hover:text-ink"
-                  >
+              <li key={p.slug} className={listRow}>
+                <p className="font-semibold text-ink">{p.title}</p>
+                <p className="mt-0.5 text-xs text-slate-body">
+                  {formatDate(p.publishedAt)} · {p.slug}
+                </p>
+                <div className={rowActions}>
+                  <Link href={`/blog/${p.slug}`} className={chipIdle}>
                     View live
                   </Link>
-                  <Link
-                    href={`/admin/posts/${p.slug}`}
-                    className="font-semibold text-brand-700 hover:text-brand-800"
-                  >
+                  <Link href={`/admin/posts/${p.slug}`} className={chipIdle}>
                     Edit
                   </Link>
                   <SubmitAction
@@ -161,7 +152,7 @@ export default async function DashboardPage({
                     confirm={`Delete the PUBLISHED post "${p.title}"? It will be removed from the live site and its URL will 404 after the next deploy. This can't be undone here.`}
                     label="Delete"
                     pendingLabel="Deleting…"
-                    className="rounded-md border border-red-300 px-3 py-1.5 font-semibold text-red-600 hover:bg-red-50"
+                    className={chipDanger}
                   />
                 </div>
               </li>

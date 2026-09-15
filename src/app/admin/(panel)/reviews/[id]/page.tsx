@@ -11,6 +11,7 @@ import {
   type ReviewView,
 } from "@/lib/reviews-view";
 import { formatDate } from "@/lib/format";
+import { chipIdle, chipPrimary } from "../../ui";
 
 export const dynamic = "force-dynamic";
 
@@ -228,27 +229,24 @@ export default async function ReviewDetailPage({
                     : "Your response to this review…"
                 }
               />
-              <button
-                type="submit"
-                className="rounded-md bg-brand-700 px-5 py-2 text-sm font-semibold text-white hover:bg-brand-800"
-              >
+              <button type="submit" className={chipPrimary}>
                 Save changes
               </button>
             </form>
 
-            <div className="flex flex-wrap items-center gap-3 border-t border-border-soft pt-4">
+            <div className="flex flex-wrap items-center gap-2 border-t border-border-soft pt-4">
               <SubmitAction
                 action={`/api/admin/reviews/${review.id}/regenerate`}
                 label="Regenerate"
                 pendingLabel="Regenerating…"
-                className="rounded-md border border-brand-700 px-4 py-2 text-sm font-semibold text-brand-700 hover:bg-brand-50 disabled:hover:bg-transparent"
+                className={chipIdle}
               />
               <SubmitAction
                 action={`/api/admin/reviews/${review.id}/approve`}
                 confirm="Approve this response? It will be added to the review management queue."
                 label="Approve response"
                 pendingLabel="Approving…"
-                className="rounded-md bg-brand-700 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-800"
+                className={chipPrimary}
               />
               <p className="text-xs text-slate-body">
                 Saving or regenerating won&rsquo;t approve — approval is a

@@ -6,6 +6,7 @@ import {
   searchesToText,
 } from "@/lib/blog-admin";
 import { internalPathAllowlist } from "@/lib/posts";
+import { chipPrimary } from "../../ui";
 
 export const dynamic = "force-dynamic";
 
@@ -168,7 +169,7 @@ export default async function EditPostPage({
         </div>
         <button
           type="submit"
-          className="rounded-md bg-brand-700 px-5 py-2 font-semibold text-white hover:bg-brand-800"
+          className={chipPrimary}
         >
           Save
         </button>

@@ -40,6 +40,47 @@ export function unusedCount(b: Backlog): number {
   return b.topics.filter((t) => !t.used).length;
 }
 
+export function findQueuedTopic(
+  b: Backlog,
+  topic: string,
+): BacklogTopic | undefined {
+  return b.topics.find((t) => t.topic === topic && !t.used);
+}
+
+/**
+ * Rename / restyle a queued (unused) topic. Rejects if the new title collides
+ * with another entry (case-insensitive).
+ */
+export async function updateTopic(
+  original: string,
+  patch: { topic: string; notes?: string },
+): Promise<void> {
+  const b = await readBacklog();
+  const i = b.topics.findIndex((t) => t.topic === original && !t.used);
+  if (i < 0) throw new Error("Topic not found in the queue.");
+  const topic = patch.topic.trim();
+  if (!topic) throw new Error("Enter a topic");
+  const clash = b.topics.some(
+    (t, j) =>
+      j !== i && t.topic.trim().toLowerCase() === topic.toLowerCase(),
+  );
+  if (clash) throw new Error("That topic is already in the backlog");
+  const notes = patch.notes?.trim();
+  const next: BacklogTopic = { topic, used: false };
+  if (notes) next.notes = notes;
+  b.topics[i] = next;
+  await writeBacklog(b, `Update backlog topic: ${topic}`);
+}
+
+/** Remove a queued (unused) topic. Used topics stay as history. */
+export async function deleteTopic(topic: string): Promise<void> {
+  const b = await readBacklog();
+  const i = b.topics.findIndex((t) => t.topic === topic && !t.used);
+  if (i < 0) throw new Error("Topic not found in the queue.");
+  b.topics.splice(i, 1);
+  await writeBacklog(b, `Remove backlog topic: ${topic}`);
+}
+
 /**
  * Append topics, skipping blanks and case-insensitive duplicates. Returns how
  * many were actually added.

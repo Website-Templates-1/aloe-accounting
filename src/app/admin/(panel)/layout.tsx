@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { redirect } from "next/navigation";
 import { isAuthenticated } from "@/lib/auth";
 import { PanelNav } from "./PanelNav";
@@ -21,27 +20,10 @@ export default async function PanelLayout({
 
   return (
     <div className="min-h-screen bg-surface-alt">
-      <header className="border-b border-border-soft bg-white">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-          <div className="flex items-center gap-6">
-            <Link href="/admin" className="font-bold text-ink">
-              ALOE admin
-            </Link>
-            <PanelNav />
-          </div>
-          <div className="flex items-center gap-4 text-sm">
-            <Link href="/" className="text-slate-body hover:text-ink">
-              View site
-            </Link>
-            <form method="post" action="/api/admin/logout">
-              <button className="font-semibold text-brand-700 hover:text-brand-800">
-                Sign out
-              </button>
-            </form>
-          </div>
-        </div>
-      </header>
-      <main className="mx-auto max-w-5xl px-6 py-10">{children}</main>
+      <div className="mx-auto max-w-5xl px-6 py-8 pb-24">
+        <PanelNav />
+        {children}
+      </div>
     </div>
   );
 }

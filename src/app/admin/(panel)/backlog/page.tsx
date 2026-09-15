@@ -2,6 +2,14 @@ import Link from "next/link";
 import { SubmitAction } from "../SubmitAction";
 import { readBacklog, unusedCount } from "@/lib/backlog";
 import { usingGitHub } from "@/lib/github";
+import {
+  chipDanger,
+  chipIdle,
+  chipPrimary,
+  listCard,
+  listRow,
+  rowActions,
+} from "../ui";
 
 export const dynamic = "force-dynamic";
 
@@ -19,7 +27,11 @@ export default async function BacklogPage({
       ? sp.suggested === "0"
         ? "No new topics — the AI's ideas were already in the backlog."
         : `Added ${sp.suggested} AI-suggested topic(s).`
-      : null;
+      : sp.updated
+        ? "Topic saved."
+        : sp.deleted
+          ? "Topic deleted."
+          : null;
   const error = typeof sp.error === "string" ? sp.error : null;
 
   const field =
@@ -27,24 +39,23 @@ export default async function BacklogPage({
 
   return (
     <div className="space-y-8">
-      <div className="flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <Link href="/admin" className="text-sm text-slate-body hover:text-ink">
-            ← Back
-          </Link>
-          <h1 className="mt-1 text-2xl font-bold text-ink">Topic backlog</h1>
-          <p className="text-sm text-slate-body">
-            {unusedCount(backlog)} topic(s) queued for the generator.
-            {!usingGitHub && " Local content (GitHub not configured)."}
-          </p>
-        </div>
-        <SubmitAction
-          action="/api/admin/backlog/suggest"
-          label="Suggest topics with AI"
-          pendingLabel="Thinking…"
-          className="rounded-md border border-brand-700 px-4 py-2 text-sm font-semibold text-brand-700 hover:bg-brand-50 disabled:hover:bg-transparent"
-        />
+      <div>
+        <Link href="/admin" className="text-sm text-slate-body hover:text-ink">
+          ← Back
+        </Link>
+        <h1 className="mt-1 text-2xl font-bold text-ink">Topic backlog</h1>
+        <p className="mt-1 text-sm text-slate-body">
+          {unusedCount(backlog)} topic(s) queued for the generator.
+          {!usingGitHub && " Local content (GitHub not configured)."}
+        </p>
       </div>
+
+      <SubmitAction
+        action="/api/admin/backlog/suggest"
+        label="Suggest topics with AI"
+        pendingLabel="Thinking…"
+        className={chipIdle}
+      />
 
       {notice && (
         <p className="rounded-md border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
@@ -72,7 +83,7 @@ export default async function BacklogPage({
           </div>
           <button
             type="submit"
-            className="rounded-md bg-brand-700 px-5 py-2 font-semibold text-white hover:bg-brand-800"
+            className={chipPrimary}
           >
             Add topic
           </button>
@@ -88,13 +99,29 @@ export default async function BacklogPage({
             No topics queued. Add one above or let the AI suggest some.
           </p>
         ) : (
-          <ul className="mt-4 divide-y divide-border-soft rounded-card border border-border-soft bg-white">
+          <ul className={listCard}>
             {queued.map((t) => (
-              <li key={t.topic} className="px-5 py-4">
+              <li key={t.topic} className={listRow}>
                 <p className="font-semibold text-ink">{t.topic}</p>
                 {t.notes && (
-                  <p className="text-sm text-slate-body">{t.notes}</p>
+                  <p className="mt-0.5 text-sm text-slate-body">{t.notes}</p>
                 )}
+                <div className={rowActions}>
+                  <Link
+                    href={`/admin/backlog/edit?topic=${encodeURIComponent(t.topic)}`}
+                    className={chipIdle}
+                  >
+                    Edit
+                  </Link>
+                  <SubmitAction
+                    action="/api/admin/backlog/delete"
+                    hidden={{ topic: t.topic }}
+                    confirm={`Delete the queued topic "${t.topic}"? This can't be undone here.`}
+                    label="Delete"
+                    pendingLabel="Deleting…"
+                    className={chipDanger}
+                  />
+                </div>
               </li>
             ))}
           </ul>
@@ -106,9 +133,9 @@ export default async function BacklogPage({
           <h2 className="text-sm font-semibold uppercase tracking-eyebrow text-slate-body">
             Already used ({used.length})
           </h2>
-          <ul className="mt-4 divide-y divide-border-soft rounded-card border border-border-soft bg-white/60">
+          <ul className={`${listCard} bg-white/60`}>
             {used.map((t) => (
-              <li key={t.topic} className="px-5 py-3 text-sm text-slate-body">
+              <li key={t.topic} className={`${listRow} text-sm text-slate-body`}>
                 {t.topic}
               </li>
             ))}

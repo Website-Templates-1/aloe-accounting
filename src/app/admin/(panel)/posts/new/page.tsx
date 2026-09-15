@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { chipPrimary } from "../../ui";
 
 export const dynamic = "force-dynamic";
 
@@ -70,7 +71,7 @@ export default async function NewPostPage({
         </div>
         <button
           type="submit"
-          className="rounded-md bg-brand-700 px-5 py-2 font-semibold text-white hover:bg-brand-800"
+          className={chipPrimary}
         >
           Create draft
         </button>
