@@ -108,9 +108,10 @@ export default function ContactPage() {
                 label="Office"
                 value={
                   <span>
-                    #201 - 285 Steeles Ave W
+                    {contact.address.street}
                     <br />
-                    Brampton, ON L6Y 0B6
+                    {contact.address.city}, {contact.address.region}{" "}
+                    {contact.address.postalCode}
                   </span>
                 }
               />
@@ -118,7 +119,9 @@ export default function ContactPage() {
               <div className="overflow-hidden rounded-card border border-border-soft bg-white">
                 <iframe
                   title="ALOE Accounting & Tax office location"
-                  src="https://www.google.com/maps?q=285+Steeles+Ave+W+Suite+201+Brampton+ON+L6Y+0B6&output=embed"
+                  src={`https://www.google.com/maps?q=${encodeURIComponent(
+                    `${contact.address.street} ${contact.address.city} ${contact.address.region} ${contact.address.postalCode}`,
+                  )}&output=embed`}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   className="h-64 w-full border-0"
