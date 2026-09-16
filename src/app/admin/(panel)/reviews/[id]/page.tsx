@@ -12,6 +12,7 @@ import {
 } from "@/lib/reviews-view";
 import { formatDate } from "@/lib/format";
 import { chipIdle, chipPrimary } from "../../ui";
+import { adminFeatures, googleBusiness } from "@/lib/site.config";
 
 export const dynamic = "force-dynamic";
 
@@ -93,6 +94,8 @@ export default async function ReviewDetailPage({
   }
 
   const stage = reviewStage(review);
+  const managed = adminFeatures.reviewReplies;
+  const unanswered = review.approval?.status !== "approved";
   const approved = review.approval?.status === "approved";
   const analysis = review.analysis;
   const sentiment = normalizeSentiment(analysis?.sentiment);
@@ -133,7 +136,9 @@ export default async function ReviewDetailPage({
               {formatDate(review.reviewedAt)}
             </span>
           </div>
-          <span className={stageBadgeClass(stage)}>{stageLabel(stage)}</span>
+          <span className={stageBadgeClass(managed ? stage : unanswered ? "needs_review" : "approved")}>
+            {managed ? stageLabel(stage) : unanswered ? "Unanswered" : "Replied"}
+          </span>
         </div>
         {review.text && (
           <p className="mt-4 whitespace-pre-line text-sm leading-relaxed text-slate-body">
@@ -194,6 +199,29 @@ export default async function ReviewDetailPage({
           Suggested response
         </h2>
 
+        {!managed && (
+          <div
+            role="status"
+            className="mt-4 rounded-md border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900"
+          >
+            <p className="font-semibold">Reply actions aren&apos;t on your plan</p>
+            <p className="mt-1">
+              You can read the analysis and the drafted reply, but saving,
+              regenerating, and approving aren&apos;t included yet. Reply from
+              your{" "}
+              <a
+                href={googleBusiness.profileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold underline"
+              >
+                Google Business Profile
+              </a>{" "}
+              instead.
+            </p>
+          </div>
+        )}
+
         {approved ? (
           <div className="mt-4 space-y-4">
             <div className="rounded-md border border-emerald-200 bg-emerald-50 px-4 py-3">
@@ -211,7 +239,7 @@ export default async function ReviewDetailPage({
           <div className="mt-4 space-y-4">
             <form
               method="post"
-              action={`/api/admin/reviews/${review.id}/reply`}
+              action={managed ? `/api/admin/reviews/${review.id}/reply` : undefined}
               className="space-y-3"
             >
               <label htmlFor="reply-body" className="sr-only">
@@ -222,6 +250,7 @@ export default async function ReviewDetailPage({
                 name="body"
                 defaultValue={review.reply?.body ?? ""}
                 rows={8}
+                readOnly={!managed}
                 className="w-full rounded-md border border-border-soft px-3 py-2 text-sm text-ink"
                 placeholder={
                   review.reply?.status === "failed"
@@ -229,7 +258,11 @@ export default async function ReviewDetailPage({
                     : "Your response to this review…"
                 }
               />
-              <button type="submit" className={chipPrimary}>
+              <button
+                type="submit"
+                disabled={!managed}
+                className={chipPrimary}
+              >
                 Save changes
               </button>
             </form>
@@ -240,6 +273,7 @@ export default async function ReviewDetailPage({
                 label="Regenerate"
                 pendingLabel="Regenerating…"
                 className={chipIdle}
+                disabled={!managed}
               />
               <SubmitAction
                 action={`/api/admin/reviews/${review.id}/approve`}
@@ -247,11 +281,14 @@ export default async function ReviewDetailPage({
                 label="Approve response"
                 pendingLabel="Approving…"
                 className={chipPrimary}
+                disabled={!managed}
               />
-              <p className="text-xs text-slate-body">
-                Saving or regenerating won&rsquo;t approve — approval is a
-                separate, explicit step.
-              </p>
+              {managed && (
+                <p className="text-xs text-slate-body">
+                  Saving or regenerating won&rsquo;t approve — approval is a
+                  separate, explicit step.
+                </p>
+              )}
             </div>
           </div>
         )}

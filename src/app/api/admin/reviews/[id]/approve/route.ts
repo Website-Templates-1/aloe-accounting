@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { requireSession, sameOrigin } from "@/lib/admin-guard";
+import { requireSession, sameOrigin, reviewRepliesEnabled } from "@/lib/admin-guard";
 import { approveReply } from "@/lib/review-api";
 
 // Explicitly approve the current draft response. This is the ONLY endpoint that
@@ -16,6 +16,10 @@ export async function POST(
     return new NextResponse("Unauthorized", { status: 401 });
   if (!(await sameOrigin()))
     return new NextResponse("Bad origin", { status: 403 });
+  if (!reviewRepliesEnabled())
+    return new NextResponse("Reply management is not enabled for this site.", {
+      status: 403,
+    });
 
   const { id } = await ctx.params;
 

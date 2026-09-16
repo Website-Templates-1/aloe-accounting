@@ -116,6 +116,15 @@ export const googleBusiness = {
 } as const;
 
 /**
+ * Admin-panel capabilities. Flip when a package is purchased — the reviews
+ * UI and the reply API routes both read this flag.
+ */
+export const adminFeatures = {
+  /** AI draft / edit / regenerate / approve-to-queue. Off until purchased. */
+  reviewReplies: false,
+} as const;
+
+/**
  * Business hours — sourced from the Google Business Profile (Places API).
  * Used for the Contact page and LocalBusiness openingHoursSpecification.
  * Update here if the firm changes its hours on Google.

@@ -2,8 +2,10 @@ import Link from "next/link";
 import { listReviews } from "@/lib/review-api";
 import {
   REVIEW_FILTERS,
+  REVIEW_FILTERS_READONLY,
   filterLabel,
   isReviewFilter,
+  isUnanswered,
   reviewStage,
   stageBadgeClass,
   stageLabel,
@@ -14,6 +16,7 @@ import {
   type ReviewView,
 } from "@/lib/reviews-view";
 import { formatDate } from "@/lib/format";
+import { adminFeatures } from "@/lib/site.config";
 import { chipIdle, chipOn, listCard, listRow } from "../ui";
 
 export const dynamic = "force-dynamic";
@@ -38,30 +41,41 @@ export default async function ReviewsPage({
   searchParams,
 }: PageProps<"/admin/reviews">) {
   const sp = await searchParams;
-  const filter: ReviewFilter = isReviewFilter(sp.filter) ? sp.filter : "all";
+  const managed = adminFeatures.reviewReplies;
+  const filters = managed ? REVIEW_FILTERS : REVIEW_FILTERS_READONLY;
+  const defaultFilter: ReviewFilter = "all";
+  const filter: ReviewFilter = isReviewFilter(sp.filter) ? sp.filter : defaultFilter;
+  const allowed = (filters as readonly string[]).includes(filter)
+    ? filter
+    : defaultFilter;
 
   let reviews: ReviewView[] = [];
   let error: string | null = null;
   try {
-    reviews = await listReviews(statusFilterToParam(filter));
+    reviews = await listReviews(statusFilterToParam(allowed));
+    if (allowed === "unanswered") {
+      reviews = reviews.filter(isUnanswered);
+    }
   } catch (err) {
     error = err instanceof Error ? err.message : "Could not load reviews.";
   }
 
-  // Best-effort count of reviews needing attention, for tab emphasis.
-  let needsReviewCount: number | null = null;
+  let badgeCount: number | null = null;
   if (!error) {
-    if (filter === "needs_review") {
-      needsReviewCount = reviews.length;
-    } else if (filter === "all") {
-      needsReviewCount = reviews.filter(
-        (r) => reviewStage(r) === "needs_review",
-      ).length;
+    if (allowed === "unanswered" || allowed === "needs_review") {
+      badgeCount = reviews.length;
+    } else if (allowed === "all") {
+      badgeCount = managed
+        ? reviews.filter((r) => reviewStage(r) === "needs_review").length
+        : reviews.filter(isUnanswered).length;
     } else {
       try {
-        needsReviewCount = (await listReviews("needs_review")).length;
+        const pending = managed
+          ? await listReviews("needs_review")
+          : (await listReviews()).filter(isUnanswered);
+        badgeCount = pending.length;
       } catch {
-        needsReviewCount = null;
+        badgeCount = null;
       }
     }
   }
@@ -73,8 +87,9 @@ export default async function ReviewsPage({
       <div>
         <h1 className="text-2xl font-bold text-ink">Reviews</h1>
         <p className="mt-1 text-sm text-slate-body">
-          Review the responses drafted for your customer reviews, make any
-          edits, and approve the ones you&rsquo;re happy with.
+          {managed
+            ? "Review the responses drafted for your customer reviews, make any edits, and approve the ones you\u2019re happy with."
+            : "Customer reviews from Google. Unanswered ones are flagged so you can reply on your Google Business Profile."}
         </p>
       </div>
 
@@ -86,9 +101,13 @@ export default async function ReviewsPage({
 
       <div className="-mx-6 overflow-x-auto px-6 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
         <div className="flex w-max items-center gap-2">
-        {REVIEW_FILTERS.map((f) => {
-          const active = f === filter;
+        {filters.map((f) => {
+          const active = f === allowed;
           const href = f === "all" ? "/admin/reviews" : `/admin/reviews?filter=${f}`;
+          const showBadge =
+            (f === "needs_review" || f === "unanswered") &&
+            badgeCount !== null &&
+            badgeCount > 0;
           return (
             <Link
               key={f}
@@ -97,15 +116,13 @@ export default async function ReviewsPage({
               className={active ? chipOn : chipIdle}
             >
               {filterLabel(f)}
-              {f === "needs_review" &&
-                needsReviewCount !== null &&
-                needsReviewCount > 0 && (
+              {showBadge && (
                   <span
                     className={`ml-2 rounded-pill px-2 py-0.5 text-xs ${
                       active ? "bg-white/20" : "bg-amber-100 text-amber-800"
                     }`}
                   >
-                    {needsReviewCount}
+                    {badgeCount}
                   </span>
                 )}
             </Link>
@@ -121,17 +138,30 @@ export default async function ReviewsPage({
       ) : reviews.length === 0 ? (
         <div className="rounded-card border border-border-soft bg-white px-6 py-12 text-center">
           <p className="text-sm text-slate-body">
-            {filter === "needs_review"
+            {allowed === "needs_review"
               ? "Nothing needs your review right now. You\u2019re all caught up."
-              : filter === "approved"
-                ? "No approved responses yet."
+              : allowed === "unanswered"
+                ? "No unanswered reviews."
+              : allowed === "approved" || allowed === "replied"
+                ? managed
+                  ? "No approved responses yet."
+                  : "No replied reviews yet."
                 : "No reviews yet."}
           </p>
         </div>
       ) : (
         <ul className={listCard}>
           {reviews.map((r) => {
+            const unanswered = isUnanswered(r);
             const stage = reviewStage(r);
+            const badge = managed
+              ? { className: stageBadgeClass(stage), label: stageLabel(stage) }
+              : unanswered
+                ? {
+                    className: stageBadgeClass("needs_review"),
+                    label: "Unanswered",
+                  }
+                : { className: stageBadgeClass("approved"), label: "Replied" };
             return (
               <li key={r.id}>
                 <Link
@@ -154,8 +184,8 @@ export default async function ReviewsPage({
                       </p>
                     )}
                   </div>
-                  <span className={`${stageBadgeClass(stage)} shrink-0`}>
-                    {stageLabel(stage)}
+                  <span className={`${badge.className} shrink-0`}>
+                    {badge.label}
                   </span>
                 </Link>
               </li>

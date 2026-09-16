@@ -33,6 +33,9 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env
 
+# Owner-set admin credentials (encrypted overlay; never commit)
+content/_credentials.json
+
 # vercel
 .vercel
 

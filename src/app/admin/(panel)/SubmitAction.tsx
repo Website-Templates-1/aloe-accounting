@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 
 /**
  * A POST form whose submit button disables itself and shows a spinner while
@@ -15,6 +15,8 @@ export function SubmitAction({
   className,
   confirm,
   hidden,
+  children,
+  disabled,
 }: {
   action: string;
   label: string;
@@ -22,13 +24,19 @@ export function SubmitAction({
   className?: string;
   confirm?: string;
   hidden?: Record<string, string>;
+  children?: ReactNode;
+  disabled?: boolean;
 }) {
   const [submitting, setSubmitting] = useState(false);
   return (
     <form
       method="post"
-      action={action}
+      action={disabled ? undefined : action}
       onSubmit={(e) => {
+        if (disabled) {
+          e.preventDefault();
+          return;
+        }
         if (confirm && !window.confirm(confirm)) {
           e.preventDefault();
           return;
@@ -40,11 +48,12 @@ export function SubmitAction({
         Object.entries(hidden).map(([name, value]) => (
           <input key={name} type="hidden" name={name} value={value} />
         ))}
+      {children}
       <button
         type="submit"
-        disabled={submitting}
+        disabled={disabled || submitting}
         aria-busy={submitting}
-        className={`inline-flex items-center gap-2 disabled:cursor-not-allowed disabled:opacity-60 ${
+        className={`inline-flex items-center gap-2 disabled:cursor-not-allowed disabled:opacity-50 ${
           className ?? ""
         }`}
       >

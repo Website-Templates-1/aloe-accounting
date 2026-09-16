@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { rateLimit, requireSession, sameOrigin } from "@/lib/admin-guard";
+import { rateLimit, requireSession, sameOrigin, reviewRepliesEnabled } from "@/lib/admin-guard";
 import { regenerateReply } from "@/lib/review-api";
 
 // Ask the central service for a fresh draft. This NEVER approves. A light,
@@ -15,6 +15,10 @@ export async function POST(
     return new NextResponse("Unauthorized", { status: 401 });
   if (!(await sameOrigin()))
     return new NextResponse("Bad origin", { status: 403 });
+  if (!reviewRepliesEnabled())
+    return new NextResponse("Reply management is not enabled for this site.", {
+      status: 403,
+    });
 
   const { id } = await ctx.params;
 

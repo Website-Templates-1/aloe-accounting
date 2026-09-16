@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
   const username = String(form.get("username") ?? "");
   const password = String(form.get("password") ?? "");
 
-  if (verifyCredentials(username, password)) {
+  if (await verifyCredentials(username, password)) {
     await startSession(username);
     return NextResponse.redirect(new URL("/admin", request.url), 303);
   }

@@ -26,8 +26,8 @@ export function Logo({ className = "" }: { className?: string }) {
       <Image
         src="/trust/cpa.png"
         alt=""
-        width={816}
-        height={278}
+        width={442}
+        height={168}
         priority
         className="h-7 w-auto shrink-0 sm:h-9"
       />

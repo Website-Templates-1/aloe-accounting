@@ -14,21 +14,33 @@ const SECTIONS = [
     href: "/admin",
     label: "Blog",
     match: (p: string) =>
-      p.startsWith("/admin") && !p.startsWith("/admin/reviews"),
+      p.startsWith("/admin") &&
+      !p.startsWith("/admin/reviews") &&
+      !p.startsWith("/admin/account"),
+  },
+  {
+    href: "/admin/account",
+    label: "Account",
+    match: (p: string) => p.startsWith("/admin/account"),
   },
   {
     href: "/admin/reviews",
+    id: "reviews",
     label: "Reviews",
     match: (p: string) =>
       p === "/admin/reviews" || p.startsWith("/admin/reviews/"),
   },
-];
+] as const;
 
 function chipClass(active: boolean) {
   return `snap-start ${active ? chipOn : chipIdle}`;
 }
 
-export function PanelNav() {
+export function PanelNav({
+  unansweredReviews = 0,
+}: {
+  unansweredReviews?: number;
+}) {
   const pathname = usePathname();
 
   return (
@@ -39,6 +51,7 @@ export function PanelNav() {
       <ul className="flex w-max snap-x snap-mandatory items-center gap-2">
         {SECTIONS.map((s) => {
           const active = s.match(pathname);
+          const showCount = "id" in s && s.id === "reviews" && unansweredReviews > 0;
           return (
             <li key={s.href} className="flex">
               <Link
@@ -47,6 +60,18 @@ export function PanelNav() {
                 className={chipClass(active)}
               >
                 {s.label}
+                {showCount && (
+                  <span
+                    className={`ml-2 rounded-pill px-2 py-0.5 text-xs ${
+                      active ? "bg-white/20 text-white" : "bg-amber-100 text-amber-800"
+                    }`}
+                    aria-label={`${unansweredReviews} unanswered ${
+                      unansweredReviews === 1 ? "review" : "reviews"
+                    }`}
+                  >
+                    {unansweredReviews}
+                  </span>
+                )}
               </Link>
             </li>
           );

@@ -5,9 +5,9 @@
 export const chip =
   "inline-flex h-9 shrink-0 items-center justify-center whitespace-nowrap rounded-pill border px-4 text-sm font-semibold leading-none";
 
-export const chipIdle = `${chip} border-border-soft bg-white text-slate-body hover:text-ink`;
+export const chipIdle = `${chip} border-border-soft bg-white text-slate-body hover:text-ink disabled:pointer-events-none disabled:text-slate-body/40 disabled:hover:text-slate-body/40`;
 
-export const chipPrimary = `${chip} border-brand-700 bg-brand-700 text-white hover:bg-brand-800`;
+export const chipPrimary = `${chip} border-brand-700 bg-brand-700 text-white hover:bg-brand-800 disabled:pointer-events-none disabled:border-border-soft disabled:bg-surface-alt disabled:text-slate-body/50 disabled:hover:bg-surface-alt`;
 
 export const chipDanger = `${chip} border-red-200 bg-white text-red-600 hover:bg-red-50`;
 

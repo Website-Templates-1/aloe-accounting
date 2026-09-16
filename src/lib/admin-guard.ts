@@ -7,6 +7,7 @@ import "server-only";
 import { headers } from "next/headers";
 import { timingSafeEqual } from "node:crypto";
 import { isAuthenticated } from "@/lib/auth";
+import { adminFeatures } from "@/lib/site.config";
 
 /** Reject cross-origin POSTs (defense-in-depth alongside SameSite=Strict). */
 export async function sameOrigin(): Promise<boolean> {
@@ -23,6 +24,11 @@ export async function sameOrigin(): Promise<boolean> {
 
 export async function requireSession(): Promise<boolean> {
   return isAuthenticated();
+}
+
+/** False until the client purchases AI review-reply management. */
+export function reviewRepliesEnabled(): boolean {
+  return adminFeatures.reviewReplies;
 }
 
 /** Constant-time bearer check for the cron-triggered generator. */

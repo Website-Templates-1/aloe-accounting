@@ -118,17 +118,39 @@ export function stageBadgeClass(stage: ReviewStage): string {
 /* Filters                                                             */
 /* ------------------------------------------------------------------ */
 
-export type ReviewFilter = "all" | "needs_review" | "approved";
+/** No approved reply yet — the owner still needs to respond (on Google, or here if the package is on). */
+export function isUnanswered(review: ReviewView): boolean {
+  return review.approval?.status !== "approved";
+}
 
+export type ReviewFilter =
+  | "all"
+  | "needs_review"
+  | "approved"
+  | "unanswered"
+  | "replied";
+
+/** Filters when AI reply management is enabled. */
 export const REVIEW_FILTERS: readonly ReviewFilter[] = [
   "all",
   "needs_review",
   "approved",
 ] as const;
 
+/** Filters when the client can view reviews but not draft/post replies. */
+export const REVIEW_FILTERS_READONLY: readonly ReviewFilter[] = [
+  "all",
+  "unanswered",
+  "replied",
+] as const;
+
 export function isReviewFilter(value: unknown): value is ReviewFilter {
   return (
-    value === "all" || value === "needs_review" || value === "approved"
+    value === "all" ||
+    value === "needs_review" ||
+    value === "approved" ||
+    value === "unanswered" ||
+    value === "replied"
   );
 }
 
@@ -140,8 +162,10 @@ export function statusFilterToParam(
     case "needs_review":
       return "needs_review";
     case "approved":
+    case "replied":
       return "approved";
     case "all":
+    case "unanswered":
     default:
       return undefined;
   }
@@ -153,6 +177,10 @@ export function filterLabel(filter: ReviewFilter): string {
       return "Needs review";
     case "approved":
       return "Approved";
+    case "unanswered":
+      return "Unanswered";
+    case "replied":
+      return "Replied";
     case "all":
     default:
       return "All";

@@ -17,7 +17,7 @@
  *    evaluated at request time.
  */
 import "server-only";
-import type { ReviewView } from "@/lib/reviews-view";
+import { isUnanswered, type ReviewView } from "@/lib/reviews-view";
 
 interface ReviewApiConfig {
   baseUrl: string;
@@ -86,6 +86,12 @@ export async function listReviews(
   if (typeof limit === "number") qs.set("limit", String(limit));
   const suffix = qs.toString() ? `?${qs.toString()}` : "";
   return request<ReviewView[]>(`/v1/reviews${suffix}`);
+}
+
+/** Reviews with no approved reply yet. */
+export async function countUnansweredReviews(): Promise<number> {
+  const reviews = await listReviews();
+  return reviews.filter(isUnanswered).length;
 }
 
 /** GET /v1/reviews/:id — a single review. */
