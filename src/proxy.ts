@@ -7,6 +7,7 @@
  */
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { redirectBase } from "@/lib/redirect-base";
 import { SESSION_COOKIE, verifySession } from "@/lib/session";
 
 const PUBLIC_ADMIN_PATHS = ["/admin/login", "/api/admin/login"];
@@ -26,10 +27,9 @@ export function proxy(request: NextRequest) {
   if (pathname.startsWith("/api/admin")) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  const url = request.nextUrl.clone();
-  url.pathname = "/admin/login";
-  url.search = "";
-  return NextResponse.redirect(url);
+  return NextResponse.redirect(
+    new URL("/admin/login", redirectBase(request.headers)),
+  );
 }
 
 export const config = {

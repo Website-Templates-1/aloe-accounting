@@ -6,20 +6,33 @@
 import "server-only";
 import { headers } from "next/headers";
 import { timingSafeEqual } from "node:crypto";
+import { NextResponse } from "next/server";
 import { isAuthenticated } from "@/lib/auth";
-import { adminFeatures } from "@/lib/site.config";
+import { redirectBase } from "@/lib/redirect-base";
+import { adminFeatures, site } from "@/lib/site.config";
 
 /** Reject cross-origin POSTs (defense-in-depth alongside SameSite=Strict). */
 export async function sameOrigin(): Promise<boolean> {
-  const h = await headers();
-  const origin = h.get("origin");
+  const origin = (await headers()).get("origin");
   if (!origin) return true; // non-browser callers (cron) send no Origin
-  const host = h.get("host");
   try {
-    return new URL(origin).host === host;
+    const host = new URL(origin).hostname;
+    return (
+      host === new URL(site.domain).hostname ||
+      host === "localhost" ||
+      host === "127.0.0.1"
+    );
   } catch {
     return false;
   }
+}
+
+/** 303 to a same-site admin path on the public origin, never *.netlify.app. */
+export async function adminRedirect(path: string): Promise<NextResponse> {
+  return NextResponse.redirect(
+    new URL(path, redirectBase(await headers())),
+    303,
+  );
 }
 
 export async function requireSession(): Promise<boolean> {

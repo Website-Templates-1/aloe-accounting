@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { requireSession, sameOrigin } from "@/lib/admin-guard";
+import { requireSession, sameOrigin, adminRedirect } from "@/lib/admin-guard";
 import { updateTopic } from "@/lib/backlog";
 
 export async function POST(request: NextRequest) {
@@ -14,21 +14,15 @@ export async function POST(request: NextRequest) {
   const topic = String(form.get("topic") ?? "").trim();
   const notes = String(form.get("notes") ?? "").trim();
   if (!original || !topic) {
-    return NextResponse.redirect(
-      new URL("/admin/backlog?error=Enter+a+topic", request.url),
-      303,
-    );
+    return adminRedirect("/admin/backlog?error=Enter+a+topic");
   }
 
   try {
     await updateTopic(original, { topic, notes });
-    return NextResponse.redirect(
-      new URL("/admin/backlog?updated=1", request.url),
-      303,
-    );
+    return adminRedirect("/admin/backlog?updated=1");
   } catch (err) {
     const msg = err instanceof Error ? err.message : "Update failed";
     const back = `/admin/backlog/edit?topic=${encodeURIComponent(original)}&error=${encodeURIComponent(msg)}`;
-    return NextResponse.redirect(new URL(back, request.url), 303);
+    return adminRedirect(back);
   }
 }

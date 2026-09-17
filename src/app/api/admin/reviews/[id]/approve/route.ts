@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { requireSession, sameOrigin, reviewRepliesEnabled } from "@/lib/admin-guard";
+import { requireSession, sameOrigin, reviewRepliesEnabled, adminRedirect } from "@/lib/admin-guard";
 import { approveReply } from "@/lib/review-api";
 
 // Explicitly approve the current draft response. This is the ONLY endpoint that
@@ -9,7 +9,7 @@ import { approveReply } from "@/lib/review-api";
 // project isolation is enforced server-side by the per-project bearer key in
 // review-api.ts.
 export async function POST(
-  request: NextRequest,
+  _request: NextRequest,
   ctx: { params: Promise<{ id: string }> },
 ) {
   if (!(await requireSession()))
@@ -27,16 +27,9 @@ export async function POST(
     await approveReply(id);
   } catch (err) {
     const msg = err instanceof Error ? err.message : "Approve failed";
-    return NextResponse.redirect(
-      new URL(
-        `/admin/reviews/${id}?error=${encodeURIComponent(msg)}`,
-        request.url,
-      ),
-      303,
+    return adminRedirect(
+      `/admin/reviews/${id}?error=${encodeURIComponent(msg)}`,
     );
   }
-  return NextResponse.redirect(
-    new URL(`/admin/reviews/${id}?notice=approved`, request.url),
-    303,
-  );
+  return adminRedirect(`/admin/reviews/${id}?notice=approved`);
 }

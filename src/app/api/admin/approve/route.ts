@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { requireSession, sameOrigin } from "@/lib/admin-guard";
+import { requireSession, sameOrigin, adminRedirect } from "@/lib/admin-guard";
 import { approvePost } from "@/lib/blog-admin";
 
 export async function POST(request: NextRequest) {
@@ -17,10 +17,7 @@ export async function POST(request: NextRequest) {
     await approvePost(slug);
   } catch (err) {
     const msg = err instanceof Error ? err.message : "Approve failed";
-    return NextResponse.redirect(
-      new URL(`/admin?error=${encodeURIComponent(msg)}`, request.url),
-      303,
-    );
+    return adminRedirect(`/admin?error=${encodeURIComponent(msg)}`);
   }
-  return NextResponse.redirect(new URL("/admin?approved=1", request.url), 303);
+  return adminRedirect("/admin?approved=1");
 }

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { rateLimit, requireSession, sameOrigin, reviewRepliesEnabled } from "@/lib/admin-guard";
+import { rateLimit, requireSession, sameOrigin, reviewRepliesEnabled, adminRedirect } from "@/lib/admin-guard";
 import { regenerateReply } from "@/lib/review-api";
 
 // Ask the central service for a fresh draft. This NEVER approves. A light,
@@ -8,7 +8,7 @@ import { regenerateReply } from "@/lib/review-api";
 // is the central service's review id; project isolation is enforced server-side
 // by the per-project bearer key in review-api.ts.
 export async function POST(
-  request: NextRequest,
+  _request: NextRequest,
   ctx: { params: Promise<{ id: string }> },
 ) {
   if (!(await requireSession()))
@@ -23,12 +23,8 @@ export async function POST(
   const { id } = await ctx.params;
 
   if (!rateLimit(`regenerate:${id}`, 10, 60_000)) {
-    return NextResponse.redirect(
-      new URL(
-        `/admin/reviews/${id}?error=Please%20wait%20a%20moment%20before%20regenerating%20again`,
-        request.url,
-      ),
-      303,
+    return adminRedirect(
+      `/admin/reviews/${id}?error=Please%20wait%20a%20moment%20before%20regenerating%20again`,
     );
   }
 
@@ -36,16 +32,9 @@ export async function POST(
     await regenerateReply(id);
   } catch (err) {
     const msg = err instanceof Error ? err.message : "Regenerate failed";
-    return NextResponse.redirect(
-      new URL(
-        `/admin/reviews/${id}?error=${encodeURIComponent(msg)}`,
-        request.url,
-      ),
-      303,
+    return adminRedirect(
+      `/admin/reviews/${id}?error=${encodeURIComponent(msg)}`,
     );
   }
-  return NextResponse.redirect(
-    new URL(`/admin/reviews/${id}?notice=regenerated`, request.url),
-    303,
-  );
+  return adminRedirect(`/admin/reviews/${id}?notice=regenerated`);
 }

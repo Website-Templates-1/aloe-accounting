@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { requireSession, sameOrigin, rateLimit } from "@/lib/admin-guard";
+import { requireSession, sameOrigin, rateLimit, adminRedirect } from "@/lib/admin-guard";
 import {
   verifyPassword,
   passwordPolicyError,
@@ -16,10 +16,7 @@ export async function POST(request: NextRequest) {
 
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0] ?? "local";
   if (!rateLimit(`password:${ip}`, 8, 15 * 60_000)) {
-    return NextResponse.redirect(
-      new URL("/admin/account?error=rate", request.url),
-      303,
-    );
+    return adminRedirect("/admin/account?error=rate");
   }
 
   const form = await request.formData();
@@ -28,10 +25,7 @@ export async function POST(request: NextRequest) {
   const confirm = String(form.get("confirm") ?? "");
 
   const fail = (code: string) =>
-    NextResponse.redirect(
-      new URL(`/admin/account?error=${encodeURIComponent(code)}`, request.url),
-      303,
-    );
+    adminRedirect(`/admin/account?error=${encodeURIComponent(code)}`);
 
   const stored = await loadOwnerRecord();
   if (!stored) return fail("config");
@@ -40,9 +34,8 @@ export async function POST(request: NextRequest) {
   if (current === next) return fail("same");
   const policy = passwordPolicyError(next);
   if (policy) {
-    return NextResponse.redirect(
-      new URL(`/admin/account?error=${encodeURIComponent(policy)}`, request.url),
-      303,
+    return adminRedirect(
+      `/admin/account?error=${encodeURIComponent(policy)}`,
     );
   }
 
@@ -52,5 +45,5 @@ export async function POST(request: NextRequest) {
     return fail("save");
   }
 
-  return NextResponse.redirect(new URL("/admin/account?saved=1", request.url), 303);
+  return adminRedirect("/admin/account?saved=1");
 }

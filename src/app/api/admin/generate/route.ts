@@ -1,15 +1,15 @@
 import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
 import {
   requireSession,
   hasCronSecret,
   sameOrigin,
   rateLimit,
+  adminRedirect,
 } from "@/lib/admin-guard";
 import { generateDraft } from "@/lib/generation/generate";
 import { commitFiles } from "@/lib/github";
 
-export async function POST(request: NextRequest) {
+export async function POST() {
   // Dual auth: an owner session (manual button) OR the cron bearer secret.
   const session = await requireSession();
   const cron = await hasCronSecret();
@@ -25,19 +25,12 @@ export async function POST(request: NextRequest) {
   try {
     const result = await generateDraft();
     await commitFiles(result.files, `Add draft: ${result.slug}`);
-    if (session)
-      return NextResponse.redirect(
-        new URL(`/admin?generated=${result.slug}`, request.url),
-        303,
-      );
+    if (session) return adminRedirect(`/admin?generated=${result.slug}`);
     return NextResponse.json({ ok: true, slug: result.slug });
   } catch (err) {
     const msg = err instanceof Error ? err.message : "Generation failed";
     if (session)
-      return NextResponse.redirect(
-        new URL(`/admin?error=${encodeURIComponent(msg)}`, request.url),
-        303,
-      );
+      return adminRedirect(`/admin?error=${encodeURIComponent(msg)}`);
     return NextResponse.json({ ok: false, error: msg }, { status: 500 });
   }
 }

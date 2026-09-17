@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { verifyCredentials, startSession } from "@/lib/auth";
-import { rateLimit, sameOrigin } from "@/lib/admin-guard";
+import { rateLimit, sameOrigin, adminRedirect } from "@/lib/admin-guard";
 
 export async function POST(request: NextRequest) {
   if (!(await sameOrigin()))
@@ -9,10 +9,7 @@ export async function POST(request: NextRequest) {
 
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0] ?? "local";
   if (!rateLimit(`login:${ip}`, 5, 60_000)) {
-    return NextResponse.redirect(
-      new URL("/admin/login?error=rate", request.url),
-      303,
-    );
+    return adminRedirect("/admin/login?error=rate");
   }
 
   const form = await request.formData();
@@ -21,10 +18,7 @@ export async function POST(request: NextRequest) {
 
   if (await verifyCredentials(username, password)) {
     await startSession(username);
-    return NextResponse.redirect(new URL("/admin", request.url), 303);
+    return adminRedirect("/admin");
   }
-  return NextResponse.redirect(
-    new URL("/admin/login?error=1", request.url),
-    303,
-  );
+  return adminRedirect("/admin/login?error=1");
 }

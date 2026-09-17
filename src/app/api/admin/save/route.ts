@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { requireSession, sameOrigin } from "@/lib/admin-guard";
+import { requireSession, sameOrigin, adminRedirect } from "@/lib/admin-guard";
 import {
   savePost,
   parseFaqsText,
@@ -39,13 +39,9 @@ export async function POST(request: NextRequest) {
     await savePost(slug, fm, body, `Edit post: ${slug}`);
   } catch (err) {
     const msg = err instanceof Error ? err.message : "Save failed";
-    return NextResponse.redirect(
-      new URL(`/admin/posts/${slug}?error=${encodeURIComponent(msg)}`, request.url),
-      303,
+    return adminRedirect(
+      `/admin/posts/${slug}?error=${encodeURIComponent(msg)}`,
     );
   }
-  return NextResponse.redirect(
-    new URL(`/admin/posts/${slug}?saved=1`, request.url),
-    303,
-  );
+  return adminRedirect(`/admin/posts/${slug}?saved=1`);
 }

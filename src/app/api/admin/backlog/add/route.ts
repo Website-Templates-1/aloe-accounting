@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { requireSession, sameOrigin } from "@/lib/admin-guard";
+import { requireSession, sameOrigin, adminRedirect } from "@/lib/admin-guard";
 import { addTopics } from "@/lib/backlog";
 
 export async function POST(request: NextRequest) {
@@ -13,20 +13,16 @@ export async function POST(request: NextRequest) {
   const topic = String(form.get("topic") ?? "").trim();
   const notes = String(form.get("notes") ?? "").trim();
   if (!topic)
-    return NextResponse.redirect(
-      new URL("/admin/backlog?error=Enter+a+topic", request.url),
-      303,
-    );
+    return adminRedirect("/admin/backlog?error=Enter+a+topic");
 
   try {
     const added = await addTopics([{ topic, notes }]);
     const q = added ? `added=${added}` : "error=That+topic+is+already+in+the+backlog";
-    return NextResponse.redirect(new URL(`/admin/backlog?${q}`, request.url), 303);
+    return adminRedirect(`/admin/backlog?${q}`);
   } catch (err) {
     const msg = err instanceof Error ? err.message : "Add failed";
-    return NextResponse.redirect(
-      new URL(`/admin/backlog?error=${encodeURIComponent(msg)}`, request.url),
-      303,
+    return adminRedirect(
+      `/admin/backlog?error=${encodeURIComponent(msg)}`,
     );
   }
 }

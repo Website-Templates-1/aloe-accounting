@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { requireSession, sameOrigin } from "@/lib/admin-guard";
+import { requireSession, sameOrigin, adminRedirect } from "@/lib/admin-guard";
 import { deletePost } from "@/lib/blog-admin";
 
 export async function POST(request: NextRequest) {
@@ -17,10 +17,7 @@ export async function POST(request: NextRequest) {
     await deletePost(slug);
   } catch (err) {
     const msg = err instanceof Error ? err.message : "Delete failed";
-    return NextResponse.redirect(
-      new URL(`/admin?error=${encodeURIComponent(msg)}`, request.url),
-      303,
-    );
+    return adminRedirect(`/admin?error=${encodeURIComponent(msg)}`);
   }
-  return NextResponse.redirect(new URL("/admin?deleted=1", request.url), 303);
+  return adminRedirect("/admin?deleted=1");
 }

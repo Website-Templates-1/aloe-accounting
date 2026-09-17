@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { requireSession, sameOrigin, reviewRepliesEnabled } from "@/lib/admin-guard";
+import { requireSession, sameOrigin, reviewRepliesEnabled, adminRedirect } from "@/lib/admin-guard";
 import { updateReply } from "@/lib/review-api";
 
 // Save an edited draft response. This NEVER approves — approval is a separate,
@@ -25,12 +25,8 @@ export async function POST(
   const form = await request.formData();
   const body = String(form.get("body") ?? "").trim();
   if (!body) {
-    return NextResponse.redirect(
-      new URL(
-        `/admin/reviews/${id}?error=Response%20cannot%20be%20empty`,
-        request.url,
-      ),
-      303,
+    return adminRedirect(
+      `/admin/reviews/${id}?error=Response%20cannot%20be%20empty`,
     );
   }
 
@@ -38,16 +34,9 @@ export async function POST(
     await updateReply(id, body);
   } catch (err) {
     const msg = err instanceof Error ? err.message : "Save failed";
-    return NextResponse.redirect(
-      new URL(
-        `/admin/reviews/${id}?error=${encodeURIComponent(msg)}`,
-        request.url,
-      ),
-      303,
+    return adminRedirect(
+      `/admin/reviews/${id}?error=${encodeURIComponent(msg)}`,
     );
   }
-  return NextResponse.redirect(
-    new URL(`/admin/reviews/${id}?notice=saved`, request.url),
-    303,
-  );
+  return adminRedirect(`/admin/reviews/${id}?notice=saved`);
 }
