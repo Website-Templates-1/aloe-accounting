@@ -88,7 +88,7 @@
     {
       "topic": "Intercompany agreements and expense reimbursements inside a Canadian corporation",
       "notes": "Discuss when formal agreements are needed, how to properly charge expenses between related parties, and documentation to support reimbursements.",
-      "used": false
+      "used": true
     },
     {
       "topic": "Personal-use versus business-use assets: documenting mixed-use properly (vehicles, phones, computers)",
