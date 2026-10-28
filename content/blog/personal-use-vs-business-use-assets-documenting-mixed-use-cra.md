@@ -9,7 +9,8 @@ metaDescription: >-
 excerpt: >-
   Mixed-use assets are common for owner-managed businesses, but the CRA expects
   clear support for business-use claims. Here is how to document properly.
-publishedAt: '2026-09-28'
+publishedAt: '2026-11-04'
+updatedAt: '2026-10-28'
 author: ALOE Accounting and Tax
 status: draft
 faqs:
