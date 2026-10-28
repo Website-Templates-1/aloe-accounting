@@ -12,7 +12,7 @@ excerpt: >-
 publishedAt: '2026-11-04'
 updatedAt: '2026-10-28'
 author: ALOE Accounting and Tax
-status: draft
+status: published
 faqs:
   - question: How does the CRA decide what portion of a mixed-use expense is deductible?
     answer: >-
