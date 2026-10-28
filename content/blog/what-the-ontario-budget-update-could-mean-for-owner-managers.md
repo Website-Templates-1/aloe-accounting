@@ -9,8 +9,9 @@ excerpt: >-
   priorities. Here are practical things owner-managers can review to plan ahead,
   including tax, cash flow, and documentation.
 publishedAt: '2026-10-28'
+updatedAt: '2026-10-28'
 author: ALOE Accounting and Tax
-status: draft
+status: published
 faqs:
   - question: Does the Ontario budget automatically change business tax rates?
     answer: >-
