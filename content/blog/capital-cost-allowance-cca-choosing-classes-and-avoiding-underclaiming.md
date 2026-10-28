@@ -12,8 +12,9 @@ excerpt: >-
   additions/disposals can lead to underclaiming (or future surprises). Here’s
   how to get it right.
 publishedAt: '2026-08-31'
+updatedAt: '2026-10-28'
 author: ALOE Accounting and Tax
-status: draft
+status: published
 faqs:
   - question: How do I figure out the correct CCA class for an asset?
     answer: >-
@@ -29,8 +30,8 @@ faqs:
   - question: Can underclaiming CCA create problems later?
     answer: >-
       Yes. Underclaiming can mean you claim less than you should now, and later
-      adjustments may be needed, especially if disposals or additions were missed
-      or classified incorrectly.
+      adjustments may be needed, especially if disposals or additions were
+      missed or classified incorrectly.
   - question: Should I update my CCA schedule during the year or only at tax time?
     answer: >-
       Updating during the year is usually better. It reduces the risk of missing
