@@ -114,6 +114,10 @@
       "topic": "Payroll for contractors and hiring decisions: when to use employee vs contractor vs third-party services",
       "notes": "Provide practical guidance on evaluating worker status, documentation to support the relationship, and how CRA reviews misclassification.",
       "used": true
+    },
+    {
+      "topic": "https://www.cbc.ca/news/canada/toronto/capital-investments-ontrio-bethlenfalvy-9.7399514",
+      "used": false
     }
   ]
 }
