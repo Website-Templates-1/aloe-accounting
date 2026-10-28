@@ -9,8 +9,9 @@ excerpt: >-
   owner-managers should log use, allocate expenses, and avoid common CRA red
   flags.
 publishedAt: '2026-09-14'
+updatedAt: '2026-10-28'
 author: ALOE Accounting and Tax
-status: draft
+status: published
 faqs:
   - question: Do I need a mileage log to claim vehicle expenses?
     answer: >-
